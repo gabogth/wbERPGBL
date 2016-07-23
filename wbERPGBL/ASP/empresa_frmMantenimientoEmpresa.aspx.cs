@@ -1,0 +1,183 @@
+﻿using Modelo;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace wbERPGBL.ASP
+{
+    public partial class empresa_frmMantenimientoEmpresa : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string buscar(string q, int index, int cantidad)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                int registros = 0;
+                dsProcedimientos.EMPRESA_BUSCAR_POR_QUERYDataTable dtResultado = DOMModel.EMPRESA_BUSCAR_POR_QUERY(q, ref registros, index, cantidad, Conexion);
+                if (dtResultado != null)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = registros;
+                    objResultado.body = dtResultado;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string insertar(string RUC, string RAZON_SOCIAL, string DIRECCION, string VISION, 
+            string MISION, string VALORES, string ETICA, string POLITICA, string ALIAS)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                if (sessionUS == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                bool dtResultado = DOMModel.EMPRESA_INSERTAR(RUC, RAZON_SOCIAL, DIRECCION, VISION, MISION, VALORES,
+                    ETICA, POLITICA, sessionUS.idusuario, ALIAS, Conexion);
+                if (dtResultado != false)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = 1;
+                    objResultado.body = dtResultado;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string modificar(int IDEMPRESA, string RUC, string RAZON_SOCIAL, string DIRECCION, string VISION,
+            string MISION, string VALORES, string ETICA, string POLITICA, string ALIAS)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                if (sessionUS == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                bool dtResultado = DOMModel.EMPRESA_MODIFICAR(IDEMPRESA, RUC, RAZON_SOCIAL, DIRECCION, VISION, 
+                    MISION, VALORES, ETICA, POLITICA, sessionUS.idusuario, ALIAS, Conexion);
+                if (dtResultado != false)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = 1;
+                    objResultado.body = dtResultado;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string eliminar(int IDEMPRESA)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                if (sessionUS == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                bool dtResultado = DOMModel.EMPRESA_ELIMINAR(sessionUS.idusuario, IDEMPRESA, Conexion);
+                if (dtResultado != false)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = 1;
+                    objResultado.body = dtResultado;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+    }
+}
