@@ -1,10 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ASP/master.Master" AutoEventWireup="true" CodeBehind="categoria_frmMantenimientoCategoria.aspx.cs" Inherits="wbERPGBL.ASP.categoria_frmMantenimientoCategoria" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ASP/master.Master" AutoEventWireup="true" CodeBehind="backup_frmMantenimientoBackUP.aspx.cs" Inherits="wbERPGBL.ASP.backup_frmMantenimientoBackUP" %>
+<%@ Import Namespace="System.Configuration" %>
+<%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="Modelo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="IDScripts" runat="server">
-    <script src="../js/Controllers/jsCategoria.js"></script>
+    <script src="../js/Controllers/jsBackUP.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="IDCuerpo" runat="server">
     <div class="tile">
-        <h2 class="tile-title">Mantenimiento de Categorias</h2>
+        <h2 class="tile-title">Mantenimiento de BackUP</h2>
         <div class="tile-config dropdown">
             <a data-toggle="dropdown" href="#" class="tile-menu"></a>
             <ul class="dropdown-menu pull-right text-right">
@@ -47,9 +51,7 @@
                                         <tr>
                                             <th class="text-center">#</th>
                                             <th class="text-center">NOMBRE</th>
-                                            <th class="text-center">ICON</th>
-                                            <th class="text-center"></th>
-                                            <th class="text-center"></th>
+                                            <th class="text-center">FECHA CREACION</th>
                                             <th class="text-center"></th>
                                         </tr>
                                     </thead>
@@ -79,7 +81,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="IDFooter" runat="server">
-    <div class="modal fade" id="modalInsertar" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -93,32 +95,29 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtNombre">Nombre: </label>
-                                        <input type="text" class="form-control m-b-10" id="txtNombre" name="txtNombre" required="required" placeholder="Ingrese nombre...">
+                                        <input type="text" class="form-control m-b-10" id="txtNombre" name="txtNombre" required="required" placeholder="Ingrese Nombre del backUP">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
-                                        <label for="cbIcon">Icono: </label>
-                                        <select id="cbIcon" class="form-control m-b-10" required="required" name="cbLink" style="width: 100%;">
-                                            <option value="home">home</option>
-                                            <option value="typography">typography</option>
-                                            <option value="table">table</option>
-                                            <option value="form">form</option> 
-                                            <option value="ui">ui</option> 
-                                            <option value="folder">folder</option> 
-                                            <option value="calendar">calendar</option> 
-                                            <option value="page">page</option> 
-                                            <option value="chart">chart</option> 
-                                            <option value="photos">photos</option> 
-                                            <option value="facturacion">facturacion</option> 
-                                            <option value="compras">compras</option> 
-                                            <option value="rendiciones">rendiciones</option> 
-                                            <option value="caja">caja</option> 
-                                            <option value="planilla">planilla</option> 
-                                            <option value="proyecto">proyecto</option> 
-                                            <option value="reportes">reportes</option> 
-                                            <option value="acceso">acceso</option> 
-                                            <option value="backup">backup</option> 
+                                        <label for="cbDB">Base de datos: </label>
+                                        <select id="cbDB" name="cbDB" class="form-control m-b-10">
+                                            <%
+                                                try
+                                                {
+                                                    SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                                                    if (Conexion == null)
+                                                        HttpContext.Current.Response.Redirect("~/default.aspx");
+                                                    dsProcedimientos.BUSCAR_BASE_DATOSDataTable dtResultado = DOMModel.BUSCAR_BASE_DATOS(Conexion);
+                                                    if (dtResultado != null)
+                                                        foreach (dsProcedimientos.BUSCAR_BASE_DATOSRow item in dtResultado.Rows)
+                                                            Response.Write("<option value=\"" + item.NOMBRE + "\">[" + item.ID + "]-" + item.NOMBRE + ": " + item.FECHA_CREACION.ToString() + "</option>");
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    Response.Write("<option value=\"0\">" + ex.Message + "</option>");
+                                                }
+                                            %>
                                         </select>
                                     </div>
                                 </div>

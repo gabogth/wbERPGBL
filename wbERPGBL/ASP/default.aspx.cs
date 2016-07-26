@@ -3,6 +3,7 @@ using Modelo.archivos;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
@@ -150,8 +151,7 @@ namespace wbERPGBL.ASP
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public static string listarIconos()
         {
-            
-            string directorio = "F:\\UPLOADS\\ACCESOS";
+            string directorio = ConfigurationManager.AppSettings["ICONS_SHORT"].ToString();
             clsResult objResultado = new clsResult();
             try
             {

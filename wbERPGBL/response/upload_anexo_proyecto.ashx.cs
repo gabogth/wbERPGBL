@@ -57,6 +57,24 @@ namespace wbERPGBL.response
                 string responseText = eliminar(IDUPLOAD_PROYECTO, ImagenPath);
                 context.Response.Write(responseText);
             }
+            else if (OP == "dl_backup")
+            {
+                string backup = context.Request.Params["FILE_NAME"];
+                downloadBackUP(backup, ref context);
+            }
+        }
+
+        private void downloadBackUP(string filename, ref HttpContext context)
+        {
+            string mimeType = "";
+            string directorio = ConfigurationManager.AppSettings["BACK_LOCK"].ToString();
+            byte[] fileBytes = File.ReadAllBytes(directorio + filename);
+            context.Response.Buffer = true;
+            context.Response.Clear();
+            context.Response.ContentType = mimeType;
+            context.Response.AddHeader("content-disposition", "attachment; filename=" + filename);
+            context.Response.BinaryWrite(fileBytes);
+            context.Response.Flush();
         }
 
         private string GetFileSize(double byteCount)
