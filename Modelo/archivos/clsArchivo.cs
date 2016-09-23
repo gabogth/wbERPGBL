@@ -8,7 +8,8 @@ namespace Modelo.archivos
 {
     public class clsArchivo
     {
-        string fullPath, originalPath, fileName, fileOutX;
+        string fullPath, originalPath, fileName;
+        bool exist;
         DateTime creationDate;
 
         public DateTime CreationDate
@@ -63,16 +64,16 @@ namespace Modelo.archivos
             }
         }
 
-        public string FileOutX
+        public bool Exist
         {
             get
             {
-                return fileOutX;
+                return exist;
             }
 
             set
             {
-                fileOutX = value;
+                exist = value;
             }
         }
     }

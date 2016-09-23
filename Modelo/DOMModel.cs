@@ -1262,6 +1262,18 @@ namespace Modelo
                 return null;
         }
 
+        public static dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable FACTURA_BUSCAR_POR_ID_FACTURA(int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable();
+            dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_IDTableAdapter tableAdapter = new dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_IDTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+
         public static dsProcedimientos.FACTURA_BUSCAR_POR_QUERYDataTable FACTURA_BUSCAR_POR_QUERY(int IDUSUARIO, 
             string query, ref int registros, int index, int cantidad_registros, string SERIE_FILTRO, 
             string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
@@ -2503,6 +2515,30 @@ namespace Modelo
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dataTable);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        #endregion
+        #region BackUP
+        public static bool BACKUP_GENERAR(string FILE_LOCATION, string NOMBRE_BACKUP, string DATABASE, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.GENERAR_BACKUP(FILE_LOCATION, NOMBRE_BACKUP, DATABASE);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static dsProcedimientos.BUSCAR_BASE_DATOSDataTable BUSCAR_BASE_DATOS(SqlConnection conn)
+        {
+            dsProcedimientos.BUSCAR_BASE_DATOSDataTable dataTable = new dsProcedimientos.BUSCAR_BASE_DATOSDataTable();
+            dsProcedimientosTableAdapters.BUSCAR_BASE_DATOSTableAdapter tableAdapter = new dsProcedimientosTableAdapters.BUSCAR_BASE_DATOSTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData();
             if (dataTable.Rows.Count > 0)
                 return dataTable;
             else

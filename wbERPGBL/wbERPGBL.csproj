@@ -248,6 +248,8 @@
     <Content Include="ASP\facturas_frmMantenimientoFacturasaspx.aspx" />
     <Content Include="ASP\factura_frmDigitalizacionFactura.aspx" />
     <Content Include="ASP\factura_frmEmitirFactura.aspx" />
+    <Content Include="ASP\factura_frmModificarProyecto.aspx" />
+    <Content Include="ASP\factura_modificarProyectoSelect.aspx" />
     <Content Include="ASP\formulario_frmMantenimientoFormulario.aspx" />
     <Content Include="ASP\frmCategorias.aspx" />
     <Content Include="ASP\moneda_frmMantenimientoMoneda.aspx" />
@@ -306,6 +308,7 @@
     <Content Include="js\Controllers\jsMantenimientoFactura.js" />
     <Content Include="js\Controllers\jsBackUP.js" />
     <Content Include="js\Controllers\jsPagoVentas.js" />
+    <Content Include="js\Controllers\jsModificarProyectoFacturaSeleccionar.js" />
     <Content Include="js\Controllers\jsPagoVentasFacturaSeleccionar.js" />
     <Content Include="js\Controllers\jsReportePagoVentasPendientes.js" />
     <Content Include="js\Controllers\jsRemuneracionMinimaVital.js" />
@@ -868,6 +871,20 @@
     </Compile>
     <Compile Include="ASP\factura_frmEmitirFactura.aspx.designer.cs">
       <DependentUpon>factura_frmEmitirFactura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\factura_frmModificarProyecto.aspx.cs">
+      <DependentUpon>factura_frmModificarProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\factura_frmModificarProyecto.aspx.designer.cs">
+      <DependentUpon>factura_frmModificarProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\factura_modificarProyectoSelect.aspx.cs">
+      <DependentUpon>factura_modificarProyectoSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\factura_modificarProyectoSelect.aspx.designer.cs">
+      <DependentUpon>factura_modificarProyectoSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\formulario_frmMantenimientoFormulario.aspx.cs">
       <DependentUpon>formulario_frmMantenimientoFormulario.aspx</DependentUpon>

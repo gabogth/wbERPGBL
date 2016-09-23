@@ -76,6 +76,24 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="block-area">
+                            <h3 class="block-title">SVN BackUP [Develop Code]</h3>
+                            <div>
+                                <ol>
+                                    <li>GitHub: 
+                                        <ul>
+                                            <li>Link: <a href="https://github.com/gabogth/wbERPGBL" target="_blank">https://github.com/gabogth/wbERPGBL</a></li>
+                                            <li>Clone with SSH: git@github.com:gabogth/wbERPGBL.git</li>
+                                            <li>Clone with HTTPS: https://github.com/gabogth/wbERPGBL.git</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </div>
