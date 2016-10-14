@@ -248,24 +248,78 @@ $(document).ready(function(){
 	Calendar
     -----------------------------------------------------------*/
     (function(){
-	
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
         //Sidebar
-        if ($('#sidebar-calendar')[0]) {
-            var date = new Date();
-            var d = date.getDate();
-            var m = date.getMonth();
-            var y = date.getFullYear();
-            $('#sidebar-calendar').fullCalendar({
-                editable: false,
-                events: [],
-                monthNames: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO',
-                            'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
-                dayNamesShort: ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'SAB', 'DOM'],
-                header: {
-                    left: 'title'
+        $.ajax({
+            url: 'usuario_frmMantenimientoUsuario.aspx/buscar',
+            type: "GET",
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            data: 'q=""&index=1&cantidad=100000'
+        }).always(function (data, success, control) {
+            if (success == "success") {
+                var jsonData = jQuery.parseJSON(data.d);
+                if ($('#sidebar-calendar')[0]) {
+                    $('#sidebar-calendar').fullCalendar({
+                        editable: false,
+                        events: [],
+                        monthNames: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO',
+                                    'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+                        dayNamesShort: ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'SAB', 'DOM'],
+                        header: {
+                            left: 'title'
+                        },
+                        dayRender: function (date, cell) {
+                            var text = '';
+                            var hasEntered = false;
+                            $.each(jsonData.body, function (index, item) {
+                                if (item.fecha_nacimiento != null) {
+                                    var axx = moment(item.fecha_nacimiento.split('T')[0], 'YYYY-MM-DD').format('-MM-DD');
+                                    if (moment(date).format('YYYY-MM-DD') == (moment(date).format('YYYY') + axx)) {
+                                        hasEntered = true;
+                                        text += 'Feliz cumplea&ntilde;os ' + item.nombre + '!!.<br />';
+                                    }
+                                }
+                            });
+                            if (hasEntered) {
+                                cell.css("background-color", "#764248");
+                                cell.attr('title', text);
+                                cell.tooltip({
+                                    html: true
+                                });
+                            }
+                        }
+                    });
                 }
-            });
-        }
+            } else {
+                if ($('#sidebar-calendar')[0]) {
+                    $('#sidebar-calendar').fullCalendar({
+                        editable: false,
+                        events: [],
+                        monthNames: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO',
+                                    'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+                        dayNamesShort: ['DOM', 'LUN', 'MAR', 'MIE', 'JUE', 'SAB', 'DOM'],
+                        header: {
+                            left: 'title'
+                        },
+                        dayRender: function (date, cell) {
+                            if (moment(date).format('YYYY-MM-DD') == (moment(date).format('YYYY') + '-10-04')) {
+                                cell.css("background-color", "#764248");
+                                cell.attr('title', 'Feliz cumplea&ntilde;os Steysi LILI!<br />Feliz Cumplea&ntilde;os Fabiola!');
+                                cell.tooltip({
+                                    html: true
+                                });
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        
 
         //Content widget
         if ($('#calendar-widget')[0]) {

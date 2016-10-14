@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿var auxEmpresa;
+$(function () {
     initializeComponents();
     $('#btnInsertar').unbind();
     $('#btnInsertar').on('click', function () {
@@ -36,11 +37,19 @@
     });
     $('#cbTrabajador').on('change', function (e) {
         var trabajador = $('#cbTrabajador').select2('data')[0];
-        $('#txtEmpresa').val(trabajador.EMPRESA_RAZON_SOCIAL);
-        $('#txtIdEmpresa').val(trabajador.idempresa);
-        $('#txtSueldo').val(trabajador.sueldo_trabajador == -1 ? null : trabajador.sueldo_trabajador.toFixed(2));
-        $('#txtIdSueldo').val(trabajador.idsueldo_trabajador == -1 ? null : trabajador.idsueldo_trabajador);
-        console.log($('#cbTrabajador').select2('data')[0]);
+        if (trabajador.sueldo_trabajador == null) {
+            $('#txtEmpresa').val(auxEmpresa.razon_social);
+            $('#txtIdEmpresa').val(auxEmpresa.idempresa);
+            $('#txtSueldo').val(auxEmpresa.sueldo_trabajador == -1 ? null : auxEmpresa.sueldo_trabajador.toFixed(2));
+            $('#txtIdSueldo').val(auxEmpresa.idsueldo_trabajador == -1 ? null : auxEmpresa.idsueldo_trabajador);
+        } else {
+            console.log("Combo", trabajador);
+            $('#txtEmpresa').val(trabajador.EMPRESA_RAZON_SOCIAL);
+            $('#txtIdEmpresa').val(trabajador.idempresa);
+            $('#txtSueldo').val(trabajador.sueldo_trabajador == -1 ? null : trabajador.sueldo_trabajador.toFixed(2));
+            $('#txtIdSueldo').val(trabajador.idsueldo_trabajador == -1 ? null : trabajador.idsueldo_trabajador);
+        }
+        
     });
     $('#ckIndefinido').on('ifChanged', function (e) {
         if ($('#ckIndefinido').is(':checked')) {
@@ -64,6 +73,7 @@ function clearInputs() {
 }
 
 function establecerData(data) {
+    auxEmpresa = data;
     $('#cbTrabajador').empty().append('<option value="' + data.idtrabajador + '">' + data.usuario + ' - ' + data.nombre + '/' + data.apellido + '</option>').val(data.idtrabajador).trigger('change');
     $('#txtEmpresa').val(data.razon_social);
     $('#cbUsuarioEncargado').empty().append('<option value="' + data.usuario_encargado + '">' + data.ENCARGADO_USUARIO + ' - ' + data.ENCARGADO_NOMBRE + '/' + data.ENCARGADO_APELLIDO + '</option>').val(data.usuario_encargado).trigger('change');

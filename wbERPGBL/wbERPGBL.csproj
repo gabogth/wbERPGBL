@@ -233,6 +233,7 @@
     </Content>
     <Content Include="ASP\administradorapensiones_frmAdministradoraPensiones.aspx" />
     <Content Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx" />
+    <Content Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx" />
     <Content Include="ASP\backup_frmMantenimientoBackUP.aspx" />
     <Content Include="ASP\cambiar_contrasena.aspx" />
     <Content Include="ASP\cambiar_contrasena_enforce.aspx" />
@@ -244,6 +245,7 @@
     <Content Include="ASP\default.aspx" />
     <Content Include="ASP\empresa_frmMantenimientoEmpresa.aspx" />
     <Content Include="ASP\entidadfinanciera_frmMantenimientoEntidadFinanciera.aspx" />
+    <Content Include="ASP\essalud_frmMantenimientoEssalud.aspx" />
     <Content Include="ASP\estado_frmMantenimientoEstado.aspx" />
     <Content Include="ASP\facturas_frmMantenimientoFacturasaspx.aspx" />
     <Content Include="ASP\factura_frmDigitalizacionFactura.aspx" />
@@ -286,6 +288,7 @@
     <Content Include="css\jquery.bonsai.css" />
     <Content Include="css\jquery.editable-select.min.css" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
+    <Content Include="img\gmail.png" />
     <Content Include="img\icon\backup.png" />
     <Content Include="img\shortcuts\CALENDARIO.png" />
     <Content Include="img\shortcuts\CONECTIVIDAD.png" />
@@ -296,12 +299,14 @@
     <Content Include="js\autoNumeric-min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\Controllers\jsAdministradoraPensiones.js" />
+    <Content Include="js\Controllers\jsEssalud.js" />
     <Content Include="js\Controllers\jsCambioPw.js" />
     <Content Include="js\Controllers\jsCategoria.js" />
     <Content Include="js\Controllers\jsConfiguracionesPensiones.js" />
     <Content Include="js\Controllers\jsConfiguracionUsuarioPlanilla.js" />
     <Content Include="js\Controllers\jsContratos.js" />
     <Content Include="js\Controllers\jsDigitalizacionFacturas.js" />
+    <Content Include="js\Controllers\jsAsignacionFamiliar.js" />
     <Content Include="js\Controllers\jsEnforcePw.js" />
     <Content Include="js\Controllers\jsFormulario.js" />
     <Content Include="js\Controllers\jsFotocheck.js" />
@@ -639,6 +644,7 @@
     <Content Include="js\jquery.hotkeys.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\jquery.qubit.js" />
+    <Content Include="js\jquery.serializejson.min.js" />
     <Content Include="js\jquery.simplePagination.js" />
     <Content Include="js\Controllers\jsCuentaCorriente.js" />
     <Content Include="js\Controllers\jsProyecto.js" />
@@ -707,6 +713,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Scripts\_references.js" />
+    <Content Include="Sound\losing-patience.mp3" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -766,6 +773,13 @@
     </Compile>
     <Compile Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx.designer.cs">
       <DependentUpon>areaempresa_frmMantenimientoAreaEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx.cs">
+      <DependentUpon>asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx.designer.cs">
+      <DependentUpon>asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\backup_frmMantenimientoBackUP.aspx.cs">
       <DependentUpon>backup_frmMantenimientoBackUP.aspx</DependentUpon>
@@ -843,6 +857,13 @@
     </Compile>
     <Compile Include="ASP\entidadfinanciera_frmMantenimientoEntidadFinanciera.aspx.designer.cs">
       <DependentUpon>entidadfinanciera_frmMantenimientoEntidadFinanciera.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\essalud_frmMantenimientoEssalud.aspx.cs">
+      <DependentUpon>essalud_frmMantenimientoEssalud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\essalud_frmMantenimientoEssalud.aspx.designer.cs">
+      <DependentUpon>essalud_frmMantenimientoEssalud.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\estado_frmMantenimientoEstado.aspx.cs">
       <DependentUpon>estado_frmMantenimientoEstado.aspx</DependentUpon>

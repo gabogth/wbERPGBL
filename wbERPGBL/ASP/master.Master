@@ -25,10 +25,7 @@
         <%--<link href="../css/select2-bootstrap.css" rel="stylesheet" />--%>
         <link href="../css/simplePagination.css" rel="stylesheet" />
         <script src="../js/jquery.min.js"></script> <!-- jQuery Library -->
-        <script src="../Scripts/jquery.signalR-2.1.2.min.js"></script>
-        <script src="../signalr/hubs"></script>
         <script src="../js/jquery-ui.min.js"></script> <!-- jQuery UI -->
-        
     </head>
     <%
         SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
@@ -60,17 +57,10 @@
 
                 <div class="media" id="top-menu">
                     <div class="pull-left tm-icon">
-                        <a data-drawer="messages" class="drawer-toggle" href="#">
+                        <a data-drawer="messages" id="btnShowMessages" class="drawer-toggle" href="#">
                             <i class="sa-top-message"></i>
-                            <i class="n-count animated">5</i>
+                            <i class="n-count animated" id="dvCountMessages">0</i>
                             <span>Messages</span>
-                        </a>
-                    </div>
-                    <div class="pull-left tm-icon">
-                        <a data-drawer="notifications" class="drawer-toggle" href="#">
-                            <i class="sa-top-updates"></i>
-                            <i class="n-count animated">9</i>
-                            <span>Updates</span>
                         </a>
                     </div>
                     <div id="time" class="pull-right">
@@ -147,162 +137,13 @@
                 <div id="messages" class="tile drawer animated">
                     <div class="listview narrow">
                         <div class="media">
-                            <a href="#">Send a New Message</a>
+                            <a href="#">Nuevo Mensaje</a>
                             <span class="drawer-close">&times;</span>
                         </div>
-                        <div class="overflow" style="height: 254px">
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-                                    <a class="t-overflow" href="#">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/2.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">David Villa - 5 Hours ago</small><br>
-                                    <a class="t-overflow" href="#">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/3.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Harris worgon - On 15/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Maecenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/4.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Mitch Bradberry - On 14/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Ipsum wintoo consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/2.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">David Villa - On 16/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/3.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Harris worgon - On 17/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Maecenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/4.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Mitch Bradberry - On 18/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/5.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Wendy Mitchell - On 19/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Integer a eros dapibus, vehicula quam accumsan, tincidunt purus</a>
-                                </div>
-                            </div>
+                        <div class="overflow" id="dvInbox" style="height: 254px">
                         </div>
                         <div class="media text-center whiter l-100">
-                            <a href="#"><small>VIEW ALL</small></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Notification Drawer -->
-                <div id="notifications" class="tile drawer animated">
-                    <div class="listview narrow">
-                        <div class="media">
-                            <a href="#">Notification Settings</a>
-                            <span class="drawer-close">&times;</span>
-                        </div>
-                        <div class="overflow" style="height: 254px">
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - 2 Hours ago</small><br>
-                                    <a class="t-overflow" href="#">Mauris consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/2.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">David Villa - 5 Hours ago</small><br>
-                                    <a class="t-overflow" href="#">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/3.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Harris worgon - On 15/12/2013</small><br>
-                                    <a class="t-overflow" href="#">MaeCHAcenas venenatis enim condimentum ultrices fringilla. Nulla eget libero rhoncus, bibendum diam eleifend, vulputate mi. Fusce non nibh pulvinar, ornare turpis id</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/4.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Mitch Bradberry - On 14/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Phasellus interdum felis enim, eu bibendum ipsum tristique vitae. Phasellus feugiat massa orci, sed viverra felis aliquet quis. Curabitur vel blandit odio. Vestibulum sagittis quis sem sit amet tristique.</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/1.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">Nadin Jackson - On 15/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Ipsum wintoo consectetur urna nec tempor adipiscing. Proin sit amet nisi ligula. Sed eu adipiscing lectus</a>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img width="40" src="../img/profile-pics/2.jpg" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <small class="text-muted">David Villa - On 16/12/2013</small><br>
-                                    <a class="t-overflow" href="#">Suspendisse in purus ut nibh placerat Cras pulvinar euismod nunc quis gravida. Suspendisse pharetra</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="media text-center whiter l-100">
-                            <a href="#"><small>VIEW ALL</small></a>
+                            <a href="https://mail.google.com/mail/u/0/#inbox"><small>VER TODOS</small></a>
                         </div>
                     </div>
                 </div>
@@ -467,6 +308,7 @@
         <script src="../js/calendar.min.js"></script> <!-- Calendar -->
         <script src="../js/spinner.min.js"></script>
         <script src="../js/icheck.js"></script>
+        <script src="../js/jquery.serializejson.min.js"></script>
         <script src="../js/select2.min.js"></script>
         <script src="../js/select2.full.js"></script>
         <script src="../js/moment.js"></script>
@@ -479,6 +321,7 @@
         <script src="../js/Controllers/jsUtil.js"></script>
         <asp:ContentPlaceHolder ID="IDScripts" runat="server"></asp:ContentPlaceHolder>
         <script>
+            window.currentMessages;
             function inicializarDatosUsuario() {
                 metodosIconos();
                 funcion_inicio();
@@ -638,7 +481,6 @@
                                 }
                             }).done(function (data) {
                                 var jsonData = jQuery.parseJSON(data.d);
-                                console.log(jsonData);
                                 if (jsonData.result == "success") {
                                     window.location.reload();
                                 }
@@ -652,6 +494,76 @@
                         });
                     });
                 });
+
+                setInterval(function () {
+                    $.ajax({
+                        url: 'default.aspx/buscarMensajesGMAIL',
+                        type: "GET",
+                        dataType: 'json',
+                        contentType: "application/json;charset=utf-8",
+                    }).done(function (data) {
+                        var jsonData = jQuery.parseJSON(data.d);
+                        var jsonDataWindow = jsonData.registros;
+                        if (jsonDataWindow != window.currentMessages) {
+                            if (window.currentMessages < jsonDataWindow) {
+                                var audio = new Audio('../Sound/losing-patience.mp3');
+                                audio.play();
+                            }
+                            window.currentMessages = jsonDataWindow;
+                            console.log(window.currentMessages, jsonDataWindow);
+                            if (jsonData.result == 'success') {
+                                $('#dvCountMessages').html(jsonData.registros);
+                                showMessagesGMAIL();
+                            }
+                        }
+                    });
+                }, 3000);
+
+                $('#btnShowMessages').on('click', function () {
+                    showMessagesGMAIL();
+                });
+
+                function showMessagesGMAIL() {
+                    $.ajax({
+                        url: 'default.aspx/buscarMensajesGMAIL',
+                        type: "GET",
+                        dataType: 'json',
+                        contentType: "application/json;charset=utf-8",
+                        beforeSend: function () {
+                            $('#dvInbox').html('<small class="text-muted">Cargando mensajes...</small>');
+                        }
+                    }).done(function (data) {
+                        var jsonData = jQuery.parseJSON(data.d);
+                        if (jsonData.result == 'success') {
+                            if (jsonData.registros > 0) {
+                                var htmlData = '';
+                                $.each(jsonData.body, function (index, item) {
+                                    if (index < 4) {
+                                        htmlData += '<div class="media">' +
+                                                        '<div class="pull-left">' +
+                                                            '<img width="40" src="../img/gmail.png" alt="">' +
+                                                        '</div>' +
+                                                        '<div class="media-body">' +
+                                                            '<small class="text-muted">' + item.Autor_name + ' [' + item.Autor_email + '] - ' + item.Fecha_emision.replace('T', ' a las ') + '</small><br>' +
+                                                            '<a class="t-overflow" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Asunto: ' + item.Asunto + '</a>' +
+                                                            '<a class="t-overflow" href="https://mail.google.com/mail/u/0/#inbox" target="_blank">' + item.Sumary + '</a>' +
+                                                        '</div>' +
+                                                    '</div>';
+                                    }
+                                });
+                                $('#dvInbox').html(htmlData);
+                            } else {
+                                $('#dvInbox').html('<small class="text-muted">No tiene ningún mensaje.</small>');
+                            }
+                        } else {
+                            $('#dvInbox').html('<small class="text-muted">Ha ocurrido un error: ' + jsonData.message + '</small>');
+                        }
+                    }).fail(function (ort, rt, qrt) {
+                        console.log(ort);
+                        console.log(rt);
+                        console.log(qrt);
+                    });
+                }
             }
         </script>
     </body>

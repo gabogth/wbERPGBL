@@ -79,14 +79,40 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="block-area">
-                            <h3 class="block-title">SVN BackUP [Develop Code]</h3>
+                            <h3 class="block-title">SVN BackUP [Código de desarrollador]</h3>
                             <div>
                                 <ol>
                                     <li>GitHub: 
                                         <ul>
                                             <li>Link: <a href="https://github.com/gabogth/wbERPGBL" target="_blank">https://github.com/gabogth/wbERPGBL</a></li>
-                                            <li>Clone with SSH: git@github.com:gabogth/wbERPGBL.git</li>
-                                            <li>Clone with HTTPS: https://github.com/gabogth/wbERPGBL.git</li>
+                                            <li>Clonar usando SSH: git@github.com:gabogth/wbERPGBL.git</li>
+                                            <li>Clonar usando HTTPS: https://github.com/gabogth/wbERPGBL.git</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="block-area">
+                            <h3 class="block-title">Cámaras Arequipa</h3>
+                            <div>
+                                <ol>
+                                    <li>Visor Web: 
+                                        <ul>
+                                            <li>Link: <a href="http://plenagroup.ddns.net:2200" target="_blank">http://plenagroup.ddns.net:2200</a></li>
+                                            <li>Usuario: <b>admin</b></li>
+                                            <li>Password: <b>Hik12345</b></li>
+                                        </ul>
+                                    </li>
+                                    <li>Configuracion de cliente Desktop: 
+                                        <ul>
+                                            <li>IP/DOMAIN: plenagroup.ddns.net</li>
+                                            <li>Port: <b>8000</b></li>
+                                            <li>Usuario: <b>admin</b></li>
+                                            <li>Password: <b>Hik12345</b></li>
                                         </ul>
                                     </li>
                                 </ol>

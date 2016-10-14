@@ -107,6 +107,43 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string buscarMensajesGMAIL()
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                List<Modelo.messages.clsMensajes> configRow = DOMModel.GMAIL_OBTENERMENSAJES(sessionUS.correo, sessionUS.pw_gmail);
+                if (configRow != null)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = configRow.Count;
+                    objResultado.body = configRow;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "No tiene mensajes en su bandeja de entrada.";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public static string buscarAccesosDirectos()
         {
             clsResult objResultado = new clsResult();

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Xml;
 
 namespace Modelo
 {
@@ -2543,6 +2544,168 @@ namespace Modelo
                 return dataTable;
             else
                 return null;
+        }
+        #endregion
+        #region Email
+        public static List<messages.clsMensajes> GMAIL_OBTENERMENSAJES(string USUARIO, string PASS)
+        {
+            string response;
+            System.Net.WebClient objClient = new System.Net.WebClient();
+            List<messages.clsMensajes> lsInbox = new List<messages.clsMensajes>();
+            XmlDocument doc = new XmlDocument();
+            objClient.Credentials = new System.Net.NetworkCredential(USUARIO, PASS);
+            response = Encoding.UTF8.GetString(
+                       objClient.DownloadData(@"https://mail.google.com/mail/feed/atom"));
+            response = response.Replace(
+                 @"<feed version=""0.3"" xmlns=""http://purl.org/atom/ns#"">", @"<feed>");
+            doc.LoadXml(response);
+            foreach (XmlNode node in doc.SelectNodes(@"/feed/entry"))
+            {
+                messages.clsMensajes objMensaje = new messages.clsMensajes();
+                objMensaje.Asunto = node.SelectSingleNode("title").InnerText;
+                objMensaje.Sumary = node.SelectSingleNode("summary").InnerText;
+                objMensaje.Autor_email = node.SelectSingleNode("author").ChildNodes[1].InnerText;
+                objMensaje.Autor_name = node.SelectSingleNode("author").ChildNodes[0].InnerText;
+                objMensaje.Fecha_emision = DateTime.Parse(node.SelectSingleNode("issued").InnerText);
+                lsInbox.Add(objMensaje);
+            }
+            return lsInbox;
+        }
+        #endregion
+        #region Asignacion Familiar
+        public static dsProcedimientos.ASIGNACION_FAMILIAR_BUSCARDataTable ASIGNACION_FAMILIAR_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.ASIGNACION_FAMILIAR_BUSCARDataTable dataTable = new dsProcedimientos.ASIGNACION_FAMILIAR_BUSCARDataTable();
+            dsProcedimientosTableAdapters.ASIGNACION_FAMILIAR_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.ASIGNACION_FAMILIAR_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.ASIGNACION_FAMILIAR_BUSCAR_ESTADODataTable ASIGNACION_FAMILIAR_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.ASIGNACION_FAMILIAR_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.ASIGNACION_FAMILIAR_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.ASIGNACION_FAMILIAR_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.ASIGNACION_FAMILIAR_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool ASIGNACION_FAMILIAR_INSERTAR(int ES_PORCENTAJE, int ES_FIJO, string DETALLE, double? PORCENTAJE, double? FIJO, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIGNACION_FAMILIAR_INSERTAR(ES_PORCENTAJE, ES_FIJO, DETALLE, Convert.ToDecimal(PORCENTAJE), Convert.ToDecimal(FIJO), USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIGNACION_FAMILIAR_MODIFICAR(int IDASIGNACION_FAMILIAR, int ES_PORCENTAJE, int ES_FIJO, string DETALLE, double? PORCENTAJE, double? FIJO, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIGNACION_FAMILIAR_MODIFICAR(IDASIGNACION_FAMILIAR, ES_PORCENTAJE, ES_FIJO, DETALLE, Convert.ToDecimal(PORCENTAJE), Convert.ToDecimal(FIJO), USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIGNACION_FAMILIAR_MODIFICAR_ESTADO(int IDASIGNACION_FAMILIAR, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIGNACION_FAMILIAR_MODIFICAR_ESTADO(IDASIGNACION_FAMILIAR, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIGNACION_FAMILIAR_ELIMINAR(int IDASIGNACION_FAMILIAR, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIGNACION_FAMILIAR_ELIMINAR(IDASIGNACION_FAMILIAR, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region Essalud
+        public static dsProcedimientos.ESSALUD_BUSCARDataTable ESSALUD_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.ESSALUD_BUSCARDataTable dataTable = new dsProcedimientos.ESSALUD_BUSCARDataTable();
+            dsProcedimientosTableAdapters.ESSALUD_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.ESSALUD_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.ESSALUD_BUSCAR_ESTADODataTable ESSALUD_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.ESSALUD_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.ESSALUD_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.ESSALUD_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.ESSALUD_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool ESSALUD_INSERTAR(double PORCENTAJE, int USUARIO_CREACION, DateTime FECHA_INICIO, string TIPO_SEGURO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ESSALUD_INSERTAR(Convert.ToDecimal(PORCENTAJE), USUARIO_CREACION, FECHA_INICIO, TIPO_SEGURO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ESSALUD_MODIFICAR(int IDESSALUD, double PORCENTAJE, int USUARIO_MODIFICACION, DateTime FECHA_INICIO, string TIPO_SEGURO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ESSALUD_MODIFICAR(IDESSALUD, Convert.ToDecimal(PORCENTAJE), USUARIO_MODIFICACION, FECHA_INICIO, TIPO_SEGURO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ESSALUD_MODIFICAR_ESTADO(int IDESSALUD, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ESSALUD_MODIFICAR_ESTADO(IDESSALUD, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ESSALUD_ELIMINAR(int IDESSALUD, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ESSALUD_ELIMINAR(IDESSALUD, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
         }
         #endregion
     }
