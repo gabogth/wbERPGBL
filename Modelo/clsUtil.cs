@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Modelo
@@ -23,6 +26,22 @@ namespace Modelo
         public static object DbNullIfNullOrEmpty(string str)
         {
             return !String.IsNullOrEmpty(str) ? str : (object)DBNull.Value;
+        }
+        public static Bitmap converDataImage(string data)
+        {
+            try
+            {
+                var base64Data = Regex.Match(data, @"data:image/(?<type>.+?),(?<data>.+)").Groups["data"].Value;
+                var binData = Convert.FromBase64String(base64Data);
+                Bitmap bmp = null;
+                using (var stream = new MemoryStream(binData))
+                    bmp = new Bitmap(stream);
+                return bmp;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }

@@ -2,7 +2,11 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -194,6 +198,102 @@ namespace wbERPGBL.ASP
                 objResultado.body = null;
             }
             return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public static string modificar_perfil(string txtNombre, string txtApellido, string txtCorreo, 
+            string txtDomicilio, string txtMovilPrivado1, string txtMovilPrivado2, string txtMovilEmpresarial,
+            string txtTelefonoFijo, string txtContacto1, string txtContacto2, string img_data)
+        {
+            System.Drawing.Bitmap bmp = null;
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                if (sessionUS == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                bmp = clsUtil.converDataImage(img_data);
+                string ImagenPath = ConfigurationManager.AppSettings["AVATARS"].ToString();
+                string ImageFileName = DateTime.Now.ToString().Replace("-", "").Replace("/", "").Replace(" ", "").Replace(":", "").Replace(".", "") + ".jpg";
+                string fullPath = ImagenPath + ImageFileName;
+                Bitmap i2 = null;
+                try
+                {
+                    i2 = ResizeImage((Bitmap)bmp, 200, 257);
+                }
+                catch { }
+                if (bmp == null)
+                {
+                    ImageFileName = "";
+                    fullPath = "";
+                }
+                else {
+                    i2.Save(fullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                }
+                bool dtResultado = DOMModel.USUARIO_MODIFICAR_PERFIL(sessionUS.idusuario, txtNombre, txtApellido, txtCorreo,
+                    txtDomicilio, txtMovilPrivado1, txtMovilPrivado2, txtMovilEmpresarial, txtTelefonoFijo, txtContacto1,
+                    txtContacto2, ImageFileName, Conexion);
+                if (dtResultado != false)
+                {
+                    sessionUS.nombre = txtNombre;
+                    sessionUS.apellido = txtApellido;
+                    sessionUS.correo = txtCorreo;
+                    sessionUS.domicilio = txtDomicilio;
+                    sessionUS.movil_privado1 = txtMovilPrivado1;
+                    sessionUS.movil_privado2 = txtMovilPrivado2;
+                    sessionUS.movil_empresarial = txtMovilEmpresarial;
+                    sessionUS.telefono_fijo = txtTelefonoFijo;
+                    sessionUS.contacto1 = txtContacto1;
+                    sessionUS.contacto2 = txtContacto2;
+                    HttpContext.Current.Session["usuario"] = sessionUS;
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = 1;
+                    objResultado.body = dtResultado;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        public static Bitmap ResizeImage(Bitmap image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
 
         [WebMethod(EnableSession = true)]

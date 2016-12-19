@@ -86,6 +86,7 @@ function establecerData(data) {
     $('#txtIdEmpresa').val(data.CONTRATISTA_IDEMPRESA);
     $('#txtSueldo').val(data.sueldo_trabajador);
     $('#txtIdSueldo').val(data.idsueldo_trabajador);
+    $('#txtLabores').val(data.labores);
 }
 
 function paginacion() {
@@ -232,9 +233,11 @@ function buscar(indexPag, cantidad) {
                     } else {
                         bodyTable += '<td class="text-center">-</td>';
                     }
+                    bodyTable += '<td>' + item.labores + '</td>';
                     bodyTable += '<td class="text-center">' + getStateIcon(item.estado, 'estado' + item.idcontrato_trabajador) + '</td>';
                     bodyTable += '<td class="text-center"><span class="fa fa-pencil text-warning" style="cursor: pointer;" id="modificar' + item.idcontrato_trabajador + '"></span></td>';
                     bodyTable += '<td class="text-center"><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar' + item.idcontrato_trabajador + '"></span></td>';
+                    bodyTable += '<td class="text-center"><span class="fa fa-file" style="color:white; cursor: pointer;" id="preview' + item.idcontrato_trabajador + '"></span></td>';
                     bodyTable += '<td class="text-center"><span class="fa fa-folder-o" style="color:white; cursor: pointer;" id="downloads' + item.idcontrato_trabajador + '"></span></td></tr>';
                     $('#tbl_body').append(bodyTable);
                     bodyTable = '';
@@ -278,6 +281,12 @@ function buscar(indexPag, cantidad) {
                             eliminar(item.idcontrato_trabajador);
                         });
                     });
+
+                    $('#preview' + item.idcontrato_trabajador).unbind();
+                    $('#preview' + item.idcontrato_trabajador).on('click', function () {
+                        showPreview(item.idcontrato_trabajador, item.nombre, item.apellido, item.fecha_evento, item.ruc);
+                    });
+
                     $('#estado' + item.idcontrato_trabajador).unbind();
                     $('#estado' + item.idcontrato_trabajador).on('click', function () {
                         $('#btn_mensaje_aceptar').attr('disabled', false);
@@ -323,16 +332,16 @@ function cargarUploadProyectos(id) {
             $.each(jsonData.body, function (index, item) {
                 bodyTable = '';
                 bodyTable += '<tr><td>' + (index + 1) + '</td>';
-                bodyTable += '<td class="text-left"> <a href="../response/upload_anexo_contrato.ashx?IDUPLOAD_CONTRATO=' + item.idcontrato_trabajador + '" target="_blank">' + item.nombre_archivo + '</a></td>';
+                bodyTable += '<td class="text-left"> <a href="../response/upload_anexo_contrato.ashx?IDUPLOAD_CONTRATO=' + item.idupload_contrato + '" target="_blank">' + item.nombre_archivo + '</a></td>';
                 bodyTable += '<td class="text-right">' + item.peso_archivo + '</td>';
                 bodyTable += '<td class="text-center">' + item.fecha_creacion.replace('T', ' a las ') + '</td>';
                 bodyTable += '<td class="text-center">' + item.extension + '</td>';
-                bodyTable += '<td class="text-center"><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar_anexo' + item.idcontrato_trabajador + '"></span></td></tr>';
+                bodyTable += '<td class="text-center"><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar_anexo' + item.idupload_contrato + '"></span></td></tr>';
                 $('#tbl_body_anexos').append(bodyTable);
                 bodyTable = '';
-                $('#eliminar_anexo' + item.idcontrato_trabajador).unbind();
-                $('#eliminar_anexo' + item.idcontrato_trabajador).on('click', function () {
-                    eiminar_anexos_proyecto(item.idcontrato_trabajador, id);
+                $('#eliminar_anexo' + item.idupload_contrato).unbind();
+                $('#eliminar_anexo' + item.idupload_contrato).on('click', function () {
+                    eiminar_anexos_proyecto(item.idupload_contrato, id);
                 });
             });
         }
@@ -352,6 +361,7 @@ function getStateIcon(data, id) {
 function modificar(id) {
     var query = 'IDCONTRATO_TRABAJADOR=' + id +
         '&FECHA_EVENTO="' + encodeURIComponent($('#dtpEvento').val()) + '"' +
+        '&LABORES="' + encodeURIComponent($('#txtLabores').val()) + '"' +
         '&DETALLES="' + encodeURIComponent($('#txtDetalles').val()) + '"' +
         '&USUARIO_ENCARGADO=' + encodeURIComponent($('#cbUsuarioEncargado').val()) +
         '&IDTIPO_CONTRATO=' + encodeURIComponent($('#cbTipoContrato').val()) +
@@ -395,6 +405,7 @@ function insertar() {
     var query = 'FECHA_EVENTO="' + encodeURIComponent($('#dtpEvento').val()) + '"' +
         '&DETALLES="' + encodeURIComponent($('#txtDetalles').val()) + '"' +
         '&USUARIO_ENCARGADO=' + encodeURIComponent($('#cbUsuarioEncargado').val()) +
+        '&LABORES="' + encodeURIComponent($('#txtLabores').val()) + '"' +
         '&IDTIPO_CONTRATO=' + encodeURIComponent($('#cbTipoContrato').val()) +
         '&IDTRABAJADOR=' + encodeURIComponent($('#cbTrabajador').val()) +
         '&IDSUELDO_TRABAJADOR=' + encodeURIComponent($('#txtIdSueldo').val()) +
@@ -558,6 +569,21 @@ function readURL(input) {
         }
         reader.readAsDataURL(input.files[0]);
     }
+}
+
+function showPreview(idContrato, nombre, apellido, fecha_evento, ruc) {
+    $('#frmControlPreview').attr('src', 'Reportes/frmContratoPreview.aspx?ID=' + idContrato);
+    $('#contratoPreview').modal('show');
+    $('#dvLoading').show();
+    $('#frmControlPreview').hide();
+    $('#frmControlPreview').unbind();
+    $('#frmControlPreview').on('load', function () {
+        $('#dvLoading').hide();
+        $('#frmControlPreview').show();
+    });
+    $('#facturaTitulo').html(
+        '[' + ruc + ']-(' + fecha_evento + '):' + nombre + '' + apellido
+    );
 }
 
 function modificar_estado(id, estado) {

@@ -53,7 +53,7 @@
         -webkit-appearance: none; }
 
 .select2-dropdown {
-  background-color: rgba(0, 0, 0, 0.68);
+  background-color: rgba(0, 0, 0, 0.99);
   opacity: .9;
   border: 1px solid #aaa;
   border-radius: 4px;
@@ -134,18 +134,18 @@
   width: 1px !important; }
 
 .select2-container--default .select2-selection--single {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.0);
   border: 1px solid #aaa;
   border-radius: 4px; }
   .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #444;
+    color: white;
     line-height: 28px; }
   .select2-container--default .select2-selection--single .select2-selection__clear {
     cursor: pointer;
     float: right;
     font-weight: bold; }
   .select2-container--default .select2-selection--single .select2-selection__placeholder {
-    color: #999; }
+    color: white; }
   .select2-container--default .select2-selection--single .select2-selection__arrow {
     height: 26px;
     position: absolute;
@@ -193,7 +193,7 @@
     padding: 0 5px;
     width: 100%; }
   .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
-    color: #999;
+    color: white;
     margin-top: 5px;
     float: left; }
   .select2-container--default .select2-selection--multiple .select2-selection__clear {
@@ -271,7 +271,7 @@
   color: #999; }
 
 .select2-container--default .select2-results__option[aria-selected=true] {
-  background-color: #ddd; }
+  background-color: #666666; }
 
 .select2-container--default .select2-results__option .select2-results__option {
   padding-left: 1em; }
@@ -294,7 +294,7 @@
             padding-left: 6em; }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-  background-color: #5897fb;
+  background-color: #58B3F0;
   color: white; }
 
 .select2-container--default .select2-results__group {
@@ -478,7 +478,7 @@
   color: grey; }
 
 .select2-container--classic .select2-results__option--highlighted[aria-selected] {
-  background-color: #3875d7;
+  background-color: #58B3F0;
   color: black; }
 
 .select2-container--classic .select2-results__group {

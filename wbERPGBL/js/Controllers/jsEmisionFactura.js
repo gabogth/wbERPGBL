@@ -253,9 +253,9 @@ function calculoDeCampos() {
 }
 
 function asignarItem(imponible, igv, total) {
-    var x = $('#cbProyecto').select2('data');
-    var a = $('#cbProyecto').select2('data')[0].text;
     var itemCarrito = {
+        cbProyecto: $('#cbProyecto').val(),
+        cbProyectoText: $('#cbProyecto').select2('data')[0].text,
         ckProducto: $('#ckProducto').is(':checked'),
         ckServicio: $('#ckServicio').is(':checked'),
         txtItem: $('#txtItem').val(),
@@ -267,8 +267,6 @@ function asignarItem(imponible, igv, total) {
         rbIncIGV: $('#rbIncIGV').is(':checked'),
         rbSinIGV: $('#rbSinIGV').is(':checked'),
         txtMonto: $('#txtMonto').val(),
-        cbProyecto: $('#cbProyecto').val(),
-        cbProyectoText: $('#cbProyecto').select2('data')[0].text,
         omitirIGV: $('#ckImpuesto').is(':checked'),
         imponible: parseFloat(imponible.toFixed(2)),
         igv: parseFloat(igv.toFixed(2)),
@@ -340,8 +338,8 @@ function DrawDetalle() {
 }
 
 function getLastCorrelativo(idserie, idempresa) {
-    var query = 'IDEMPRESA=' + encodeURIComponent(idserie) +
-         '&IDSERIE=' + encodeURIComponent(idempresa);
+    var query = 'IDEMPRESA=' + encodeURIComponent(idempresa) +
+         '&IDSERIE=' + encodeURIComponent(idserie);
 
     $.ajax({
         url: 'factura_frmEmitirFactura.aspx/correlativo',

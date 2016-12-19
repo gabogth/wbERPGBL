@@ -46,33 +46,6 @@ namespace wbERPGBL.ASP
             return JsonConvert.SerializeObject(objResultado);
         }
 
-        //[WebMethod(EnableSession = true)]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        //public static string buscar_idempresa(string q, int index, int cantidad, int idempresa)
-        //{
-        //    clsResult objResultado = new clsResult();
-        //    try
-        //    {
-        //        SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
-        //        if (Conexion == null)
-        //            HttpContext.Current.Response.Redirect("~/default.aspx");
-        //        int registros = 0;
-        //        dsProcedimientos.PROYECTO_BUSCAR_POR_QUERY_IDEMPRESADataTable dtResultado = DOMModel.PROYECTO_BUSCAR_POR_QUERY_IDEMPRESA(q, ref registros, index, cantidad, idempresa, Conexion);
-        //        objResultado.result = "success";
-        //        objResultado.message = "ok_server";
-        //        objResultado.registros = registros;
-        //        objResultado.body = dtResultado;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        objResultado.result = "error";
-        //        objResultado.message = ex.Message;
-        //        objResultado.registros = 0;
-        //        objResultado.body = null;
-        //    }
-        //    return JsonConvert.SerializeObject(objResultado);
-        //}
-
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public static string buscarUploads(int IDCONTRATO)
@@ -103,7 +76,8 @@ namespace wbERPGBL.ASP
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public static string insertar(DateTime FECHA_EVENTO, string DETALLES, int USUARIO_ENCARGADO, int IDTIPO_CONTRATO,
-                int IDTRABAJADOR, DateTime? FECHA_TERMINO, DateTime FECHA_INICIO, int ES_INDEFINIDO, int IDEMPRESA, int IDSUELDO_TRABAJADOR)
+                int IDTRABAJADOR, DateTime? FECHA_TERMINO, DateTime FECHA_INICIO, int ES_INDEFINIDO, int IDEMPRESA, 
+                int IDSUELDO_TRABAJADOR, string LABORES)
         {
             clsResult objResultado = new clsResult();
             try
@@ -116,7 +90,7 @@ namespace wbERPGBL.ASP
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
                 bool dtResultado = DOMModel.CONTRATO_TRABAJADOR_INSERTAR(FECHA_EVENTO, DETALLES, USUARIO_ENCARGADO, sessionUS.idusuario, IDTIPO_CONTRATO,
-                IDTRABAJADOR, FECHA_TERMINO, FECHA_INICIO, ES_INDEFINIDO, IDEMPRESA, IDSUELDO_TRABAJADOR, Conexion);
+                IDTRABAJADOR, FECHA_TERMINO, FECHA_INICIO, ES_INDEFINIDO, IDEMPRESA, IDSUELDO_TRABAJADOR, LABORES, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -145,7 +119,8 @@ namespace wbERPGBL.ASP
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
         public static string modificar(int IDCONTRATO_TRABAJADOR, DateTime FECHA_EVENTO, string DETALLES, int USUARIO_ENCARGADO,
-                int IDTIPO_CONTRATO, int IDTRABAJADOR, DateTime? FECHA_TERMINO, int ES_INDEFINIDO, DateTime FECHA_INICIO, int IDEMPRESA, int IDSUELDO_TRABAJADOR)
+                int IDTIPO_CONTRATO, int IDTRABAJADOR, DateTime? FECHA_TERMINO, int ES_INDEFINIDO, DateTime FECHA_INICIO, 
+                int IDEMPRESA, int IDSUELDO_TRABAJADOR, string LABORES)
         {
             clsResult objResultado = new clsResult();
             try
@@ -158,7 +133,7 @@ namespace wbERPGBL.ASP
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
                 bool dtResultado = DOMModel.CONTRATO_TRABAJADOR_MODIFICAR(IDCONTRATO_TRABAJADOR, FECHA_EVENTO, DETALLES, USUARIO_ENCARGADO, sessionUS.idusuario,
-                IDTIPO_CONTRATO, IDTRABAJADOR, FECHA_TERMINO, ES_INDEFINIDO, IDEMPRESA, FECHA_INICIO, IDSUELDO_TRABAJADOR, Conexion);
+                IDTIPO_CONTRATO, IDTRABAJADOR, FECHA_TERMINO, ES_INDEFINIDO, IDEMPRESA, FECHA_INICIO, IDSUELDO_TRABAJADOR, LABORES, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";

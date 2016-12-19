@@ -19,7 +19,6 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/icheck.js"></script>
-        <script src="js/functions.js"></script>
         <script src="js/Controllers/jsUtil.js"></script>
         <script src="js/Controllers/jsLogin.js"></script>
     </head>
@@ -35,8 +34,8 @@
             <!-- Login -->
             <form class="box tile animated active" id="box-login" action="#" autocomplete="off">
                 <h2 class="m-t-0 m-b-15">Login</h2>
-                <input type="text" class="login-control m-b-10" placeholder="USUARIO" value="grodriguez" required="required" id="txtUsuario" autocomplete="off">
-                <input type="password" class="login-control" placeholder="CONTRASEÑA" value="123456" required="required" id="txtContrasena">
+                <input type="text" class="login-control m-b-10" placeholder="USUARIO" value="" required="required" id="txtUsuario" autocomplete="off">
+                <input type="password" class="login-control" placeholder="CONTRASEÑA" value="" required="required" id="txtContrasena">
                 <h4 id="txtLoading" class="tile-light"></h4>
                 <button class="btn btn-sm m-r-5" id="btnLog" type="submit">ENTRAR</button>
                 <div class="alert alert-danger alert-icon" id="dvResultado" style="display:none;">

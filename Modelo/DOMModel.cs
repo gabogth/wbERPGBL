@@ -118,6 +118,21 @@ namespace Modelo
                 return false;
         }
 
+        public static bool USUARIO_MODIFICAR_PERFIL(int IDUSUARIO, string NOMBRE, string APELLIDO, 
+            string CORREO, string DOMICILIO, string MOVIL_PRIVADO1, string MOVIL_PRIVADO2, 
+            string MOVIL_EMPRESARIAL, string TELEFONO_FIJO, string CONTACTO_1, string CONTACTO_2, string FOTO, 
+            SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.USUARIO_MODIFICAR_PERFIL(IDUSUARIO, NOMBRE, APELLIDO, CORREO, DOMICILIO,
+                MOVIL_PRIVADO1, MOVIL_PRIVADO2, MOVIL_EMPRESARIAL, TELEFONO_FIJO, CONTACTO_1, CONTACTO_2, FOTO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+
         public static bool USUARIO_ELIMINAR(int IDUSUARIO_BORRADO, int IDUSUARIO, string USUARIO,SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
@@ -251,12 +266,12 @@ namespace Modelo
         #region Empresa
         public static bool EMPRESA_INSERTAR(string RUC, string RAZON_SOCIAL, string DIRECCION, string VISION,
             string MISION, string VALORES, string ETICA, string POLITICA, int USUARIO_CREACION, string ALIAS,
-            SqlConnection conn)
+            int? IDREPRESENTANTE_LEGAL, string ACTIVIDAD_ECONOMICA, string PARTIDA_REGISTRAL, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.EMPRESA_INSERTAR(RUC, RAZON_SOCIAL, DIRECCION, VISION, MISION, VALORES, ETICA,
-                POLITICA, USUARIO_CREACION, ALIAS);
+                POLITICA, USUARIO_CREACION, ALIAS, IDREPRESENTANTE_LEGAL, ACTIVIDAD_ECONOMICA, PARTIDA_REGISTRAL);
             if (op != 0)
                 return true;
             else
@@ -291,12 +306,12 @@ namespace Modelo
 
         public static bool EMPRESA_MODIFICAR(int IDEMPRESA, string RUC, string RAZON_SOCIAL, string DIRECCION,
             string VISION, string MISION, string VALORES, string ETICA, string POLITICA, int USUARIO_MODIFICACION,
-            string ALIAS, SqlConnection conn)
+            string ALIAS, int? IDREPRESENTANTE_LEGAL, string ACTIVIDAD_ECONOMICA, string PARTIDA_REGISTRAL, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.EMPRESA_MODIFICAR(IDEMPRESA, RUC, RAZON_SOCIAL, DIRECCION, VISION, MISION,
-                VALORES, ETICA, POLITICA, USUARIO_MODIFICACION, ALIAS);
+                VALORES, ETICA, POLITICA, USUARIO_MODIFICACION, ALIAS, IDREPRESENTANTE_LEGAL, ACTIVIDAD_ECONOMICA, PARTIDA_REGISTRAL);
             if (op != 0)
                 return true;
             else
@@ -725,6 +740,18 @@ namespace Modelo
                     return item;
                 return null;
             }
+            else
+                return null;
+        }
+
+        public static dsProcedimientos.TIPOCOMPROBANTE_BUSCAR_IDRow TIPOCOMPROBANTE_BUSCAR_POR_ID(int IDCOMPROBANTE, SqlConnection conn)
+        {
+            dsProcedimientos.TIPOCOMPROBANTE_BUSCAR_IDDataTable dataTable = new dsProcedimientos.TIPOCOMPROBANTE_BUSCAR_IDDataTable();
+            dsProcedimientosTableAdapters.TIPOCOMPROBANTE_BUSCAR_IDTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPOCOMPROBANTE_BUSCAR_IDTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDCOMPROBANTE);
+            if (dataTable != null && dataTable.Rows.Count > 0)
+                return dataTable[0];
             else
                 return null;
         }
@@ -1249,6 +1276,18 @@ namespace Modelo
             else
                 return null;
         }
+
+        public static dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable FACTURA_BUSCAR_POR_ID_2(int IDCABECERA, SqlConnection conn)
+        {
+            dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_IDDataTable();
+            dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_IDTableAdapter tableAdapter = new dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_IDTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDCABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
         #endregion
         #region Facturas
         public static dsProcedimientos.FACTURA_BUSCAR_POR_IDVENTASDataTable FACTURA_BUSCAR_POR_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
@@ -1317,6 +1356,16 @@ namespace Modelo
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.FACTURA_ELIMINAR(IDVENTAS_CABECERA, IDUSUARIO_ELIMINACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool VENTAS_DETALLE_MODIFICAR_PROYECTO(int IDVENTAS_DETALLE, int IDPROYECTO, int USUARIO_MODIFICACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.VENTAS_DETALLE_MODIFICAR_PROYECTO(IDVENTAS_DETALLE, IDPROYECTO, USUARIO_MODIFICACION);
             if (op != 0)
                 return true;
             else
@@ -1722,12 +1771,12 @@ namespace Modelo
         #endregion
         #region Contrato
         public static bool CONTRATO_TRABAJADOR_INSERTAR(DateTime FECHA_EVENTO, string DETALLES, int USUARIO_ENCARGADO, int USUARIO_CREACION, int IDTIPO_CONTRATO,
-                int IDTRABAJADOR, DateTime? FECHA_TERMINO, DateTime FECHA_INICIO, int ES_INDEFINIDO, int IDEMPRESA, int IDSUELDO_TRABAJADOR, SqlConnection conn)
+                int IDTRABAJADOR, DateTime? FECHA_TERMINO, DateTime FECHA_INICIO, int ES_INDEFINIDO, int IDEMPRESA, int IDSUELDO_TRABAJADOR, string LABORES, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.CONTRATO_TRABAJADOR_INSERTAR(FECHA_EVENTO, DETALLES, USUARIO_ENCARGADO, USUARIO_CREACION, IDTIPO_CONTRATO,
-                IDTRABAJADOR, FECHA_TERMINO, FECHA_INICIO, ES_INDEFINIDO, IDEMPRESA, IDSUELDO_TRABAJADOR);
+                IDTRABAJADOR, FECHA_TERMINO, FECHA_INICIO, ES_INDEFINIDO, IDEMPRESA, IDSUELDO_TRABAJADOR, LABORES);
             if (op != 0)
                 return true;
             else
@@ -1747,13 +1796,25 @@ namespace Modelo
                 return null;
         }
 
+        public static dsReportes.REPORTE_IMPRESION_CONTRATODataTable REPORTE_IMPRESION_CONTRATO(int IDCONTRATO_TRABAJADOR, SqlConnection conn)
+        {
+            dsReportes.REPORTE_IMPRESION_CONTRATODataTable dataTable = new dsReportes.REPORTE_IMPRESION_CONTRATODataTable();
+            dsReportesTableAdapters.REPORTE_IMPRESION_CONTRATOTableAdapter tableAdapter = new dsReportesTableAdapters.REPORTE_IMPRESION_CONTRATOTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDCONTRATO_TRABAJADOR);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+
         public static bool CONTRATO_TRABAJADOR_MODIFICAR(int IDCONTRATO_TRABAJADOR, DateTime FECHA_EVENTO, string DETALLES, int USUARIO_ENCARGADO, int USUARIO_MODIFICACION,
-                int IDTIPO_CONTRATO, int IDTRABAJADOR, DateTime? FECHA_TERMINO, int ES_INDEFINIDO, int IDEMPRESA, DateTime FECHA_INICIO, int IDSUELDO_TRABAJADOR, SqlConnection conn)
+                int IDTIPO_CONTRATO, int IDTRABAJADOR, DateTime? FECHA_TERMINO, int ES_INDEFINIDO, int IDEMPRESA, DateTime FECHA_INICIO, int IDSUELDO_TRABAJADOR, string LABORES, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.CONTRATO_TRABAJADOR_MODIFICAR(IDCONTRATO_TRABAJADOR, FECHA_EVENTO, DETALLES, USUARIO_ENCARGADO, USUARIO_MODIFICACION,
-                IDTIPO_CONTRATO, IDTRABAJADOR, FECHA_TERMINO, ES_INDEFINIDO, FECHA_INICIO, IDEMPRESA, IDSUELDO_TRABAJADOR);
+                IDTIPO_CONTRATO, IDTRABAJADOR, FECHA_TERMINO, ES_INDEFINIDO, FECHA_INICIO, IDEMPRESA, IDSUELDO_TRABAJADOR, LABORES);
             if (op != 0)
                 return true;
             else
@@ -2480,7 +2541,7 @@ namespace Modelo
         }
         #endregion
         #region Reporte Pago Venta
-        public static dsReportes.REPORTE_PAGO_VENTAS_PENDIENTESDataTable REPORTE_PAGO_VENTAS_PENDIENTES(int IDUSUARIO, string QUERY, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        public static dsReportes.REPORTE_PAGO_VENTAS_PENDIENTESDataTable REPORTE_PAGO_VENTAS_PENDIENTES(int IDUSUARIO, string QUERY, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, DateTime? FECHA_INICIO, DateTime? FECHA_FIN, int? OMITIR_EG, SqlConnection conn)
         {
             dsReportes.REPORTE_PAGO_VENTAS_PENDIENTESDataTable dataTable = new dsReportes.REPORTE_PAGO_VENTAS_PENDIENTESDataTable();
             dsReportesTableAdapters.REPORTE_PAGO_VENTAS_PENDIENTESTableAdapter tableAdapter = new dsReportesTableAdapters.REPORTE_PAGO_VENTAS_PENDIENTESTableAdapter();
@@ -2492,6 +2553,9 @@ namespace Modelo
             cmd.Parameters.AddWithValue("@CORRELATIVO", clsUtil.DbNullIfNullOrEmpty(CORRELATIVO));
             cmd.Parameters.AddWithValue("@EMPRESA_FILTRO", clsUtil.DbNullIfNullOrEmpty(EMPRESA_FILTRO));
             cmd.Parameters.AddWithValue("@ESTADO_FILTRO", clsUtil.DbNullIfNullOrEmpty(ESTADO_FILTRO));
+            cmd.Parameters.AddWithValue("@FECHA_INICIO", FECHA_INICIO);
+            cmd.Parameters.AddWithValue("@FECHA_FIN", FECHA_FIN);
+            cmd.Parameters.AddWithValue("@OMITIR_EG", OMITIR_EG);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dataTable);
@@ -2501,7 +2565,7 @@ namespace Modelo
                 return null;
         }
 
-        public static dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable REPORTE_PAGO_VENTAS_PENDIENTES_DETALLE(int IDUSUARIO, string QUERY, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        public static dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable REPORTE_PAGO_VENTAS_PENDIENTES_DETALLE(int IDUSUARIO, string QUERY, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, DateTime? FECHA_INICIO, DateTime? FECHA_FIN, int? OMITIR_EG, SqlConnection conn)
         {
             dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable dataTable = new dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable();
             dsReportesTableAdapters.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESTableAdapter tableAdapter = new dsReportesTableAdapters.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESTableAdapter();
@@ -2513,6 +2577,9 @@ namespace Modelo
             cmd.Parameters.AddWithValue("@CORRELATIVO", clsUtil.DbNullIfNullOrEmpty(CORRELATIVO));
             cmd.Parameters.AddWithValue("@EMPRESA_FILTRO", clsUtil.DbNullIfNullOrEmpty(EMPRESA_FILTRO));
             cmd.Parameters.AddWithValue("@ESTADO_FILTRO", clsUtil.DbNullIfNullOrEmpty(ESTADO_FILTRO));
+            cmd.Parameters.AddWithValue("@FECHA_INICIO", FECHA_INICIO);
+            cmd.Parameters.AddWithValue("@FECHA_FIN", FECHA_FIN);
+            cmd.Parameters.AddWithValue("@OMITIR_EG", OMITIR_EG);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dataTable);
@@ -2707,6 +2774,631 @@ namespace Modelo
             else
                 return false;
         }
+        #endregion
+        #region TIPO_CAMBIO
+        public static dsProcedimientos.TIPO_CAMBIO_BUSCAR_POR_FECHARow TIPO_CAMBIO_BUSCAR_POR_FECHA(DateTime FECHA_CAMBIO, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_CAMBIO_BUSCAR_POR_FECHADataTable dataTable = new dsProcedimientos.TIPO_CAMBIO_BUSCAR_POR_FECHADataTable();
+            dsProcedimientosTableAdapters.TIPO_CAMBIO_BUSCAR_POR_FECHATableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_CAMBIO_BUSCAR_POR_FECHATableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(FECHA_CAMBIO);
+            if (dataTable.Rows.Count > 0)
+                return dataTable[0];
+            else
+                return null;
+        }
+        #endregion
+        #region TIPO_CUENTA_CONTABLE
+        public static dsProcedimientos.TIPO_CUENTA_BUSCARDataTable TIPO_CUENTA_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_CUENTA_BUSCARDataTable dataTable = new dsProcedimientos.TIPO_CUENTA_BUSCARDataTable();
+            dsProcedimientosTableAdapters.TIPO_CUENTA_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_CUENTA_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.TIPO_CUENTA_BUSCAR_ESTADODataTable TIPO_CUENTA_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_CUENTA_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.TIPO_CUENTA_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.TIPO_CUENTA_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_CUENTA_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool TIPO_CUENTA_INSERTAR(string TIPO_CUENTA, string DESCRIPCION, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_CUENTA_INSERTAR(TIPO_CUENTA, DESCRIPCION, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_CUENTA_MODIFICAR(int IDTIPO_CUENTA_CONTABLE, string TIPO_CUENTA, string DESCRIPCION, int USUARIO_MODIFICACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_CUENTA_MODIFICAR(IDTIPO_CUENTA_CONTABLE, TIPO_CUENTA, DESCRIPCION, USUARIO_MODIFICACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_CUENTA_MODIFICAR_ESTADO(int IDTIPO_CUENTA_CONTABLE, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_CUENTA_MODIFICAR_ESTADO(IDTIPO_CUENTA_CONTABLE, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_CUENTA_ELIMINAR(int IDTIPO_CUENTA_CONTABLE, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_CUENTA_ELIMINAR(IDTIPO_CUENTA_CONTABLE, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region CUENTA_CONTABLE
+        public static dsProcedimientos.CUENTA_CONTABLE_BUSCARDataTable CUENTA_CONTABLE_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.CUENTA_CONTABLE_BUSCARDataTable dataTable = new dsProcedimientos.CUENTA_CONTABLE_BUSCARDataTable();
+            dsProcedimientosTableAdapters.CUENTA_CONTABLE_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.CUENTA_CONTABLE_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.CUENTA_CONTABLE_BUSCAR_ESTADODataTable CUENTA_CONTABLE_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.CUENTA_CONTABLE_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.CUENTA_CONTABLE_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.CUENTA_CONTABLE_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.CUENTA_CONTABLE_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool CUENTA_CONTABLE_INSERTAR(string NOMBRE_CUENTA, int? APENDICE_1, int? APENDICE_2, int? APENDICE_3, int? APENDICE_4, 
+            int? APENDICE_5, int? APENDICE_6, int? APENDICE_7, int? APENDICE_8, int? APENDICE_9, int? APENDICE_10, int USUARIO_CREACION,
+            int IDTIPO_CUENTA_CONTABLE, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.CUENTA_CONTABLE_INSERTAR(NOMBRE_CUENTA, APENDICE_1, APENDICE_2, APENDICE_3, APENDICE_4, APENDICE_5, 
+                APENDICE_6, APENDICE_7, APENDICE_8, APENDICE_9, APENDICE_10, USUARIO_CREACION, IDTIPO_CUENTA_CONTABLE);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool CUENTA_CONTABLE_MODIFICAR(int IDCUENTA_CONTABLE, string NOMBRE_CUENTA, int? APENDICE_1, int? APENDICE_2, int? APENDICE_3, int? APENDICE_4,
+            int? APENDICE_5, int? APENDICE_6, int? APENDICE_7, int? APENDICE_8, int? APENDICE_9, int? APENDICE_10, int USUARIO_CREACION,
+            int IDTIPO_CUENTA_CONTABLE, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.CUENTA_CONTABLE_MODIFICAR(IDCUENTA_CONTABLE, NOMBRE_CUENTA, APENDICE_1, APENDICE_2, APENDICE_3, APENDICE_4, APENDICE_5,
+                APENDICE_6, APENDICE_7, APENDICE_8, APENDICE_9, APENDICE_10, USUARIO_CREACION, IDTIPO_CUENTA_CONTABLE);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool CUENTA_CONTABLE_MODIFICAR_ESTADO(int IDCUENTA_CONTABLE, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.CUENTA_CONTABLE_MODIFICAR_ESTADO(IDCUENTA_CONTABLE, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool CUENTA_CONTABLE_ELIMINAR(int IDCUENTA_CONTABLE, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.CUENTA_CONTABLE_ELIMINAR(IDCUENTA_CONTABLE, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region ASIENTO_CONTABLE
+        public static dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTASDataTable DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTASDataTable dataTable = new dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTASDataTable();
+            dsProcedimientosTableAdapters.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTASTableAdapter tableAdapter = new dsProcedimientosTableAdapters.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IDVENTASTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable dataTable = new dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable();
+            dsProcedimientosTableAdapters.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASTableAdapter tableAdapter = new dsProcedimientosTableAdapters.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DETALLADODataTable FACTURA_BUSCAR_POR_QUERY_DETALLADO(int IDUSUARIO, string QUERY, int INDEX, int CANTIDAD, ref int? REGISTROS, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        {
+            dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DETALLADODataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DETALLADODataTable();
+            dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DETALLADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DETALLADOTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDUSUARIO, QUERY, INDEX, CANTIDAD, ref REGISTROS, SERIE_FILTRO, CORRELATIVO, EMPRESA_FILTRO, ESTADO_FILTRO);
+            REGISTROS = REGISTROS.HasValue ? REGISTROS.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOSDataTable FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOS(int IDUSUARIO,
+            string query, ref int? registros, int index, int cantidad_registros, string SERIE_FILTRO,
+            string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        {
+            dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOSDataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOSDataTable();
+            dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOSTableAdapter tableAdapter = new dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DESGLOSE_ASIENTOSTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDUSUARIO, query, index, cantidad_registros, ref registros,
+                SERIE_FILTRO, CORRELATIVO, EMPRESA_FILTRO, ESTADO_FILTRO);
+            if (dataTable != null && dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsReportes.ASIENTOS_CONTABLES_VENTAS_REGISTRODataTable ASIENTOS_CONTABLES_VENTAS_REGISTRO(int IDUSUARIO, string QUERY, string SERIE_FILTRO, string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        {
+            dsReportes.ASIENTOS_CONTABLES_VENTAS_REGISTRODataTable dataTable = new dsReportes.ASIENTOS_CONTABLES_VENTAS_REGISTRODataTable();
+            dsReportesTableAdapters.ASIENTOS_CONTABLES_VENTAS_REGISTROTableAdapter tableAdapter = new dsReportesTableAdapters.ASIENTOS_CONTABLES_VENTAS_REGISTROTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDUSUARIO, QUERY, SERIE_FILTRO, CORRELATIVO, EMPRESA_FILTRO, ESTADO_FILTRO);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool ASIENTO_CONTABLE_INSERTAR(int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int? IDDESGLOSE_VENTAS, int USUARIO_CREACION, string METHOD, int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_INSERTAR(IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, IDDESGLOSE_VENTAS, USUARIO_CREACION, METHOD, IDVENTAS_CABECERA);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIENTO_CONTABLE_MODIFICAR(int IDASIENTO_CONTABLE, int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_MODIFICAR(IDASIENTO_CONTABLE, IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIENTO_CONTABLE_MODIFICAR_ESTADO(int IDASIENTO_CONTABLE, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_MODIFICAR_ESTADO(IDASIENTO_CONTABLE, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIENTO_CONTABLE_ELIMINAR(int IDASIENTO_CONTABLE, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_ELIMINAR(IDASIENTO_CONTABLE, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region TIPO_EXISTENCIA
+        public static dsProcedimientos.TIPO_EXISTENCIA_BUSCARDataTable TIPO_EXISTENCIA_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_EXISTENCIA_BUSCARDataTable dataTable = new dsProcedimientos.TIPO_EXISTENCIA_BUSCARDataTable();
+            dsProcedimientosTableAdapters.TIPO_EXISTENCIA_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_EXISTENCIA_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.TIPO_EXISTENCIA_BUSCAR_ESTADODataTable TIPO_EXISTENCIA_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_EXISTENCIA_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.TIPO_EXISTENCIA_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.TIPO_EXISTENCIA_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_EXISTENCIA_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool TIPO_EXISTENCIA_INSERTAR(string TIPO_EXISTENCIA, string CODIGO, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_EXISTENCIA_INSERTAR(TIPO_EXISTENCIA, CODIGO, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_EXISTENCIA_MODIFICAR(int IDTIPO_EXISTENCIA, string TIPO_EXISTENCIA, int USUARIO_MODIFICACION, string CODIGO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_EXISTENCIA_MODIFICAR(IDTIPO_EXISTENCIA, TIPO_EXISTENCIA, CODIGO, USUARIO_MODIFICACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_EXISTENCIA_MODIFICAR_ESTADO(int IDTIPO_EXISTENCIA, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_EXISTENCIA_MODIFICAR_ESTADO(IDTIPO_EXISTENCIA, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_EXISTENCIA_ELIMINAR(int IDTIPO_EXISTENCIA, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_EXISTENCIA_ELIMINAR(IDTIPO_EXISTENCIA, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region PRODUCTO
+        public static dsProcedimientos.PRODUCTO_BUSCARDataTable PRODUCTO_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.PRODUCTO_BUSCARDataTable dataTable = new dsProcedimientos.PRODUCTO_BUSCARDataTable();
+            dsProcedimientosTableAdapters.PRODUCTO_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.PRODUCTO_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.PRODUCTO_BUSCAR_ESTADODataTable PRODUCTO_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.PRODUCTO_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.PRODUCTO_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.PRODUCTO_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.PRODUCTO_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool PRODUCTO_INSERTAR(string PRODUCTO, string CARACTERISTICAS, int IDTIPO_EXISTENCIA, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.PRODUCTO_INSERTAR(PRODUCTO, CARACTERISTICAS, IDTIPO_EXISTENCIA, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool PRODUCTO_MODIFICAR(int IDPRODUCTO, string PRODUCTO, string CARACTERISTICAS, int IDTIPO_EXISTENCIA, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.PRODUCTO_MODIFICAR(IDPRODUCTO, PRODUCTO, CARACTERISTICAS, IDTIPO_EXISTENCIA, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool PRODUCTO_MODIFICAR_ESTADO(int IDPRODUCTO, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.PRODUCTO_MODIFICAR_ESTADO(IDPRODUCTO, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool PRODUCTO_ELIMINAR(int IDPRODUCTO, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.PRODUCTO_ELIMINAR(IDPRODUCTO, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region TIPO_INTANGIBLE
+        public static dsProcedimientos.TIPO_INTANGIBLE_BUSCARDataTable TIPO_INTANGIBLE_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_INTANGIBLE_BUSCARDataTable dataTable = new dsProcedimientos.TIPO_INTANGIBLE_BUSCARDataTable();
+            dsProcedimientosTableAdapters.TIPO_INTANGIBLE_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_INTANGIBLE_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.TIPO_INTANGIBLE_BUSCAR_ESTADODataTable TIPO_INTANGIBLE_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.TIPO_INTANGIBLE_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.TIPO_INTANGIBLE_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.TIPO_INTANGIBLE_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.TIPO_INTANGIBLE_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool TIPO_INTANGIBLE_INSERTAR(string TIPO_INTANGIBLE, string CODIGO, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_INTANGIBLE_INSERTAR(TIPO_INTANGIBLE, CODIGO, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_INTANGIBLE_MODIFICAR(int IDTIPO_INTANGIBLE, string TIPO_INTANGIBLE, int USUARIO_MODIFICACION, string CODIGO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_INTANGIBLE_MODIFICAR(IDTIPO_INTANGIBLE, TIPO_INTANGIBLE, CODIGO, USUARIO_MODIFICACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_INTANGIBLE_MODIFICAR_ESTADO(int IDTIPO_INTANGIBLE, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_INTANGIBLE_MODIFICAR_ESTADO(IDTIPO_INTANGIBLE, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool TIPO_INTANGIBLE_ELIMINAR(int IDTIPO_INTANGIBLE, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.TIPO_INTANGIBLE_ELIMINAR(IDTIPO_INTANGIBLE, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region SERVICIO
+        public static dsProcedimientos.SERVICIO_BUSCARDataTable SERVICIO_BUSCAR(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.SERVICIO_BUSCARDataTable dataTable = new dsProcedimientos.SERVICIO_BUSCARDataTable();
+            dsProcedimientosTableAdapters.SERVICIO_BUSCARTableAdapter tableAdapter = new dsProcedimientosTableAdapters.SERVICIO_BUSCARTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.SERVICIO_BUSCAR_ESTADODataTable SERVICIO_BUSCAR_ESTADO(string query, ref int registros, int index, int cantidad_registros, SqlConnection conn)
+        {
+            dsProcedimientos.SERVICIO_BUSCAR_ESTADODataTable dataTable = new dsProcedimientos.SERVICIO_BUSCAR_ESTADODataTable();
+            dsProcedimientosTableAdapters.SERVICIO_BUSCAR_ESTADOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.SERVICIO_BUSCAR_ESTADOTableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool SERVICIO_INSERTAR(string SERVICIO, int IDTIPO_INTANGIBLE, string DESCRIPCION, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.SERVICIO_INSERTAR(SERVICIO, IDTIPO_INTANGIBLE, DESCRIPCION, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool SERVICIO_MODIFICAR(int IDSERVICIO, string SERVICIO, int IDTIPO_INTANGIBLE, string DESCRIPCION, int USUARIO_CREACION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.SERVICIO_MODIFICAR(IDSERVICIO, SERVICIO, IDTIPO_INTANGIBLE, DESCRIPCION, USUARIO_CREACION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool SERVICIO_MODIFICAR_ESTADO(int IDSERVICIO, int ESTADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.SERVICIO_MODIFICAR_ESTADO(IDSERVICIO, ESTADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool SERVICIO_ELIMINAR(int IDSERVICIO, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.SERVICIO_ELIMINAR(IDSERVICIO, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        #endregion
+        #region DESGLOSE VENTAS
+        public static dsProcedimientos.DESGLOSE_VENTAS_BUSCAR_IDVENTASDataTable DESGLOSE_VENTAS_BUSCAR_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsProcedimientos.DESGLOSE_VENTAS_BUSCAR_IDVENTASDataTable dataTable = new dsProcedimientos.DESGLOSE_VENTAS_BUSCAR_IDVENTASDataTable();
+            dsProcedimientosTableAdapters.DESGLOSE_VENTAS_BUSCAR_IDVENTASTableAdapter tableAdapter = new dsProcedimientosTableAdapters.DESGLOSE_VENTAS_BUSCAR_IDVENTASTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static bool DESGLOSE_VENTAS_INSERTAR(int IDVENTAS_CABECERA, int? IDPRODUCTO,
+                int? IDSERVICIO, double CANTIDAD, int USUARIO_CREACION, int IDUNIDAD_MEDIDA, 
+                double BASE_IMPONIBLE, double IMPUESTO, double MONTO_TOTAL, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.DESGLOSE_VENTAS_INSERTAR(IDVENTAS_CABECERA, IDPRODUCTO, 
+                IDSERVICIO, Convert.ToDecimal(CANTIDAD), USUARIO_CREACION, IDUNIDAD_MEDIDA, 
+                Convert.ToDecimal(BASE_IMPONIBLE), Convert.ToDecimal(IMPUESTO), 
+                Convert.ToDecimal(MONTO_TOTAL));
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool DESGLOSE_VENTAS_MODIFICAR(int IDDESGLOSE_VENTAS, int IDVENTAS_CABECERA, 
+            int? IDPRODUCTO, int? IDSERVICIO, double CANTIDAD, int USUARIO_MODIFICACION, int IDUNIDAD_MEDIDA,
+            double BASE_IMPONIBLE, double IMPUESTO, double MONTO_TOTAL, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.DESGLOSE_VENTAS_MODIFICAR(IDDESGLOSE_VENTAS, IDVENTAS_CABECERA, IDPRODUCTO,
+                IDSERVICIO, Convert.ToDecimal(CANTIDAD), "", USUARIO_MODIFICACION, IDUNIDAD_MEDIDA,
+                Convert.ToDecimal(BASE_IMPONIBLE), Convert.ToDecimal(IMPUESTO), Convert.ToDecimal(MONTO_TOTAL));
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+
+        public static bool DESGLOSE_VENTAS_ELIMINAR(int IDDESGLOSE_VENTAS, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.DESGLOSE_VENTAS_ELIMINAR(IDDESGLOSE_VENTAS, USUARIO_BORRADO);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable FACTURA_BUSCAR_POR_QUERY_DESGLOSE(int IDUSUARIO,
+            string query, ref int? registros, int index, int cantidad_registros, string SERIE_FILTRO,
+            string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        {
+            dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable();
+            dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DESGLOSETableAdapter tableAdapter = new dsProcedimientosTableAdapters.FACTURA_BUSCAR_POR_QUERY_DESGLOSETableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDUSUARIO, query, index, cantidad_registros, ref registros,
+                SERIE_FILTRO, CORRELATIVO, EMPRESA_FILTRO, ESTADO_FILTRO);
+            if (dataTable != null && dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        //public static dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable FACTURA_BUSCAR_POR_QUERY_DESGLOSE(int IDUSUARIO,
+        //    string query, ref int? registros, int index, int cantidad_registros, string SERIE_FILTRO,
+        //    string CORRELATIVO, string EMPRESA_FILTRO, string ESTADO_FILTRO, SqlConnection conn)
+        //{
+        //    dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable dataTable = new dsProcedimientos.FACTURA_BUSCAR_POR_QUERY_DESGLOSEDataTable();
+        //    int? re_registros = 0;
+        //    SqlCommand cmd = new SqlCommand("FACTURA_BUSCAR_POR_QUERY_DESGLOSE", conn);
+        //    SqlParameter registros_out = new SqlParameter("@REGISTROS", re_registros)
+        //    {
+        //        Direction = ParameterDirection.Output
+        //    };
+        //    cmd.Parameters.AddWithValue("@IDUSUARIO", IDUSUARIO);
+        //    cmd.Parameters.AddWithValue("@QUERY", clsUtil.DbNullIfNullOrEmpty(query));
+        //    cmd.Parameters.AddWithValue("@INDEX", index);
+        //    cmd.Parameters.AddWithValue("@CANTIDAD", cantidad_registros);
+        //    cmd.Parameters.AddWithValue("@SERIE_FILTRO", clsUtil.DbNullIfNullOrEmpty(SERIE_FILTRO));
+        //    cmd.Parameters.AddWithValue("@CORRELATIVO", clsUtil.DbNullIfNullOrEmpty(CORRELATIVO));
+        //    cmd.Parameters.AddWithValue("@EMPRESA_FILTRO", clsUtil.DbNullIfNullOrEmpty(EMPRESA_FILTRO));
+        //    cmd.Parameters.AddWithValue("@ESTADO_FILTRO", clsUtil.DbNullIfNullOrEmpty(ESTADO_FILTRO));
+        //    cmd.Parameters.Add(registros_out);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    da.Fill(dataTable);
+        //    registros = (int)registros_out.Value;
+        //    if (dataTable.Rows.Count > 0)
+        //        return dataTable;
+        //    else
+        //        return null;
+        //}
         #endregion
     }
 }

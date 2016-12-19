@@ -42,7 +42,7 @@
                         <div class="block-area" id="responsiveTable">
                             <h3 class="block-title">Resultados:</h3>
                             <div class="table-responsive overflow">
-                                <table class="table table-bordered table-hover tile-title">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
@@ -220,13 +220,13 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtMovilPrivado1">Movil Privado 1: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilPrivado1" name="txtMovilPrivado1" required="required" placeholder="Ingrese Movil Privado 1">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilPrivado1" name="txtMovilPrivado1" placeholder="Ingrese Movil Privado 1">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtMovilPrivado2">Movil Privado 2: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilPrivado2" name="txtMovilPrivado2" required="required" placeholder="Ingrese Movil Privado 2">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilPrivado2" name="txtMovilPrivado2" placeholder="Ingrese Movil Privado 2">
                                     </div>
                                 </div>
                             </div>
@@ -234,13 +234,13 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtMovilEmpesarial">Movil Empresarial: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilEmpesarial" name="txtMovilEmpesarial" required="required" placeholder="Ingrese Movil Empesarial">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtMovilEmpesarial" name="txtMovilEmpesarial" placeholder="Ingrese Movil Empesarial">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtTelefonoFijo">Telefono Fijo: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtTelefonoFijo" name="txtTelefonoFijo" required="required" placeholder="Ingrese Telefono Fijo">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtTelefonoFijo" name="txtTelefonoFijo" placeholder="Ingrese Telefono Fijo">
                                     </div>
                                 </div>
                             </div>
@@ -248,13 +248,13 @@
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtContacto1">Contacto 1: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtContacto1" name="txtContacto1" required="required" placeholder="Ingrese Contacto 1">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtContacto1" name="txtContacto1" placeholder="Ingrese Contacto 1">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtContacto2">Contacto 2: </label>
-                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtContacto2" name="txtContacto2" required="required" placeholder="Ingrese Contacto 2">
+                                        <input type="text" autocomplete="off" class="form-control m-b-10" id="txtContacto2" name="txtContacto2" placeholder="Ingrese Contacto 2">
                                     </div>
                                 </div>
                             </div>

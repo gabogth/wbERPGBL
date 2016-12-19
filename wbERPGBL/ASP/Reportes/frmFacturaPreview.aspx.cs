@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Modelo;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace wbERPGBL.ASP.Reportes
 {
@@ -19,6 +20,17 @@ namespace wbERPGBL.ASP.Reportes
             {
                 try
                 {
+
+                    string reportype = "DOC";
+                    string mimeType;
+                    string encoding;
+                    string fileNameExtension;
+
+                    string devinfo = "<DeviceInfo>" +
+                    "  <FixedPageWidth>True</FixedPageWidth>" +
+                    "  <AutoFit>True</AutoFit>" +
+                    "</DeviceInfo>";
+                    
                     rptReporteFactura.Reset();
                     int ID = int.Parse(Request.QueryString["ID"]);
                     DataTable ds1 = null;
@@ -31,6 +43,14 @@ namespace wbERPGBL.ASP.Reportes
                     rptReporteFactura.LocalReport.ReportPath = server;
                     rds = new ReportDataSource("dsFactura", ds1);
                     rptReporteFactura.LocalReport.DataSources.Add(rds);
+                    Warning[] warnings;
+                    string[] streams;
+                    byte[] renderedBytes;
+                    renderedBytes = this.rptReporteFactura.LocalReport.Render(reportype, devinfo, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+                    using (FileStream fs = new FileStream("vista_previa_impresion.docx", FileMode.Create))
+                    {
+                        fs.Write(renderedBytes, 0, renderedBytes.Length);
+                    }
                     rptReporteFactura.LocalReport.Refresh();
                 }
                 catch { }

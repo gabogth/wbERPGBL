@@ -45,7 +45,7 @@ namespace wbERPGBL.response
                             ImageFileName = "";
                     }
                     string USUARIO = context.Request.Params["USUARIO"];
-                    string PASSWORD = context.Request.Params["PASSWORD"];
+                    string PASSWORD = context.Request.Params["contrasena"];
                     string NOMBRE = context.Request.Params["NOMBRE"];
                     string APELLIDO = context.Request.Params["APELLIDO"];
                     string DNI = context.Request.Params["DNI"];

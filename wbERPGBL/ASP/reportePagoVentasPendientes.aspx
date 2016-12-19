@@ -33,7 +33,6 @@
                             <input type="search" id="txtBuscar" class="form-control m-b-10" placeholder="Filtro de búsqueda...">
                         </div>
                     </div>
-                    
                     <div class="clearfix"></div>
                     <div class="col-lg-6 col-md-12">
                         <div class="block-area">
@@ -63,6 +62,30 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="block-area">
+                            <label for="dtpInicio">Fecha Inicio</label>
+                            <input type="date" class="form-control" id="dtpInicio" name="dtpInicio" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="block-area">
+                            <label for="dtpFin">Fecha Fin</label>
+                            <input type="date" class="form-control" id="dtpFin" name="dtpFin" />
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="block-area">
+                            <label for="ckOmitirEG">Omitir Empresas de Grupo
+                                <input type="checkbox" id="ckOmitirEG" name="ckOmitirEG" checked="checked" />
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="clearfix"></div>
                     <div class="col-lg-6 col-md-6 col-sm-12">
                         <div class="block-area">

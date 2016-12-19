@@ -1,5 +1,6 @@
 ﻿$(function () {
     initializeComponents();
+    cargarRepresentante();
     $('#btnInsertar').unbind();
     $('#btnInsertar').on('click', function () {
         $('#modal_insertar_titulo').html('Insertar');
@@ -39,6 +40,13 @@ function establecerData(data) {
     $('#txtValores').val(data.valores);
     $('#txtEtica').val(data.etica);
     $('#txtPoliticas').val(data.politicas);
+    $('#txtActividadEconomica').val(data.actividad_economica);
+    $('#txtPartidaRegistral').val(data.partida_registral);
+    setSelect2('#cbRepresentante', data.usuario_representante_legal, data.usuario);
+}
+
+function setSelect2(div, id, value) {
+    $(div).empty().append('<option value="' + id + '">' + value + '</option>').val(id).trigger('change');
 }
 
 function paginacion() {
@@ -95,7 +103,10 @@ function buscar(indexPag, cantidad) {
                 bodyTable += '<td title="' + item.mision + '">' + (item.mision.length >= 10 && item != null ? item.mision.substring(0, 10) : item.mision) + '...' + '</td>';
                 bodyTable += '<td title="' + item.valores + '">' + (item.valores.length >= 10 && item != null ? item.valores.substring(0, 10) : item.valores) + '...' + '</td>';
                 bodyTable += '<td title="' + item.etica + '">' + (item.etica.length >= 10 && item != null ? item.etica.substring(0, 10) : item.etica) + '...' + '</td>';
-                bodyTable += '<td title="' + item.politicas + '">' + (item.politicas.length >= 10 && item != null ? item.politicas.substring(0, 10) : item.politicas) + '...' + '</td>';
+                bodyTable += '<td title="' + item.politicas + '">' + (item.politicas != null && item.politicas.length >= 10 ? item.politicas.substring(0, 10) : item.politicas) + '...' + '</td>';
+                bodyTable += '<td title="' + item.partida_registral + '">' + (item.partida_registral != null && item.partida_registral.length >= 10 ? item.partida_registral.substring(0, 10) : item.partida_registral) + '...' + '</td>';
+                bodyTable += '<td title="' + item.actividad_economica + '">' + (item.actividad_economica != null && item.actividad_economica.length >= 10 ? item.actividad_economica.substring(0, 10) : item.actividad_economica) + '...' + '</td>';
+                bodyTable += '<td>' + (item.nombre != null ? (item.nombre + ' ' + item.apellido) : '') + '</td>';
                 bodyTable += '<td><span class="fa fa-pencil text-warning" style="cursor: pointer;" id="modificar' + item.idempresa + '"></span></td>';
                 bodyTable += '<td><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar' + item.idempresa + '"></span></td></tr>';
                 $('#tbl_body').append(bodyTable);
@@ -149,23 +160,18 @@ function getStateIcon(data, id) {
 }
 
 function modificar(id) {
-    var query = 'IDEMPRESA=' + id +
-        '&RUC="' + encodeURIComponent($('#txtRuc').val()) + '"' +
-        '&RAZON_SOCIAL="' + encodeURIComponent($('#txtRazonSocial').val()) + '"' +
-        '&DIRECCION="' + encodeURIComponent($('#txtDireccion').val()) + '"' +
-        '&VISION="' + encodeURIComponent($('#txtVision').val()) + '"' +
-        '&MISION="' + encodeURIComponent($('#txtMision').val()) + '"' +
-        '&VALORES="' + encodeURIComponent($('#txtValores').val()) + '"' +
-        '&ETICA="' + encodeURIComponent($('#txtEtica').val()) + '"' +
-        '&POLITICA="' + encodeURIComponent($('#txtPoliticas').val()) + '"' +
-        '&ALIAS="' + encodeURIComponent($('#txtAlias').val()) + '"';
+
+    var formData = $('#frmInsertar').serializeJSON();
+
+    formData["IDEMPRESA"] = id;
+    console.log(formData);
 
     $.ajax({
         url: 'empresa_frmMantenimientoEmpresa.aspx/modificar',
-        type: "GET",
+        type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
-        data: query,
+        data: JSON.stringify(formData),
         beforeSend: function () {
             $('#btnGuardar').html('<span class="fa fa-hourglass faa-slow faa-spin animated"></span>&nbsp;&nbsp;Procesando');
             $('#btnGuardar').attr('disabled', true);
@@ -186,27 +192,21 @@ function modificar(id) {
 
     }).fail(function (ort, rt, qrt) {
         utilClass.showMessage('#dvResultado', 'danger', 'Error:|' + rt);
-        $('#modal_mensaje').modal('toggle');
+        $('#modalInsertar').modal('toggle');
+        console.log(ort);
+        console.log(rt);
+        console.log(qrt);
     });
 }
 
 function insertar() {
-    var query = 'RUC="' + encodeURIComponent($('#txtRuc').val()) + '"' +
-        '&RAZON_SOCIAL="' + encodeURIComponent($('#txtRazonSocial').val()) + '"' +
-        '&DIRECCION="' + encodeURIComponent($('#txtDireccion').val()) + '"' +
-        '&VISION="' + encodeURIComponent($('#txtVision').val()) + '"' +
-        '&MISION="' + encodeURIComponent($('#txtMision').val()) + '"' +
-        '&VALORES="' + encodeURIComponent($('#txtValores').val()) + '"' +
-        '&ETICA="' + encodeURIComponent($('#txtEtica').val()) + '"' +
-        '&POLITICA="' + encodeURIComponent($('#txtPoliticas').val()) + '"' +
-        '&ALIAS="' + encodeURIComponent($('#txtAlias').val()) + '"';
-
+    var formData = $('#frmInsertar').serializeJSON();
     $.ajax({
         url: 'empresa_frmMantenimientoEmpresa.aspx/insertar',
-        type: "GET",
+        type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
-        data: query,
+        data: JSON.stringify(formData),
         beforeSend: function () {
             $('#btnGuardar').html('<span class="fa fa-hourglass faa-slow faa-spin animated"></span>&nbsp;&nbsp;Procesando');
             $('#btnGuardar').attr('disabled', true);
@@ -227,7 +227,10 @@ function insertar() {
 
     }).fail(function (ort, rt, qrt) {
         utilClass.showMessage('#dvResultado', 'danger', 'Error:|' + rt);
-        $('#modal_mensaje').modal('toggle');
+        $('#modalInsertar').modal('toggle');
+        console.log(ort);
+        console.log(rt);
+        console.log(qrt);
     });
 }
 
@@ -261,4 +264,50 @@ function eliminar(id) {
         utilClass.showMessage('#dvResultado', 'danger', 'Error:|' + rt);
         $('#modal_mensaje').modal('toggle');
     });
+}
+
+function cargarRepresentante() {
+    $('#cbRepresentante').select2({
+        theme: "themes-dark",
+        ajax: {
+            url: 'usuario_frmMantenimientoUsuario.aspx/buscar_trabajador',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            type: 'GET',
+            data: function (params) {
+                if (params == null) {
+                    return 'q=""&index=' + 1 + '&cantidad=' + 10;
+                } else {
+                    return 'q="' + (params.term == null ? '' : params.term) + '"&index=' + 1 + '&cantidad=' + 10;
+                }
+            },
+            processResults: function (data, page) {
+                var datos = jQuery.parseJSON(data.d);
+                datos = datos.body;
+                if (datos != null) {
+                    for (var i = 0; i < datos.length; i++) {
+                        datos[i].id = datos[i].idusuario;
+                        datos[i].text = datos[i].usuario + ' - ' + datos[i].nombre + '/' + datos[i].apellido;
+                    }
+                }
+                return {
+                    results: datos
+                };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: format,
+        templateSelection: formatRepoSelection
+    });
+}
+
+function format(e) {
+    if (e.loading) {
+        return "<div>" + e.text + "</div>";
+    }
+    var markup = '<div>' + e.text + '</div>';
+    return markup;
+}
+function formatRepoSelection(repo) {
+    return repo.text || repo.text;
 }

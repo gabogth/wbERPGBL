@@ -233,7 +233,9 @@
     </Content>
     <Content Include="ASP\administradorapensiones_frmAdministradoraPensiones.aspx" />
     <Content Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx" />
+    <Content Include="ASP\asientoVentas_frmAsientoVentas.aspx" />
     <Content Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx" />
+    <Content Include="ASP\asignarCuentaContable.aspx" />
     <Content Include="ASP\backup_frmMantenimientoBackUP.aspx" />
     <Content Include="ASP\cambiar_contrasena.aspx" />
     <Content Include="ASP\cambiar_contrasena_enforce.aspx" />
@@ -241,8 +243,11 @@
     <Content Include="ASP\configuracionespensiones_frmConfiguracionesPensiones.aspx" />
     <Content Include="ASP\configuracionusuarioplanilla_frmMantenimientoUsuarioPlanilla.aspx" />
     <Content Include="ASP\contratos_frmMantenimientoContratos.aspx" />
+    <Content Include="ASP\cuentaContable_frmMantenimientoCuentaContable.aspx" />
     <Content Include="ASP\cuentascorrientes_frmMantenimientoCuentasCorrientes.aspx" />
     <Content Include="ASP\default.aspx" />
+    <Content Include="ASP\desgloseDetalle.aspx" />
+    <Content Include="ASP\desgloseVentasMantenimiento.aspx" />
     <Content Include="ASP\empresa_frmMantenimientoEmpresa.aspx" />
     <Content Include="ASP\entidadfinanciera_frmMantenimientoEntidadFinanciera.aspx" />
     <Content Include="ASP\essalud_frmMantenimientoEssalud.aspx" />
@@ -254,24 +259,36 @@
     <Content Include="ASP\factura_modificarProyectoSelect.aspx" />
     <Content Include="ASP\formulario_frmMantenimientoFormulario.aspx" />
     <Content Include="ASP\frmCategorias.aspx" />
+    <Content Include="ASP\KeepAliveSession.aspx" />
+    <Content Include="ASP\modificarFacturaProyecto.aspx" />
+    <Content Include="ASP\modificarFacturaProyectoEdit.aspx" />
     <Content Include="ASP\moneda_frmMantenimientoMoneda.aspx" />
     <Content Include="ASP\pagoVentas_frmPagoVentas.aspx" />
     <Content Include="ASP\pagoVentas_frmPagoVentasSelect.aspx" />
+    <Content Include="ASP\perfilModificar.aspx" />
+    <Content Include="ASP\productoMantenimiento.aspx" />
     <Content Include="ASP\proyecto_frmMantenimientoProyecto.aspx" />
     <Content Include="ASP\puestotrabajador_frmMantenimientoPuestoTrabajador.aspx" />
     <Content Include="ASP\remuneracionMinimaVital_frmMantenimientoRemuneracionMinimaVital.aspx" />
+    <Content Include="ASP\reporteAsientoVentasDetallado.aspx" />
     <Content Include="ASP\reportePagoVentasPendientes.aspx" />
+    <Content Include="ASP\Reportes\frmAsientoVentasDetallado.aspx" />
+    <Content Include="ASP\Reportes\frmContratoPreview.aspx" />
     <Content Include="ASP\Reportes\frmFacturaPreview.aspx" />
     <Content Include="ASP\Reportes\frmFotocheckImpresion.aspx" />
     <Content Include="ASP\Reportes\reporte_pagoVentasPendientes.aspx" />
     <Content Include="ASP\roles_frmMantenimientoRoles.aspx" />
     <Content Include="ASP\sede_frmMantenimientoSede.aspx" />
     <Content Include="ASP\serie_frmMantenimientoSerie.aspx" />
+    <Content Include="ASP\serviciosMantenimiento.aspx" />
     <Content Include="ASP\sistema_pensiones_frmMantenimientoSistemaPensiones.aspx" />
     <Content Include="ASP\sueldos_frmMantenimientoSueldos.aspx" />
     <Content Include="ASP\tipocomprobante_frmMantenimientoTipoComprobante.aspx" />
     <Content Include="ASP\tipoContrato_frmMantenimientoTipoContrato.aspx" />
+    <Content Include="ASP\tipoCuenta_frmMantenimientoTipoCuenta.aspx" />
     <Content Include="ASP\tipodocumentoidentidad_frmMantenimientoTipoDocumentoIdentidad.aspx" />
+    <Content Include="ASP\tipoExistencia_Mantenimiento.aspx" />
+    <Content Include="ASP\tipoIntangibleMantenimiento.aspx" />
     <Content Include="ASP\tipoPago_frmMantenimientoTipoPago.aspx" />
     <Content Include="ASP\trabajador_frmImprimirFotocheck.aspx" />
     <Content Include="ASP\unidadmedida_frmMantenimientoUnidadMedida.aspx" />
@@ -289,6 +306,7 @@
     <Content Include="css\jquery.editable-select.min.css" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.svg" />
     <Content Include="img\gmail.png" />
+    <Content Include="img\icon\accounting.png" />
     <Content Include="img\icon\backup.png" />
     <Content Include="img\shortcuts\CALENDARIO.png" />
     <Content Include="img\shortcuts\CONECTIVIDAD.png" />
@@ -299,6 +317,21 @@
     <Content Include="js\autoNumeric-min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\Controllers\jsAdministradoraPensiones.js" />
+    <Content Include="js\Controllers\jsAsientoVentasCuentas.js" />
+    <Content Include="js\Controllers\jsDesgloseDetalle.js" />
+    <Content Include="js\Controllers\AsientoVentasSelect.js" />
+    <Content Include="js\Controllers\jsDesgloseVentas.js" />
+    <Content Include="js\Controllers\jsCuentaContable.js" />
+    <Content Include="js\Controllers\jsAsientosVentas.js" />
+    <Content Include="js\Controllers\jsModificarFacturaProyecto.js" />
+    <Content Include="js\Controllers\jsModificarFacturaProyectoEDIT.js" />
+    <Content Include="js\Controllers\jsPerfilModificar.js" />
+    <Content Include="js\Controllers\jsServicio.js" />
+    <Content Include="js\Controllers\jsProducto.js" />
+    <Content Include="js\Controllers\jsTipoIntangible.js" />
+    <Content Include="js\Controllers\jsTipoExistencia.js" />
+    <Content Include="js\Controllers\jsReporteAsientoVentasDetallado.js" />
+    <Content Include="js\Controllers\jsTipoCuenta.js" />
     <Content Include="js\Controllers\jsEssalud.js" />
     <Content Include="js\Controllers\jsCambioPw.js" />
     <Content Include="js\Controllers\jsCategoria.js" />
@@ -774,12 +807,26 @@
     <Compile Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx.designer.cs">
       <DependentUpon>areaempresa_frmMantenimientoAreaEmpresa.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\asientoVentas_frmAsientoVentas.aspx.cs">
+      <DependentUpon>asientoVentas_frmAsientoVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\asientoVentas_frmAsientoVentas.aspx.designer.cs">
+      <DependentUpon>asientoVentas_frmAsientoVentas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx.cs">
       <DependentUpon>asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx.designer.cs">
       <DependentUpon>asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\asignarCuentaContable.aspx.cs">
+      <DependentUpon>asignarCuentaContable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\asignarCuentaContable.aspx.designer.cs">
+      <DependentUpon>asignarCuentaContable.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\backup_frmMantenimientoBackUP.aspx.cs">
       <DependentUpon>backup_frmMantenimientoBackUP.aspx</DependentUpon>
@@ -830,6 +877,13 @@
     <Compile Include="ASP\contratos_frmMantenimientoContratos.aspx.designer.cs">
       <DependentUpon>contratos_frmMantenimientoContratos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\cuentaContable_frmMantenimientoCuentaContable.aspx.cs">
+      <DependentUpon>cuentaContable_frmMantenimientoCuentaContable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\cuentaContable_frmMantenimientoCuentaContable.aspx.designer.cs">
+      <DependentUpon>cuentaContable_frmMantenimientoCuentaContable.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\cuentascorrientes_frmMantenimientoCuentasCorrientes.aspx.cs">
       <DependentUpon>cuentascorrientes_frmMantenimientoCuentasCorrientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -843,6 +897,20 @@
     </Compile>
     <Compile Include="ASP\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\desgloseDetalle.aspx.cs">
+      <DependentUpon>desgloseDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\desgloseDetalle.aspx.designer.cs">
+      <DependentUpon>desgloseDetalle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\desgloseVentasMantenimiento.aspx.cs">
+      <DependentUpon>desgloseVentasMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\desgloseVentasMantenimiento.aspx.designer.cs">
+      <DependentUpon>desgloseVentasMantenimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\empresa_frmMantenimientoEmpresa.aspx.cs">
       <DependentUpon>empresa_frmMantenimientoEmpresa.aspx</DependentUpon>
@@ -921,12 +989,33 @@
     <Compile Include="ASP\frmCategorias.aspx.designer.cs">
       <DependentUpon>frmCategorias.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\KeepAliveSession.aspx.cs">
+      <DependentUpon>KeepAliveSession.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\KeepAliveSession.aspx.designer.cs">
+      <DependentUpon>KeepAliveSession.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\master.Master.cs">
       <DependentUpon>master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ASP\master.Master.designer.cs">
       <DependentUpon>master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\modificarFacturaProyecto.aspx.cs">
+      <DependentUpon>modificarFacturaProyecto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\modificarFacturaProyecto.aspx.designer.cs">
+      <DependentUpon>modificarFacturaProyecto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\modificarFacturaProyectoEdit.aspx.cs">
+      <DependentUpon>modificarFacturaProyectoEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\modificarFacturaProyectoEdit.aspx.designer.cs">
+      <DependentUpon>modificarFacturaProyectoEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\moneda_frmMantenimientoMoneda.aspx.cs">
       <DependentUpon>moneda_frmMantenimientoMoneda.aspx</DependentUpon>
@@ -949,6 +1038,20 @@
     <Compile Include="ASP\pagoVentas_frmPagoVentasSelect.aspx.designer.cs">
       <DependentUpon>pagoVentas_frmPagoVentasSelect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\perfilModificar.aspx.cs">
+      <DependentUpon>perfilModificar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\perfilModificar.aspx.designer.cs">
+      <DependentUpon>perfilModificar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\productoMantenimiento.aspx.cs">
+      <DependentUpon>productoMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\productoMantenimiento.aspx.designer.cs">
+      <DependentUpon>productoMantenimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\proyecto_frmMantenimientoProyecto.aspx.cs">
       <DependentUpon>proyecto_frmMantenimientoProyecto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -970,12 +1073,33 @@
     <Compile Include="ASP\remuneracionMinimaVital_frmMantenimientoRemuneracionMinimaVital.aspx.designer.cs">
       <DependentUpon>remuneracionMinimaVital_frmMantenimientoRemuneracionMinimaVital.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\reporteAsientoVentasDetallado.aspx.cs">
+      <DependentUpon>reporteAsientoVentasDetallado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\reporteAsientoVentasDetallado.aspx.designer.cs">
+      <DependentUpon>reporteAsientoVentasDetallado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\reportePagoVentasPendientes.aspx.cs">
       <DependentUpon>reportePagoVentasPendientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ASP\reportePagoVentasPendientes.aspx.designer.cs">
       <DependentUpon>reportePagoVentasPendientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\Reportes\frmAsientoVentasDetallado.aspx.cs">
+      <DependentUpon>frmAsientoVentasDetallado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\Reportes\frmAsientoVentasDetallado.aspx.designer.cs">
+      <DependentUpon>frmAsientoVentasDetallado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\Reportes\frmContratoPreview.aspx.cs">
+      <DependentUpon>frmContratoPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\Reportes\frmContratoPreview.aspx.designer.cs">
+      <DependentUpon>frmContratoPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\Reportes\frmFacturaPreview.aspx.cs">
       <DependentUpon>frmFacturaPreview.aspx</DependentUpon>
@@ -1019,6 +1143,13 @@
     <Compile Include="ASP\serie_frmMantenimientoSerie.aspx.designer.cs">
       <DependentUpon>serie_frmMantenimientoSerie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\serviciosMantenimiento.aspx.cs">
+      <DependentUpon>serviciosMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\serviciosMantenimiento.aspx.designer.cs">
+      <DependentUpon>serviciosMantenimiento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\sistema_pensiones_frmMantenimientoSistemaPensiones.aspx.cs">
       <DependentUpon>sistema_pensiones_frmMantenimientoSistemaPensiones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1047,12 +1178,33 @@
     <Compile Include="ASP\tipoContrato_frmMantenimientoTipoContrato.aspx.designer.cs">
       <DependentUpon>tipoContrato_frmMantenimientoTipoContrato.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\tipoCuenta_frmMantenimientoTipoCuenta.aspx.cs">
+      <DependentUpon>tipoCuenta_frmMantenimientoTipoCuenta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\tipoCuenta_frmMantenimientoTipoCuenta.aspx.designer.cs">
+      <DependentUpon>tipoCuenta_frmMantenimientoTipoCuenta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\tipodocumentoidentidad_frmMantenimientoTipoDocumentoIdentidad.aspx.cs">
       <DependentUpon>tipodocumentoidentidad_frmMantenimientoTipoDocumentoIdentidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ASP\tipodocumentoidentidad_frmMantenimientoTipoDocumentoIdentidad.aspx.designer.cs">
       <DependentUpon>tipodocumentoidentidad_frmMantenimientoTipoDocumentoIdentidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\tipoExistencia_Mantenimiento.aspx.cs">
+      <DependentUpon>tipoExistencia_Mantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\tipoExistencia_Mantenimiento.aspx.designer.cs">
+      <DependentUpon>tipoExistencia_Mantenimiento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\tipoIntangibleMantenimiento.aspx.cs">
+      <DependentUpon>tipoIntangibleMantenimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\tipoIntangibleMantenimiento.aspx.designer.cs">
+      <DependentUpon>tipoIntangibleMantenimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\tipoPago_frmMantenimientoTipoPago.aspx.cs">
       <DependentUpon>tipoPago_frmMantenimientoTipoPago.aspx</DependentUpon>
@@ -1092,7 +1244,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\HubConexiones.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="response\close_session.ashx.cs">
       <DependentUpon>close_session.ashx</DependentUpon>
@@ -1118,6 +1269,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Hubs\" />
     <Folder Include="img\corporativo\" />
     <Folder Include="img\skin\" />
     <Folder Include="img\temp_images\" />
@@ -1138,6 +1290,10 @@
     <Content Include="rptArchives\rptFormatoFactura.rdlc" />
     <Content Include="rptArchives\ventas\rptPagoVentasPendientes.rdlc" />
     <Content Include="rptArchives\ventas\rptPagoVentasPendientesDetalle.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="rptArchives\contratos\CONTRATO_INDIVIDUAL_DE_TRABAJO_PARA_OBRA_DETERMINADA_O_SERVICIO_ESPECÍFICO.rdlc" />
+    <EmbeddedResource Include="rptArchives\ventas\rptAsientosVentasRegistro.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

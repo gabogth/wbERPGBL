@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="table-responsive overflow">
-                                <table class="table table-bordered table-hover tile-title">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
@@ -115,7 +115,7 @@
                                 <div class="col-lg-12">
                                     <div class="block-area">
                                         <div class="table-responsive overflow">
-                                            <table class="table table-bordered table-hover tile-title">
+                                            <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>

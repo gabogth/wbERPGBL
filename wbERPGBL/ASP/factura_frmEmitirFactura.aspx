@@ -7,13 +7,13 @@
     <script src="../js/Controllers/jsEmisionFactura.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="IDCuerpo" runat="server">
+    <%
+        SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+        if (Conexion == null) { HttpContext.Current.Response.Redirect("~/default.aspx"); }
+        dsProcedimientos.TIPOCOMPROBANTE_BUSCAR_ACTIVO_POR_CODIGORow codigo = DOMModel.TIPOCOMPROBANTE_BUSCAR_POR_CODIGO("01", Conexion);
+        if (codigo == null) { HttpContext.Current.Response.Redirect("~/default.aspx"); }
+    %>
     <div class="tile">
-        <%
-            SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
-            if (Conexion == null) { HttpContext.Current.Response.Redirect("~/default.aspx"); }
-            dsProcedimientos.TIPOCOMPROBANTE_BUSCAR_ACTIVO_POR_CODIGORow codigo = DOMModel.TIPOCOMPROBANTE_BUSCAR_POR_CODIGO("01", Conexion);
-            if (codigo == null) { HttpContext.Current.Response.Redirect("~/default.aspx"); }
-        %>
         <input type="hidden" value="<% Response.Write(codigo.factor.ToString().Replace(",",".")); %>" class="form-control" id="txtImpuesto" />
         <input type="hidden" value="<% Response.Write(codigo.idtipo_comprobante); %>" class="form-control" id="txtIDImpuesto" />
         <h2 class="tile-title">Emisión de <% Response.Write(codigo.tipo_comprobante); %></h2>
@@ -120,9 +120,6 @@
             </section>
         </div>
     </div>
-
-
-
     <div class="tile">
         <h2 class="tile-title"><span class="fa fa-plus-circle fa-2x" style="cursor: pointer;" id="btnInsertarDetalle"></span>&nbsp;&nbsp;Detalle de Facturas</h2>
         <div class="p-10">
@@ -131,7 +128,7 @@
                     <div class="col-lg-12">
                         <div class="block-area" id="responsiveTable">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-hover tile-title">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
@@ -199,7 +196,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="modal_insertar_titulo">Modal title</h4>
+                    <h4 class="modal-title" id="modal_insertar_titulo">Agregar Nuevo Item</h4>
                 </div>
                 <div class="modal-body">
                     <form id="frmInsertarDetalle" action="#">
@@ -214,7 +211,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-6 col-md-12">
+                                <div class="col-lg-6 col-md-12" style="display: none;">
                                     <div class="block-area">
                                          <label class="checkbox-inline" for="ckProducto">
                                             <input type="checkbox" name="ckRadio" id="ckProducto" checked="checked" />

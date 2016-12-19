@@ -30,6 +30,7 @@ function Login() {
             $('#txtLoading').html('');
             $('#btnLog').show();
         } else {
+            assignCockies($('#txtUsuario').val(), $('#txtContrasena').val());
             utilClass.showMessage('#dvResultado', 'success', 'Correcto:|Empezemos!');
             document.location.href = 'ASP/default.aspx';
             $('#txtLoading').html('');
@@ -39,4 +40,15 @@ function Login() {
         $('#txtLoading').html('');
         $('#btnLog').show();
     });
+}
+
+function assignCockies(username, password) {
+    var expiration_date = new Date();
+    var cookie_string_username = '',
+        cookie_string_password = '';
+    expiration_date.setFullYear(expiration_date.getFullYear() + 1);
+    cookie_string_username = 'username=' + username + '; path=/; expires=' + expiration_date.toUTCString();
+    cookie_string_password = 'password=' + password + '; path=/; expires=' + expiration_date.toUTCString();
+    document.cookie = cookie_string_username;
+    document.cookie = cookie_string_password;
 }

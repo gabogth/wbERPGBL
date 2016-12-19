@@ -54,6 +54,8 @@
                                             <th class="text-center">INICIA</th>
                                             <th class="text-center">FINALIZA</th>
                                             <th class="text-center">RESTAN</th>
+                                            <th class="text-center">LABORES</th>
+                                            <th class="text-center"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
@@ -167,10 +169,17 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
                                         <label for="txtDetalles">Detalles: </label>
                                         <textarea class="form-control m-b-10" id="txtDetalles" name="txtDetalles">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <label for="txtLabores">Labores: </label>
+                                        <textarea class="form-control m-b-10" id="txtLabores" name="txtLabores">
                                         </textarea>
                                     </div>
                                 </div>
@@ -225,7 +234,7 @@
                                 <div class="col-lg-12">
                                     <div class="block-area" id="responsiveTableAnexos">
                                         <div class="table-responsive overflow">
-                                            <table class="table table-bordered table-hover tile-title">
+                                            <table class="table table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th class="text-center">#</th>
@@ -246,6 +255,23 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="contratoPreview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: white;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:black;">&times;</button>
+                    <h4 class="modal-title" id="facturaTitulo" style="color:black;">CONTRATO</h4>
+                </div>
+                <div class="modal-body" style="height: 1800px;">
+                    <div id="dvLoading" class="text-center">
+                        <span class="fa fa-spinner fa-2x faa-slow faa-spin animated" style="color:black;"></span>&nbsp;Cargando...
+                    </div>
+                    <iframe src="#" id="frmControlPreview" frameborder="0" height="922px;" width="99.6%"></iframe>
                 </div>
             </div>
         </div>

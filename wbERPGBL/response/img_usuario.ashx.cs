@@ -30,12 +30,16 @@ namespace wbERPGBL.response
                 string fullPathImage = folderMap + usuarioDT.foto;
                 Image img = Image.FromFile(fullPathImage);
                 string extension = Path.GetExtension(fullPathImage);
-                byte[] imageInBytes = imageToByteArray(img);
-                MemoryStream str = new MemoryStream();
-                str.Write(imageInBytes, 0, imageInBytes.Length);
-                Bitmap bit = new Bitmap(str);
-                context.Response.ContentType = "image/" + extension;
-                bit.Save(context.Response.OutputStream, ImageFormat.Jpeg);
+                byte[] bytes = imageToByteArray(img);
+                context.Response.Buffer = true;
+                context.Response.Charset = "";
+                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+                context.Response.ContentType = "image/jpeg";
+                context.Response.AddHeader("content-disposition", "attachment;filename="
+                + usuarioDT.foto);
+                context.Response.BinaryWrite(bytes);
+                context.Response.Flush();
+                context.Response.End();
             }
             catch { }
         }

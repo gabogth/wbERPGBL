@@ -18,7 +18,16 @@ namespace wbERPGBL
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            SqlConnection Conexion = null;
+            try
+            {
+                Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion != null)
+                    Conexion.Close();
+                Session.Clear();
+                Session.Abandon();
+            }
+            catch { }
         }
 
         [WebMethod(EnableSession = true)]
@@ -26,12 +35,20 @@ namespace wbERPGBL
         public static string login(string usuario, string contrasena)
         {
             clsResult objResultado = new clsResult();
-
+            SqlConnection Conexion = null;
             string formatCNN = ConfigurationManager.AppSettings["formatCNN"].ToString();
             try
             {
-                SqlConnection Conexion = DOMModel.Login(formatCNN, usuario, contrasena);
+                try
+                {
+                    Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                    if (Conexion != null)
+                        Conexion.Close();
+                }
+                catch { }
+                Conexion = DOMModel.Login(formatCNN, usuario, contrasena);
                 HttpContext.Current.Session["conexion"] = Conexion;
+                HttpContext.Current.Session.Timeout = 20;
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow dr = DOMModel.getUsuarioPorUsuario(usuario, Conexion);
                 if (dr != null)
                 {
@@ -59,6 +76,6 @@ namespace wbERPGBL
                 objResultado.body = null;
                 return JsonConvert.SerializeObject(objResultado);
             }
-        } 
+        }
     }
 }

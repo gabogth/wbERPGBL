@@ -139,6 +139,9 @@ function buscar() {
         + '&CORRELATIVO=' + encodeURIComponent($('#txtCorrelativo').val())
         + '&EMPRESA_FILTRO=' + encodeURIComponent(empresa)
         + '&ESTADO_FILTRO=' + encodeURIComponent(estado)
+        + '&FECHA_INICIO=' + encodeURIComponent($('#dtpInicio').val())
+        + '&FECHA_FIN=' + encodeURIComponent($('#dtpFin').val())
+        + '&OMITIR_EG=' + encodeURIComponent($('#ckOmitirEG').is(':checked') ? 1 : 0)
         + '&TYPE=' + encodeURIComponent($('#cbResumen').is(':checked') ? 'RESUMEN' : 'DETALLE');
     $('#dvLoading2').show();
     $('#frmReporte').hide();

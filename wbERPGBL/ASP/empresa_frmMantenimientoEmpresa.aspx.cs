@@ -57,9 +57,10 @@ namespace wbERPGBL.ASP
         }
 
         [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string insertar(string RUC, string RAZON_SOCIAL, string DIRECCION, string VISION, 
-            string MISION, string VALORES, string ETICA, string POLITICA, string ALIAS)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public static string insertar(string txtRuc, string txtRazonSocial, string txtDireccion, string txtVision,
+            string txtMision, string txtValores, string txtEtica, string txtPoliticas, string txtAlias, int cbRepresentante, 
+            string txtActividadEconomica, string txtPartidaRegistral)
         {
             clsResult objResultado = new clsResult();
             try
@@ -71,8 +72,8 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.EMPRESA_INSERTAR(RUC, RAZON_SOCIAL, DIRECCION, VISION, MISION, VALORES,
-                    ETICA, POLITICA, sessionUS.idusuario, ALIAS, Conexion);
+                bool dtResultado = DOMModel.EMPRESA_INSERTAR(txtRuc, txtRazonSocial, txtDireccion, txtVision, txtMision, txtValores,
+                    txtEtica, txtPoliticas, sessionUS.idusuario, txtAlias, cbRepresentante, txtActividadEconomica, txtPartidaRegistral, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -99,9 +100,10 @@ namespace wbERPGBL.ASP
         }
 
         [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string modificar(int IDEMPRESA, string RUC, string RAZON_SOCIAL, string DIRECCION, string VISION,
-            string MISION, string VALORES, string ETICA, string POLITICA, string ALIAS)
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public static string modificar(int IDEMPRESA, string txtRuc, string txtRazonSocial, string txtDireccion, string txtVision,
+            string txtMision, string txtValores, string txtEtica, string txtPoliticas, string txtAlias, int cbRepresentante, 
+            string txtActividadEconomica, string txtPartidaRegistral)
         {
             clsResult objResultado = new clsResult();
             try
@@ -113,8 +115,9 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.EMPRESA_MODIFICAR(IDEMPRESA, RUC, RAZON_SOCIAL, DIRECCION, VISION, 
-                    MISION, VALORES, ETICA, POLITICA, sessionUS.idusuario, ALIAS, Conexion);
+                bool dtResultado = DOMModel.EMPRESA_MODIFICAR(IDEMPRESA, txtRuc, txtRazonSocial, txtDireccion, txtVision,
+                    txtMision, txtValores, txtEtica, txtPoliticas, sessionUS.idusuario, txtAlias, cbRepresentante, 
+                    txtActividadEconomica, txtPartidaRegistral, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";

@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="archivos\clsArchivo.cs" />
+    <Compile Include="archivos\clsItemsCuentas.cs" />
+    <Compile Include="archivos\clsItemsDesglose.cs" />
     <Compile Include="clientes\clsClientes.cs" />
     <Compile Include="clsUtil.cs" />
     <Compile Include="dsReportes.Designer.cs">

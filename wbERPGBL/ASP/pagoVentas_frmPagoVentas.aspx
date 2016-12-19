@@ -80,7 +80,7 @@
                         <div class="block-area" id="responsiveTable">
                             <h3 class="block-title">PAGOS: <a href="#" id="btnInsertar"><span class="fa fa-plus fa-1x"></span> AGREGAR UN NUEVO PAGO</a></h3>
                             <div class="table-responsive overflow">
-                                <table class="table table-bordered table-hover tile-title">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>

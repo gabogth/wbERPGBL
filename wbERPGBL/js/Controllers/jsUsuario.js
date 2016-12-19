@@ -103,12 +103,10 @@ function cargarPuesto() {
             processResults: function (data, page) {
                 var datos = jQuery.parseJSON(data.d);
                 datos = datos.body;
-                console.log(datos);
                 for (var i = 0; i < datos.length; i++) {
                     datos[i].id = datos[i].idpuesto_trabajador;
                     datos[i].text = datos[i].puesto_trabajador;
                 }
-                console.log(datos);
                 return {
                     results: datos
                 };
@@ -138,12 +136,10 @@ function cargarSede() {
             processResults: function (data, page) {
                 var datos = jQuery.parseJSON(data.d);
                 datos = datos.body;
-                console.log(datos);
                 for (var i = 0; i < datos.length; i++) {
                     datos[i].id = datos[i].idsede;
                     datos[i].text = datos[i].sede;
                 }
-                console.log(datos);
                 return {
                     results: datos
                 };
@@ -173,12 +169,10 @@ function cargarRoles() {
             processResults: function (data, page) {
                 var datos = jQuery.parseJSON(data.d);
                 datos = datos.body;
-                console.log(datos);
                 for (var i = 0; i < datos.length; i++) {
                     datos[i].id = datos[i].idrol;
                     datos[i].text = datos[i].rol;
                 }
-                console.log(datos);
                 return {
                     results: datos
                 };
@@ -207,12 +201,10 @@ function cargarEmpresa() {
             processResults: function (data, page) {
                 var datos = jQuery.parseJSON(data.d);
                 datos = datos.body;
-                console.log(datos);
                 for (var i = 0; i < datos.length; i++) {
                     datos[i].id = datos[i].idempresa;
                     datos[i].text = datos[i].alias;
                 }
-                console.log(datos);
                 return {
                     results: datos
                 };
@@ -241,12 +233,10 @@ function cargarAreas() {
             processResults: function (data, page) {
                 var datos = jQuery.parseJSON(data.d);
                 datos = datos.body;
-                console.log(datos);
                 for (var i = 0; i < datos.length; i++) {
                     datos[i].id = datos[i].idarea_empresa;
                     datos[i].text = datos[i].area;
                 }
-                console.log(datos);
                 return {
                     results: datos
                 };
@@ -513,7 +503,6 @@ function modificar(id) {
             $('#modalInsertar').modal('toggle');
             var actualIndex = $('#paginacionFoot').pagination('getCurrentPage');
             buscar(actualIndex, 10);
-            console.log(actualIndex);
         }
 
     }).fail(function (ort, rt, qrt) {
@@ -529,7 +518,7 @@ function insertar() {
     });
     data.append('OP', 'INSERTAR');
     data.append('USUARIO', $('#txtUsuario').val());
-    data.append('PASSWORD', $('#txtPassword').val());
+    data.append('contrasena', $('#txtPassword').val());
     data.append('NOMBRE', $('#txtNombre').val());
     data.append('APELLIDO', $('#txtApellido').val());
     data.append('DNI', $('#txtDNI').val());
@@ -550,6 +539,7 @@ function insertar() {
     data.append('CONTACTO_2', $('#txtContacto2').val());
     data.append('FOTO_DIR', $('#txtFoto').val());
     data.append('IDPUESTO_TRABAJADOR', $('#cbPuesto').val());
+    console.log(data);
 
     $.ajax({
         url: '../response/upload_image_reg_user.ashx',
@@ -573,7 +563,6 @@ function insertar() {
             $('#modalInsertar').modal('toggle');
             var actualIndex = $('#paginacionFoot').pagination('getCurrentPage');
             buscar(actualIndex, 10);
-            console.log(actualIndex);
         }
 
     }).fail(function (ort, rt, qrt) {
@@ -610,7 +599,6 @@ function eliminar(id, usuario) {
             $('#modal_mensaje').modal('toggle');
             var actualIndex = $('#paginacionFoot').pagination('getCurrentPage');
             buscar(actualIndex, 10);
-            console.log(actualIndex);
         }
     }).fail(function (ort, rt, qrt) {
         utilClass.showMessage('#dvResultado', 'danger', 'Error:|' + rt);
@@ -653,7 +641,6 @@ function modificar_estado(id, estado, usuario) {
             $('#modal_mensaje').modal('toggle');
             var actualIndex = $('#paginacionFoot').pagination('getCurrentPage');
             buscar(actualIndex, 10);
-            console.log(actualIndex);
         }
 
     }).fail(function (ort, rt, qrt) {
@@ -686,7 +673,6 @@ function reset_pw(id, usuario) {
             $('#modal_mensaje').modal('toggle');
             var actualIndex = $('#paginacionFoot').pagination('getCurrentPage');
             buscar(actualIndex, 10);
-            console.log(actualIndex);
         }
 
     }).fail(function (ort, rt, qrt) {

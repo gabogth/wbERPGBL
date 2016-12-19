@@ -105,16 +105,29 @@ namespace wbERPGBL.ASP
             return JsonConvert.SerializeObject(objResultado);
         }
 
+        public static void loginCockie(string usuario, string contrasena) {
+            string formatCNN = ConfigurationManager.AppSettings["formatCNN"].ToString();
+            try
+            {
+                SqlConnection Conexion = DOMModel.Login(formatCNN, usuario, contrasena);
+                HttpContext.Current.Session["conexion"] = Conexion;
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow dr = DOMModel.getUsuarioPorUsuario(usuario, Conexion);
+            }
+            catch (Exception){}
+        }
+
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string buscarMensajesGMAIL()
+        public static string buscarMensajesGMAIL(string usuario, string contrasena)
         {
             clsResult objResultado = new clsResult();
             try
             {
+                loginCockie(usuario, contrasena);
                 SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
                 if (Conexion == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
+
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 List<Modelo.messages.clsMensajes> configRow = DOMModel.GMAIL_OBTENERMENSAJES(sessionUS.correo, sessionUS.pw_gmail);
                 if (configRow != null)
@@ -336,6 +349,14 @@ namespace wbERPGBL.ASP
                 objResultado.body = null;
             }
             return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static void KeepAliveSession()
+        {
+            HttpContext.Current.Session.Timeout = 20;
+            HttpContext.Current.Session["test"] = "gabogth@gmail.com";
         }
     }
 }

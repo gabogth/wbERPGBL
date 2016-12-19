@@ -42,7 +42,7 @@
                         <div class="block-area" id="responsiveTable">
                             <h3 class="block-title">Resultados:</h3>
                             <div class="table-responsive overflow">
-                                <table class="table table-bordered table-hover tile-title">
+                                <table class="table table-bordered table-hover">
                                     <thead>
                                         <tr>
                                             <th class="text-center">#</th>
@@ -56,6 +56,9 @@
                                             <th class="text-center">Valores</th>
                                             <th class="text-center">Ética</th>
                                             <th class="text-center">Políticas</th>
+                                            <th class="text-center">Partida Registral</th>
+                                            <th class="text-center">Actividad Económica</th>
+                                            <th class="text-center">Representante Legal</th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                         </tr>
@@ -127,6 +130,20 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-12">
                                     <div class="block-area">
+                                        <label for="txtActividadEconomica">Actividad Económica: </label>
+                                        <input type="text" class="form-control m-b-10" id="txtActividadEconomica" name="txtActividadEconomica" required="required" placeholder="Ingrese Actividad económica">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <label for="cbRepresentante:number">Representante Legal: </label>
+                                        <select id="cbRepresentante" name="cbRepresentante:number" style="width: 100%;" required="required"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
                                         <label for="txtVision">Visión: </label>
                                         <textarea class="form-control m-b-10" id="txtVision" name="txtVision" required="required" placeholder="Ingrese Visión">
                                         </textarea>
@@ -161,6 +178,13 @@
                                     <div class="block-area">
                                         <label for="txtPoliticas">Políticas: </label>
                                         <textarea class="form-control m-b-10" id="txtPoliticas" name="txtPoliticas" required="required" placeholder="Ingrese Políticas">
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <label for="txtPartidaRegistral">Partida Registral: </label>
+                                        <textarea class="form-control m-b-10" id="txtPartidaRegistral" name="txtPartidaRegistral" required="required" placeholder="Ingrese partida registral">
                                         </textarea>
                                     </div>
                                 </div>
