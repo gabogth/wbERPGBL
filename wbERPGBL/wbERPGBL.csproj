@@ -283,6 +283,7 @@
     <Content Include="ASP\serviciosMantenimiento.aspx" />
     <Content Include="ASP\sistema_pensiones_frmMantenimientoSistemaPensiones.aspx" />
     <Content Include="ASP\sueldos_frmMantenimientoSueldos.aspx" />
+    <Content Include="error404.html" />
     <Content Include="ASP\tipocomprobante_frmMantenimientoTipoComprobante.aspx" />
     <Content Include="ASP\tipoContrato_frmMantenimientoTipoContrato.aspx" />
     <Content Include="ASP\tipoCuenta_frmMantenimientoTipoCuenta.aspx" />
