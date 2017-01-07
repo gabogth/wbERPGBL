@@ -78,7 +78,7 @@ function initializeComponents() {
 
 function cargarEmpresa() {
     $('#cbEmpresa').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',

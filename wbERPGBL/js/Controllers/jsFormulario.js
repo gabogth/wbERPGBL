@@ -74,7 +74,7 @@ function formatRepoSelection(repo) {
 
 function cargarCategoria() {
     $('#cbCategoria').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'categoria_frmMantenimientoCategoria.aspx/buscar_estado',
             dataType: 'json',
@@ -107,7 +107,7 @@ function cargarCategoria() {
 
 function cargarLink() {
     $('#cbLink').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'categoria_frmMantenimientoCategoria.aspx/buscar_pagina',
             dataType: 'json',

@@ -32,6 +32,8 @@ function clearInputs() {
 function establecerData(data) {
     $('#txtTipoPago').val(data.tipo_pago);
     $('#txtCodigo').val(data.codigo);
+    $('#ckRequiereOP').iCheck(data.requiere_op != null ? 'check' : 'uncheck');
+    $('#ckRequiereChecke').iCheck(data.requiere_cheque != null ? 'check' : 'uncheck');
 }
 
 function paginacion() {
@@ -82,6 +84,8 @@ function buscar(indexPag, cantidad) {
                     bodyTable += '<tr><td>' + (((indexPag - 1) * cantidad) + index + 1) + '</td>';
                     bodyTable += '<td>' + item.tipo_pago + '</td>';
                     bodyTable += '<td>' + item.codigo + '</td>';
+                    bodyTable += '<td class="text-center">' + (item.requiere_op != null ? '<span class="fa fa-check text-success"></span>' : '<span class="fa fa-times text-danger"></span>') + '</td>';
+                    bodyTable += '<td class="text-center">' + (item.requiere_cheque != null ? '<span class="fa fa-check text-success"></span>' : '<span class="fa fa-times text-danger"></span>') + '</td>';
                     bodyTable += '<td class="text-center">' + getStateIcon(item.estado, 'estado' + item.idtipo_pago) + '</td>';
                     bodyTable += '<td><span class="fa fa-pencil text-warning" style="cursor: pointer;" id="modificar' + item.idtipo_pago + '"></span></td>';
                     bodyTable += '<td><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar' + item.idtipo_pago + '"></span></td></tr>';
@@ -153,6 +157,8 @@ function getStateIcon(data, id) {
 function modificar(id) {
     var query = 'IDTIPO_PAGO=' + id +
         '&TIPO_PAGO="' + encodeURIComponent($('#txtTipoPago').val()) + '"' +
+        '&OP=' + encodeURIComponent($('#ckRequiereOP').is(':checked') ? 1 : null) +
+        '&CHEQUE=' + encodeURIComponent($('#ckRequiereChecke').is(':checked') ? 1 : null) +
         '&CODIGO="' + encodeURIComponent($('#txtCodigo').val()) + '"';
 
     $.ajax({
@@ -187,6 +193,8 @@ function modificar(id) {
 
 function insertar() {
     var query = 'TIPO_PAGO="' + encodeURIComponent($('#txtTipoPago').val()) + '"' +
+        '&OP=' + encodeURIComponent($('#ckRequiereOP').is(':checked') ? 1 : null) +
+        '&CHEQUE=' + encodeURIComponent($('#ckRequiereChecke').is(':checked') ? 1 : null) +
         '&CODIGO="' + encodeURIComponent($('#txtCodigo').val()) + '"';
 
     $.ajax({

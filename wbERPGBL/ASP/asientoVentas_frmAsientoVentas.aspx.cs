@@ -63,15 +63,12 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado1 = DOMModel.ASIENTO_CONTABLE_INSERTAR(cbCuentaDebe, null, txtMontoDebe, null, txtGlosa, IDVENTAS_DETALLE, sessionUS.idusuario, "", 1, Conexion);
-                bool dtResultado2 = DOMModel.ASIENTO_CONTABLE_INSERTAR(null, cbCuentaHaber, null, txtMontoHaber, txtGlosa, IDVENTAS_DETALLE, sessionUS.idusuario, "", 1, Conexion);
-                bool dtResultado3 = DOMModel.ASIENTO_CONTABLE_INSERTAR(null, cbCuentaIGV, null, txtMontoIGV, txtGlosa, IDVENTAS_DETALLE, sessionUS.idusuario, "", 1, Conexion);
-                if (dtResultado1 != false && dtResultado2 != false && dtResultado3 != false)
+                if (false && false && false)
                 {
                     objResultado.result = "success";
                     objResultado.message = "ok_server";
                     objResultado.registros = 1;
-                    objResultado.body = (dtResultado1 & dtResultado2 & dtResultado3);
+                    objResultado.body = (false && false && false);
                 }
                 else
                 {

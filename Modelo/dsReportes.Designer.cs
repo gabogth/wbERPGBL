@@ -32,6 +32,10 @@ namespace Modelo {
         
         private REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable tableREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES;
         
+        private ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable tableASIENTO_CONTABLE_BUSCAR_IDPAGOS;
+        
+        private ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable tableASIENTO_CONTABLE_BUSCAR_IDVENTAS;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -71,6 +75,12 @@ namespace Modelo {
                 }
                 if ((ds.Tables["REPORTE_PAGO_VENTAS_DETALLE_PENDIENTES"] != null)) {
                     base.Tables.Add(new REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable(ds.Tables["REPORTE_PAGO_VENTAS_DETALLE_PENDIENTES"]));
+                }
+                if ((ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDPAGOS"] != null)) {
+                    base.Tables.Add(new ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable(ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDPAGOS"]));
+                }
+                if ((ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDVENTAS"] != null)) {
+                    base.Tables.Add(new ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable(ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDVENTAS"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -127,6 +137,26 @@ namespace Modelo {
         public REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable REPORTE_PAGO_VENTAS_DETALLE_PENDIENTES {
             get {
                 return this.tableREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable ASIENTO_CONTABLE_BUSCAR_IDPAGOS {
+            get {
+                return this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable ASIENTO_CONTABLE_BUSCAR_IDVENTAS {
+            get {
+                return this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS;
             }
         }
         
@@ -209,6 +239,12 @@ namespace Modelo {
                 if ((ds.Tables["REPORTE_PAGO_VENTAS_DETALLE_PENDIENTES"] != null)) {
                     base.Tables.Add(new REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable(ds.Tables["REPORTE_PAGO_VENTAS_DETALLE_PENDIENTES"]));
                 }
+                if ((ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDPAGOS"] != null)) {
+                    base.Tables.Add(new ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable(ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDPAGOS"]));
+                }
+                if ((ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDVENTAS"] != null)) {
+                    base.Tables.Add(new ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable(ds.Tables["ASIENTO_CONTABLE_BUSCAR_IDVENTAS"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -266,6 +302,18 @@ namespace Modelo {
                     this.tableREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES.InitVars();
                 }
             }
+            this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS = ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable)(base.Tables["ASIENTO_CONTABLE_BUSCAR_IDPAGOS"]));
+            if ((initTable == true)) {
+                if ((this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS != null)) {
+                    this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.InitVars();
+                }
+            }
+            this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS = ((ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable)(base.Tables["ASIENTO_CONTABLE_BUSCAR_IDVENTAS"]));
+            if ((initTable == true)) {
+                if ((this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS != null)) {
+                    this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -284,6 +332,10 @@ namespace Modelo {
             base.Tables.Add(this.tableREPORTE_PAGO_VENTAS_PENDIENTES);
             this.tableREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES = new REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable();
             base.Tables.Add(this.tableREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES);
+            this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS = new ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable();
+            base.Tables.Add(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS);
+            this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS = new ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable();
+            base.Tables.Add(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -307,6 +359,18 @@ namespace Modelo {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeREPORTE_PAGO_VENTAS_DETALLE_PENDIENTES() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeASIENTO_CONTABLE_BUSCAR_IDPAGOS() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeASIENTO_CONTABLE_BUSCAR_IDVENTAS() {
             return false;
         }
         
@@ -376,6 +440,12 @@ namespace Modelo {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESRowChangeEventHandler(object sender, REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEventHandler(object sender, ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEventHandler(object sender, ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -7355,6 +7425,952 @@ namespace Modelo {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable : global::System.Data.TypedTableBase<ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow> {
+            
+            private global::System.Data.DataColumn columnfecha_asiento;
+            
+            private global::System.Data.DataColumn columnidasiento_contable;
+            
+            private global::System.Data.DataColumn columnidasiento_cabecera;
+            
+            private global::System.Data.DataColumn columnserie;
+            
+            private global::System.Data.DataColumn columncorrelativo;
+            
+            private global::System.Data.DataColumn columnrazon_social;
+            
+            private global::System.Data.DataColumn columnidcuenta_contable_debe;
+            
+            private global::System.Data.DataColumn columnCUENTA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_CUENTA;
+            
+            private global::System.Data.DataColumn columnmonto_haber;
+            
+            private global::System.Data.DataColumn columnmonto_debe;
+            
+            private global::System.Data.DataColumn columnglosa;
+            
+            private global::System.Data.DataColumn columnnombre;
+            
+            private global::System.Data.DataColumn columnapellido;
+            
+            private global::System.Data.DataColumn columnusuario;
+            
+            private global::System.Data.DataColumn columnfecha_creacion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable() {
+                this.TableName = "ASIENTO_CONTABLE_BUSCAR_IDPAGOS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_asientoColumn {
+                get {
+                    return this.columnfecha_asiento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idasiento_contableColumn {
+                get {
+                    return this.columnidasiento_contable;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idasiento_cabeceraColumn {
+                get {
+                    return this.columnidasiento_cabecera;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn serieColumn {
+                get {
+                    return this.columnserie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn correlativoColumn {
+                get {
+                    return this.columncorrelativo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn razon_socialColumn {
+                get {
+                    return this.columnrazon_social;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idcuenta_contable_debeColumn {
+                get {
+                    return this.columnidcuenta_contable_debe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CUENTAColumn {
+                get {
+                    return this.columnCUENTA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_CUENTAColumn {
+                get {
+                    return this.columnNOMBRE_CUENTA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn monto_haberColumn {
+                get {
+                    return this.columnmonto_haber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn monto_debeColumn {
+                get {
+                    return this.columnmonto_debe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn glosaColumn {
+                get {
+                    return this.columnglosa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nombreColumn {
+                get {
+                    return this.columnnombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn apellidoColumn {
+                get {
+                    return this.columnapellido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn usuarioColumn {
+                get {
+                    return this.columnusuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_creacionColumn {
+                get {
+                    return this.columnfecha_creacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow this[int index] {
+                get {
+                    return ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddASIENTO_CONTABLE_BUSCAR_IDPAGOSRow(ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow AddASIENTO_CONTABLE_BUSCAR_IDPAGOSRow(System.DateTime fecha_asiento, string serie, string correlativo, string razon_social, int idcuenta_contable_debe, string CUENTA, string NOMBRE_CUENTA, decimal monto_haber, decimal monto_debe, string glosa, string nombre, string apellido, string usuario, System.DateTime fecha_creacion) {
+                ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow rowASIENTO_CONTABLE_BUSCAR_IDPAGOSRow = ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        fecha_asiento,
+                        null,
+                        null,
+                        serie,
+                        correlativo,
+                        razon_social,
+                        idcuenta_contable_debe,
+                        CUENTA,
+                        NOMBRE_CUENTA,
+                        monto_haber,
+                        monto_debe,
+                        glosa,
+                        nombre,
+                        apellido,
+                        usuario,
+                        fecha_creacion};
+                rowASIENTO_CONTABLE_BUSCAR_IDPAGOSRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowASIENTO_CONTABLE_BUSCAR_IDPAGOSRow);
+                return rowASIENTO_CONTABLE_BUSCAR_IDPAGOSRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable cln = ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnfecha_asiento = base.Columns["fecha_asiento"];
+                this.columnidasiento_contable = base.Columns["idasiento_contable"];
+                this.columnidasiento_cabecera = base.Columns["idasiento_cabecera"];
+                this.columnserie = base.Columns["serie"];
+                this.columncorrelativo = base.Columns["correlativo"];
+                this.columnrazon_social = base.Columns["razon_social"];
+                this.columnidcuenta_contable_debe = base.Columns["idcuenta_contable_debe"];
+                this.columnCUENTA = base.Columns["CUENTA"];
+                this.columnNOMBRE_CUENTA = base.Columns["NOMBRE_CUENTA"];
+                this.columnmonto_haber = base.Columns["monto_haber"];
+                this.columnmonto_debe = base.Columns["monto_debe"];
+                this.columnglosa = base.Columns["glosa"];
+                this.columnnombre = base.Columns["nombre"];
+                this.columnapellido = base.Columns["apellido"];
+                this.columnusuario = base.Columns["usuario"];
+                this.columnfecha_creacion = base.Columns["fecha_creacion"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnfecha_asiento = new global::System.Data.DataColumn("fecha_asiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_asiento);
+                this.columnidasiento_contable = new global::System.Data.DataColumn("idasiento_contable", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidasiento_contable);
+                this.columnidasiento_cabecera = new global::System.Data.DataColumn("idasiento_cabecera", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidasiento_cabecera);
+                this.columnserie = new global::System.Data.DataColumn("serie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnserie);
+                this.columncorrelativo = new global::System.Data.DataColumn("correlativo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncorrelativo);
+                this.columnrazon_social = new global::System.Data.DataColumn("razon_social", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrazon_social);
+                this.columnidcuenta_contable_debe = new global::System.Data.DataColumn("idcuenta_contable_debe", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidcuenta_contable_debe);
+                this.columnCUENTA = new global::System.Data.DataColumn("CUENTA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCUENTA);
+                this.columnNOMBRE_CUENTA = new global::System.Data.DataColumn("NOMBRE_CUENTA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_CUENTA);
+                this.columnmonto_haber = new global::System.Data.DataColumn("monto_haber", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonto_haber);
+                this.columnmonto_debe = new global::System.Data.DataColumn("monto_debe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonto_debe);
+                this.columnglosa = new global::System.Data.DataColumn("glosa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnglosa);
+                this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre);
+                this.columnapellido = new global::System.Data.DataColumn("apellido", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnapellido);
+                this.columnusuario = new global::System.Data.DataColumn("usuario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnusuario);
+                this.columnfecha_creacion = new global::System.Data.DataColumn("fecha_creacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_creacion);
+                this.columnidasiento_contable.AutoIncrement = true;
+                this.columnidasiento_contable.ReadOnly = true;
+                this.columnidasiento_cabecera.AutoIncrement = true;
+                this.columnidasiento_cabecera.AllowDBNull = false;
+                this.columnidasiento_cabecera.ReadOnly = true;
+                this.columnserie.MaxLength = 4;
+                this.columncorrelativo.MaxLength = 8;
+                this.columnrazon_social.MaxLength = 200;
+                this.columnCUENTA.ReadOnly = true;
+                this.columnCUENTA.MaxLength = 2147483647;
+                this.columnNOMBRE_CUENTA.ReadOnly = true;
+                this.columnNOMBRE_CUENTA.MaxLength = 2147483647;
+                this.columnglosa.MaxLength = 2147483647;
+                this.columnnombre.MaxLength = 80;
+                this.columnapellido.MaxLength = 80;
+                this.columnusuario.MaxLength = 80;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow NewASIENTO_CONTABLE_BUSCAR_IDPAGOSRow() {
+                return ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanged != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanged(this, new ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanging != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChanging(this, new ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleted != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleted(this, new ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleting != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowDeleting(this, new ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveASIENTO_CONTABLE_BUSCAR_IDPAGOSRow(ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsReportes ds = new dsReportes();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable : global::System.Data.TypedTableBase<ASIENTO_CONTABLE_BUSCAR_IDVENTASRow> {
+            
+            private global::System.Data.DataColumn columnfecha_asiento;
+            
+            private global::System.Data.DataColumn columnidasiento_contable;
+            
+            private global::System.Data.DataColumn columnidasiento_cabecera;
+            
+            private global::System.Data.DataColumn columnserie;
+            
+            private global::System.Data.DataColumn columncorrelativo;
+            
+            private global::System.Data.DataColumn columnrazon_social;
+            
+            private global::System.Data.DataColumn columnidcuenta_contable_debe;
+            
+            private global::System.Data.DataColumn columnCUENTA;
+            
+            private global::System.Data.DataColumn columnNOMBRE_CUENTA;
+            
+            private global::System.Data.DataColumn columnmonto_haber;
+            
+            private global::System.Data.DataColumn columnmonto_debe;
+            
+            private global::System.Data.DataColumn columnglosa;
+            
+            private global::System.Data.DataColumn columnnombre;
+            
+            private global::System.Data.DataColumn columnapellido;
+            
+            private global::System.Data.DataColumn columnusuario;
+            
+            private global::System.Data.DataColumn columnfecha_creacion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable() {
+                this.TableName = "ASIENTO_CONTABLE_BUSCAR_IDVENTAS";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_asientoColumn {
+                get {
+                    return this.columnfecha_asiento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idasiento_contableColumn {
+                get {
+                    return this.columnidasiento_contable;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idasiento_cabeceraColumn {
+                get {
+                    return this.columnidasiento_cabecera;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn serieColumn {
+                get {
+                    return this.columnserie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn correlativoColumn {
+                get {
+                    return this.columncorrelativo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn razon_socialColumn {
+                get {
+                    return this.columnrazon_social;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idcuenta_contable_debeColumn {
+                get {
+                    return this.columnidcuenta_contable_debe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CUENTAColumn {
+                get {
+                    return this.columnCUENTA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NOMBRE_CUENTAColumn {
+                get {
+                    return this.columnNOMBRE_CUENTA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn monto_haberColumn {
+                get {
+                    return this.columnmonto_haber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn monto_debeColumn {
+                get {
+                    return this.columnmonto_debe;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn glosaColumn {
+                get {
+                    return this.columnglosa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn nombreColumn {
+                get {
+                    return this.columnnombre;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn apellidoColumn {
+                get {
+                    return this.columnapellido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn usuarioColumn {
+                get {
+                    return this.columnusuario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn fecha_creacionColumn {
+                get {
+                    return this.columnfecha_creacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASRow this[int index] {
+                get {
+                    return ((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEventHandler ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddASIENTO_CONTABLE_BUSCAR_IDVENTASRow(ASIENTO_CONTABLE_BUSCAR_IDVENTASRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASRow AddASIENTO_CONTABLE_BUSCAR_IDVENTASRow(System.DateTime fecha_asiento, string serie, string correlativo, string razon_social, int idcuenta_contable_debe, string CUENTA, string NOMBRE_CUENTA, decimal monto_haber, decimal monto_debe, string glosa, string nombre, string apellido, string usuario, System.DateTime fecha_creacion) {
+                ASIENTO_CONTABLE_BUSCAR_IDVENTASRow rowASIENTO_CONTABLE_BUSCAR_IDVENTASRow = ((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        fecha_asiento,
+                        null,
+                        null,
+                        serie,
+                        correlativo,
+                        razon_social,
+                        idcuenta_contable_debe,
+                        CUENTA,
+                        NOMBRE_CUENTA,
+                        monto_haber,
+                        monto_debe,
+                        glosa,
+                        nombre,
+                        apellido,
+                        usuario,
+                        fecha_creacion};
+                rowASIENTO_CONTABLE_BUSCAR_IDVENTASRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowASIENTO_CONTABLE_BUSCAR_IDVENTASRow);
+                return rowASIENTO_CONTABLE_BUSCAR_IDVENTASRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable cln = ((ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnfecha_asiento = base.Columns["fecha_asiento"];
+                this.columnidasiento_contable = base.Columns["idasiento_contable"];
+                this.columnidasiento_cabecera = base.Columns["idasiento_cabecera"];
+                this.columnserie = base.Columns["serie"];
+                this.columncorrelativo = base.Columns["correlativo"];
+                this.columnrazon_social = base.Columns["razon_social"];
+                this.columnidcuenta_contable_debe = base.Columns["idcuenta_contable_debe"];
+                this.columnCUENTA = base.Columns["CUENTA"];
+                this.columnNOMBRE_CUENTA = base.Columns["NOMBRE_CUENTA"];
+                this.columnmonto_haber = base.Columns["monto_haber"];
+                this.columnmonto_debe = base.Columns["monto_debe"];
+                this.columnglosa = base.Columns["glosa"];
+                this.columnnombre = base.Columns["nombre"];
+                this.columnapellido = base.Columns["apellido"];
+                this.columnusuario = base.Columns["usuario"];
+                this.columnfecha_creacion = base.Columns["fecha_creacion"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnfecha_asiento = new global::System.Data.DataColumn("fecha_asiento", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_asiento);
+                this.columnidasiento_contable = new global::System.Data.DataColumn("idasiento_contable", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidasiento_contable);
+                this.columnidasiento_cabecera = new global::System.Data.DataColumn("idasiento_cabecera", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidasiento_cabecera);
+                this.columnserie = new global::System.Data.DataColumn("serie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnserie);
+                this.columncorrelativo = new global::System.Data.DataColumn("correlativo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncorrelativo);
+                this.columnrazon_social = new global::System.Data.DataColumn("razon_social", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrazon_social);
+                this.columnidcuenta_contable_debe = new global::System.Data.DataColumn("idcuenta_contable_debe", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidcuenta_contable_debe);
+                this.columnCUENTA = new global::System.Data.DataColumn("CUENTA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCUENTA);
+                this.columnNOMBRE_CUENTA = new global::System.Data.DataColumn("NOMBRE_CUENTA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNOMBRE_CUENTA);
+                this.columnmonto_haber = new global::System.Data.DataColumn("monto_haber", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonto_haber);
+                this.columnmonto_debe = new global::System.Data.DataColumn("monto_debe", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmonto_debe);
+                this.columnglosa = new global::System.Data.DataColumn("glosa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnglosa);
+                this.columnnombre = new global::System.Data.DataColumn("nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombre);
+                this.columnapellido = new global::System.Data.DataColumn("apellido", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnapellido);
+                this.columnusuario = new global::System.Data.DataColumn("usuario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnusuario);
+                this.columnfecha_creacion = new global::System.Data.DataColumn("fecha_creacion", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfecha_creacion);
+                this.columnidasiento_contable.AutoIncrement = true;
+                this.columnidasiento_contable.ReadOnly = true;
+                this.columnidasiento_cabecera.AutoIncrement = true;
+                this.columnidasiento_cabecera.AllowDBNull = false;
+                this.columnidasiento_cabecera.ReadOnly = true;
+                this.columnserie.MaxLength = 4;
+                this.columncorrelativo.MaxLength = 8;
+                this.columnrazon_social.MaxLength = 200;
+                this.columnCUENTA.ReadOnly = true;
+                this.columnCUENTA.MaxLength = 2147483647;
+                this.columnNOMBRE_CUENTA.ReadOnly = true;
+                this.columnNOMBRE_CUENTA.MaxLength = 2147483647;
+                this.columnglosa.MaxLength = 2147483647;
+                this.columnnombre.MaxLength = 80;
+                this.columnapellido.MaxLength = 80;
+                this.columnusuario.MaxLength = 80;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASRow NewASIENTO_CONTABLE_BUSCAR_IDVENTASRow() {
+                return ((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ASIENTO_CONTABLE_BUSCAR_IDVENTASRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ASIENTO_CONTABLE_BUSCAR_IDVENTASRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanged != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanged(this, new ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanging != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChanging(this, new ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleted != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleted(this, new ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleting != null)) {
+                    this.ASIENTO_CONTABLE_BUSCAR_IDVENTASRowDeleting(this, new ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent(((ASIENTO_CONTABLE_BUSCAR_IDVENTASRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveASIENTO_CONTABLE_BUSCAR_IDVENTASRow(ASIENTO_CONTABLE_BUSCAR_IDVENTASRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dsReportes ds = new dsReportes();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -17283,6 +18299,928 @@ namespace Modelo {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow : global::System.Data.DataRow {
+            
+            private ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable tableASIENTO_CONTABLE_BUSCAR_IDPAGOS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS = ((ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_asiento {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_asientoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_asiento\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAG" +
+                                "OS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_asientoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idasiento_contable {
+                get {
+                    try {
+                        return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_contableColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idasiento_contable\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_" +
+                                "IDPAGOS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_contableColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idasiento_cabecera {
+                get {
+                    return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_cabeceraColumn]));
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_cabeceraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string serie {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.serieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'serie\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.serieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string correlativo {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.correlativoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'correlativo\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.correlativoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string razon_social {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.razon_socialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'razon_social\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGO" +
+                                "S\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.razon_socialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idcuenta_contable_debe {
+                get {
+                    try {
+                        return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idcuenta_contable_debeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idcuenta_contable_debe\' de la tabla \'ASIENTO_CONTABLE_BUS" +
+                                "CAR_IDPAGOS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idcuenta_contable_debeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CUENTA {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.CUENTAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CUENTA\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.CUENTAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CUENTA {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.NOMBRE_CUENTAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CUENTA\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAG" +
+                                "OS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.NOMBRE_CUENTAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal monto_haber {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_haberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'monto_haber\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_haberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal monto_debe {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_debeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'monto_debe\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\'" +
+                                " es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_debeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string glosa {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.glosaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'glosa\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.glosaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nombre {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.nombreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string apellido {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.apellidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'apellido\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.apellidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string usuario {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.usuarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'usuario\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPAGOS\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.usuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_creacion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_creacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_creacion\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDPA" +
+                                "GOS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_creacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_asientoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_asientoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_asientoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_asientoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isidasiento_contableNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_contableColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setidasiento_contableNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idasiento_contableColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsserieNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.serieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetserieNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.serieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscorrelativoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.correlativoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcorrelativoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.correlativoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Israzon_socialNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.razon_socialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setrazon_socialNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.razon_socialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isidcuenta_contable_debeNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idcuenta_contable_debeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setidcuenta_contable_debeNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.idcuenta_contable_debeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCUENTANull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.CUENTAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCUENTANull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.CUENTAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_CUENTANull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.NOMBRE_CUENTAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_CUENTANull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.NOMBRE_CUENTAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismonto_haberNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_haberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmonto_haberNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_haberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismonto_debeNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_debeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmonto_debeNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.monto_debeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsglosaNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.glosaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetglosaNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.glosaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnombreNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.nombreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnombreNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.nombreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsapellidoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.apellidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetapellidoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.apellidoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsusuarioNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.usuarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetusuarioNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.usuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_creacionNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_creacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_creacionNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDPAGOS.fecha_creacionColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ASIENTO_CONTABLE_BUSCAR_IDVENTASRow : global::System.Data.DataRow {
+            
+            private ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable tableASIENTO_CONTABLE_BUSCAR_IDVENTAS;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ASIENTO_CONTABLE_BUSCAR_IDVENTASRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS = ((ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_asiento {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_asientoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_asiento\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVEN" +
+                                "TAS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_asientoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idasiento_contable {
+                get {
+                    try {
+                        return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_contableColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idasiento_contable\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_" +
+                                "IDVENTAS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_contableColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idasiento_cabecera {
+                get {
+                    return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_cabeceraColumn]));
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_cabeceraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string serie {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.serieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'serie\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.serieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string correlativo {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.correlativoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'correlativo\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTA" +
+                                "S\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.correlativoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string razon_social {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.razon_socialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'razon_social\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENT" +
+                                "AS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.razon_socialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int idcuenta_contable_debe {
+                get {
+                    try {
+                        return ((int)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idcuenta_contable_debeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'idcuenta_contable_debe\' de la tabla \'ASIENTO_CONTABLE_BUS" +
+                                "CAR_IDVENTAS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idcuenta_contable_debeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CUENTA {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.CUENTAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CUENTA\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.CUENTAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NOMBRE_CUENTA {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.NOMBRE_CUENTAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NOMBRE_CUENTA\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVEN" +
+                                "TAS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.NOMBRE_CUENTAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal monto_haber {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_haberColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'monto_haber\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTA" +
+                                "S\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_haberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal monto_debe {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_debeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'monto_debe\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS" +
+                                "\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_debeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string glosa {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.glosaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'glosa\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.glosaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string nombre {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.nombreColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'nombre\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' es" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.nombreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string apellido {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.apellidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'apellido\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' " +
+                                "es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.apellidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string usuario {
+                get {
+                    try {
+                        return ((string)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.usuarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'usuario\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVENTAS\' e" +
+                                "s DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.usuarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime fecha_creacion {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_creacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'fecha_creacion\' de la tabla \'ASIENTO_CONTABLE_BUSCAR_IDVE" +
+                                "NTAS\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_creacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_asientoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_asientoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_asientoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_asientoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isidasiento_contableNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_contableColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setidasiento_contableNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idasiento_contableColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsserieNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.serieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetserieNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.serieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IscorrelativoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.correlativoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetcorrelativoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.correlativoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Israzon_socialNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.razon_socialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setrazon_socialNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.razon_socialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isidcuenta_contable_debeNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idcuenta_contable_debeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setidcuenta_contable_debeNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.idcuenta_contable_debeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCUENTANull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.CUENTAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCUENTANull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.CUENTAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNOMBRE_CUENTANull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.NOMBRE_CUENTAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNOMBRE_CUENTANull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.NOMBRE_CUENTAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismonto_haberNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_haberColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmonto_haberNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_haberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Ismonto_debeNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_debeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setmonto_debeNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.monto_debeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsglosaNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.glosaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetglosaNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.glosaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsnombreNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.nombreColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetnombreNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.nombreColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsapellidoNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.apellidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetapellidoNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.apellidoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsusuarioNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.usuarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetusuarioNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.usuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isfecha_creacionNull() {
+                return this.IsNull(this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_creacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setfecha_creacionNull() {
+                this[this.tableASIENTO_CONTABLE_BUSCAR_IDVENTAS.fecha_creacionColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -17404,6 +19342,74 @@ namespace Modelo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent : global::System.EventArgs {
+            
+            private ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSRowChangeEvent(ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDPAGOSRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent : global::System.EventArgs {
+            
+            private ASIENTO_CONTABLE_BUSCAR_IDVENTASRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASRowChangeEvent(ASIENTO_CONTABLE_BUSCAR_IDVENTASRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ASIENTO_CONTABLE_BUSCAR_IDVENTASRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -18793,6 +20799,398 @@ namespace Modelo.dsReportesTableAdapters {
                 this.Adapter.SelectCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable dataTable = new dsReportes.REPORTE_PAGO_VENTAS_DETALLE_PENDIENTESDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ASIENTO_CONTABLE_BUSCAR_IDPAGOSTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ASIENTO_CONTABLE_BUSCAR_IDPAGOSTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ASIENTO_CONTABLE_BUSCAR_IDPAGOS";
+            tableMapping.ColumnMappings.Add("fecha_asiento", "fecha_asiento");
+            tableMapping.ColumnMappings.Add("idasiento_contable", "idasiento_contable");
+            tableMapping.ColumnMappings.Add("idasiento_cabecera", "idasiento_cabecera");
+            tableMapping.ColumnMappings.Add("serie", "serie");
+            tableMapping.ColumnMappings.Add("correlativo", "correlativo");
+            tableMapping.ColumnMappings.Add("razon_social", "razon_social");
+            tableMapping.ColumnMappings.Add("idcuenta_contable_debe", "idcuenta_contable_debe");
+            tableMapping.ColumnMappings.Add("CUENTA", "CUENTA");
+            tableMapping.ColumnMappings.Add("NOMBRE_CUENTA", "NOMBRE_CUENTA");
+            tableMapping.ColumnMappings.Add("monto_haber", "monto_haber");
+            tableMapping.ColumnMappings.Add("monto_debe", "monto_debe");
+            tableMapping.ColumnMappings.Add("glosa", "glosa");
+            tableMapping.ColumnMappings.Add("nombre", "nombre");
+            tableMapping.ColumnMappings.Add("apellido", "apellido");
+            tableMapping.ColumnMappings.Add("usuario", "usuario");
+            tableMapping.ColumnMappings.Add("fecha_creacion", "fecha_creacion");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Modelo.Properties.Settings.Default.dberpGBLConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.ASIENTO_CONTABLE_BUSCAR_IDPAGOS";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDASIENTO_CABECERA", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable dataTable, global::System.Nullable<int> IDASIENTO_CABECERA) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IDASIENTO_CABECERA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDASIENTO_CABECERA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable GetData(global::System.Nullable<int> IDASIENTO_CABECERA) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IDASIENTO_CABECERA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDASIENTO_CABECERA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable dataTable = new dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ASIENTO_CONTABLE_BUSCAR_IDVENTASTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ASIENTO_CONTABLE_BUSCAR_IDVENTASTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ASIENTO_CONTABLE_BUSCAR_IDVENTAS";
+            tableMapping.ColumnMappings.Add("fecha_asiento", "fecha_asiento");
+            tableMapping.ColumnMappings.Add("idasiento_contable", "idasiento_contable");
+            tableMapping.ColumnMappings.Add("idasiento_cabecera", "idasiento_cabecera");
+            tableMapping.ColumnMappings.Add("serie", "serie");
+            tableMapping.ColumnMappings.Add("correlativo", "correlativo");
+            tableMapping.ColumnMappings.Add("razon_social", "razon_social");
+            tableMapping.ColumnMappings.Add("idcuenta_contable_debe", "idcuenta_contable_debe");
+            tableMapping.ColumnMappings.Add("CUENTA", "CUENTA");
+            tableMapping.ColumnMappings.Add("NOMBRE_CUENTA", "NOMBRE_CUENTA");
+            tableMapping.ColumnMappings.Add("monto_haber", "monto_haber");
+            tableMapping.ColumnMappings.Add("monto_debe", "monto_debe");
+            tableMapping.ColumnMappings.Add("glosa", "glosa");
+            tableMapping.ColumnMappings.Add("nombre", "nombre");
+            tableMapping.ColumnMappings.Add("apellido", "apellido");
+            tableMapping.ColumnMappings.Add("usuario", "usuario");
+            tableMapping.ColumnMappings.Add("fecha_creacion", "fecha_creacion");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Modelo.Properties.Settings.Default.dberpGBLConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "dbo.ASIENTO_CONTABLE_BUSCAR_IDVENTAS";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IDVENTAS_CABECERA", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable dataTable, global::System.Nullable<int> IDVENTAS_CABECERA) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IDVENTAS_CABECERA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDVENTAS_CABECERA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable GetData(global::System.Nullable<int> IDVENTAS_CABECERA) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((IDVENTAS_CABECERA.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(IDVENTAS_CABECERA.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable dataTable = new dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

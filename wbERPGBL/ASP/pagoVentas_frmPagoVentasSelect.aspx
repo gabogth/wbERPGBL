@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ASP/master.Master" AutoEventWireup="true" CodeBehind="pagoVentas_frmPagoVentasSelect.aspx.cs" Inherits="wbERPGBL.ASP.pagoVentas_frmPagoVentasSelect" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="IDScripts" runat="server">
-    <script src="../js/Controllers/jsPagoVentasFacturaSeleccionar.js"></script>
+    <script src="../js/Controllers/jsPagoVentasFacturaSeleccionar.js?v=1.0"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="IDCuerpo" runat="server">
     <div class="tile">
@@ -86,7 +86,7 @@
                                             <th class="text-center">EMISION</th>
                                             <th class="text-center">EMITIDO POR</th>
                                             <th class="text-center">ESTADO</th>
-                                            <th class="text-center">MONEDA</th>
+                                            <th class="text-center"></th>
                                             <th class="text-center">FACTURADO</th>
                                             <th class="text-center">CANCELADO</th>
                                             <th class="text-center">RESTANTE</th>

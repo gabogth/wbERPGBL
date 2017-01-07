@@ -280,7 +280,7 @@ function eliminar(id) {
 
 function cargarTipoCuenta() {
     $('#cbTipoCuenta').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'tipoCuenta_frmMantenimientoTipoCuenta.aspx/buscar_estado',
             dataType: 'json',

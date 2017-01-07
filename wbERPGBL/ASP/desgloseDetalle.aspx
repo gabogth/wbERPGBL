@@ -20,7 +20,6 @@
         catch {
             //Response.Redirect("~/ASP/default.aspx");
         }
-        
         dsProcedimientos.FACTURA_BUSCAR_POR_IDVENTASDataTable dsVentas = DOMModel.FACTURA_BUSCAR_POR_IDVENTAS(idVentas, Conexion);
         dsProcedimientos.FACTURA_BUSCAR_POR_IDVENTASRow itemVentas = null;
         if (dsVentas == null) { }

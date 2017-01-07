@@ -3,6 +3,7 @@
 <%@ Import Namespace="Modelo.archivos" %>
 <%@ Import Namespace="Modelo" %>
 <%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="Newtonsoft.Json" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
 <!DOCTYPE html>
 <html>
@@ -10,8 +11,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <meta name="format-detection" content="telephone=no">
     <meta charset="UTF-8">
-    <meta name="description" content="Violate Responsive Admin Template">
-    <meta name="keywords" content="Super Admin, Admin, Template, Bootstrap">
+    <meta name="description" content="ERP GBL desarrollado por gabogth@gmail.com">
+    <meta name="keywords" content="Control empresarial entero.">
+
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+
+
     <title>ERP :: GLOBAL BUSINESS LATAM</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/font-awesome.min.css" rel="stylesheet">
@@ -20,9 +28,9 @@
     <link href="../css/form.css" rel="stylesheet">
     <link href="../css/calendar.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
-    <link href="../css/icons.css" rel="stylesheet">
+    <link href="../css/icons.css?v=1.0" rel="stylesheet">
     <link href="../css/generics.css" rel="stylesheet">
-    <link href="../css/select2.css" rel="stylesheet" />
+    <link href="../css/select2.css?v=1.1" rel="stylesheet" />
     <%--<link href="../css/select2-bootstrap.css" rel="stylesheet" />--%>
     <link href="../css/simplePagination.css" rel="stylesheet" />
     <script src="../js/jquery.min.js"></script>
@@ -60,6 +68,8 @@
         <div class="media-body">
 
             <div class="media" id="top-menu">
+                <input type="hidden" id="txtCambioCompra" value=<%= tipoCambioRow != null ? JsonConvert.SerializeObject(tipoCambioRow.compra) : "" %> name="txtCambioCompra" />
+                <input type="hidden" id="txtCambioVenta" value=<%= tipoCambioRow != null ? JsonConvert.SerializeObject(tipoCambioRow.venta) : "" %> name="txtCambioVenta" />
                 <div id="time" class="pull-right">
                     <%
                         if (tipoCambioRow != null)
@@ -366,8 +376,7 @@
     <script src="../js/spinner.min.js"></script>
     <script src="../js/icheck.js"></script>
     <script src="../js/jquery.serializejson.min.js"></script>
-    <script src="../js/select2.min.js"></script>
-    <script src="../js/select2.full.js"></script>
+    <script src="../js/select2.min.js?v=1.0"></script>
     <script src="../js/moment.js"></script>
     <script src="../js/jquery.form.js"></script>
     <script src="../js/jquery.hotkeys.js"></script>

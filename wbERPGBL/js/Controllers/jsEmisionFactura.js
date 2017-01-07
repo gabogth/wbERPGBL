@@ -515,7 +515,7 @@ function formatRepoSelection(repo) {
 
 function cargarEmpresa() {
     $('#cbEmpresa, #cbEmpresaReView').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',
@@ -548,7 +548,7 @@ function cargarEmpresa() {
 
 function cargarMoneda() {
     $('#cbMoneda').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'moneda_frmMantenimientoMoneda.aspx/buscar_estado',
             dataType: 'json',
@@ -581,7 +581,7 @@ function cargarMoneda() {
 
 function cargarUnidadMedida() {
     $('#cbTipo').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'unidadmedida_frmMantenimientoUnidadMedida.aspx/buscar_estado',
             dataType: 'json',
@@ -614,7 +614,7 @@ function cargarUnidadMedida() {
 
 function cargarSerie() {
     $('#cbSerie, #cbSerieReView').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'serie_frmMantenimientoSerie.aspx/buscar_estado',
             dataType: 'json',
@@ -647,7 +647,7 @@ function cargarSerie() {
 
 function cargarProyecto() {
     $('#cbProyecto').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'proyecto_frmMantenimientoProyecto.aspx/buscar_idempresa',
             dataType: 'json',

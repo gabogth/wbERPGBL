@@ -75,7 +75,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string insertar(string TIPO_PAGO, string CODIGO)
+        public static string insertar(string TIPO_PAGO, string CODIGO, int? OP, int? CHEQUE)
         {
             clsResult objResultado = new clsResult();
             try
@@ -87,7 +87,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.TIPO_PAGO_INSERTAR(TIPO_PAGO, CODIGO, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.TIPO_PAGO_INSERTAR(TIPO_PAGO, CODIGO, sessionUS.idusuario, CHEQUE, OP, Conexion);
                 objResultado.result = "success";
                 objResultado.message = "ok_server";
                 objResultado.registros = 1;
@@ -105,7 +105,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string modificar(int IDTIPO_PAGO, string TIPO_PAGO, string CODIGO)
+        public static string modificar(int IDTIPO_PAGO, string TIPO_PAGO, string CODIGO, int? OP, int? CHEQUE)
         {
             clsResult objResultado = new clsResult();
             try
@@ -117,7 +117,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.TIPO_PAGO_MODIFICAR(IDTIPO_PAGO, TIPO_PAGO, CODIGO, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.TIPO_PAGO_MODIFICAR(IDTIPO_PAGO, TIPO_PAGO, CODIGO, sessionUS.idusuario, CHEQUE, OP, Conexion);
                 objResultado.result = "success";
                 objResultado.message = "ok_server";
                 objResultado.registros = 1;

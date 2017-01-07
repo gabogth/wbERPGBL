@@ -212,7 +212,7 @@ function modificar(id) {
 
 function cargarReportes() {
     $('#cbReporte').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'tipoContrato_frmMantenimientoTipoContrato.aspx/buscar_reporte',
             dataType: 'json',

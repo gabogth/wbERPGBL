@@ -75,7 +75,34 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string insertar(int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, string NUMERO_CUENTA, int IDMONEDA, int IDEMPRESA)
+        public static string buscar_estado_moneda_empresa(string q, int index, int cantidad, int idmoneda, int idempresa)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                int registros = 0;
+                dsProcedimientos.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESADataTable dtResultado = DOMModel.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESA(q, ref registros, index, cantidad, idmoneda, idempresa, Conexion);
+                objResultado.result = "success";
+                objResultado.message = "ok_server";
+                objResultado.registros = registros;
+                objResultado.body = dtResultado;
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
+        public static string insertar(int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, string NUMERO_CUENTA, int IDMONEDA, int IDEMPRESA, int? IDCUENTA_CONTABLE)
         {
             clsResult objResultado = new clsResult();
             try
@@ -87,7 +114,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.CUENTASCORRIENTES_INSERTAR(IDENTIDAD_FINANCIERA,NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.CUENTASCORRIENTES_INSERTAR(IDENTIDAD_FINANCIERA,NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, sessionUS.idusuario, IDCUENTA_CONTABLE, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -115,8 +142,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = true)]
-        public static string modificar(int IDCUENTA_CORRIENTE, int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, string NUMERO_CUENTA, 
-            int IDMONEDA, int IDEMPRESA)
+        public static string modificar(int IDCUENTA_CORRIENTE, int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, string NUMERO_CUENTA, int IDMONEDA, int IDEMPRESA, int? IDCUENTA_CONTABLE)
         {
             clsResult objResultado = new clsResult();
             try
@@ -128,7 +154,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.CUENTASCORIENTES_MODIFICAR(IDCUENTA_CORRIENTE, IDENTIDAD_FINANCIERA, NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.CUENTASCORIENTES_MODIFICAR(IDCUENTA_CORRIENTE, IDENTIDAD_FINANCIERA, NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, sessionUS.idusuario, IDCUENTA_CONTABLE, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";

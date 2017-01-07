@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="IDCuerpo" runat="server">
     <div class="tile">
-        <h2 class="tile-title">Mantenimiento de Sedes</h2>
+        <h2 class="tile-title">Mantenimiento de Tipo de Pagos</h2>
         <div class="tile-config dropdown">
             <a data-toggle="dropdown" href="#" class="tile-menu"></a>
             <ul class="dropdown-menu pull-right text-right">
@@ -48,6 +48,8 @@
                                             <th class="text-center">#</th>
                                             <th class="text-center">TIPO PAGO</th>
                                             <th class="text-center">CÓDIGO</th>
+                                            <th class="text-center">OPERACIÓN</th>
+                                            <th class="text-center">CHEQUE</th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
@@ -64,7 +66,6 @@
                                                         <div id="paginacionFoot" class="col-lg-4 col-lg-push-4"></div>
                                                     </div>
                                                 </div>
-                                                
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -100,6 +101,28 @@
                                     <div class="block-area">
                                         <label for="txtCodigo">Código: </label>
                                         <input type="text" class="form-control m-b-10" id="txtCodigo" name="txtCodigo" required="required" placeholder="Ingrese código">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <div class="checkbox m-b-5">
+                                            <label>
+                                                <input type="checkbox" id="ckRequiereOP">
+                                                ¿Requiere Operación?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <div class="checkbox m-b-5">
+                                            <label>
+                                                <input type="checkbox" id="ckRequiereChecke">
+                                                ¿Requiere Cheque?
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

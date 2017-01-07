@@ -105,6 +105,48 @@ namespace wbERPGBL.ASP
             return JsonConvert.SerializeObject(objResultado);
         }
 
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
+        public static string obtenerTipoCambio(DateTime FECHA_CAMBIO)
+        {
+            clsResult objResultado = new clsResult();
+            try
+            {
+                SqlConnection Conexion = (SqlConnection)HttpContext.Current.Session["conexion"];
+                if (Conexion == null)
+                    HttpContext.Current.Response.Redirect("~/default.aspx");
+                dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
+                dsProcedimientos.TIPO_CAMBIO_BUSCAR_POR_FECHARow configRow = DOMModel.TIPO_CAMBIO_BUSCAR_POR_FECHA(FECHA_CAMBIO, Conexion);
+
+                if (configRow != null)
+                {
+                    objResultado.result = "success";
+                    objResultado.message = "ok_server";
+                    objResultado.registros = 1;
+                    objResultado.body = configRow;
+                }
+                else
+                {
+                    objResultado.result = "error";
+                    objResultado.message = "session_expired";
+                    objResultado.registros = 0;
+                    objResultado.body = null;
+                }
+            }
+            catch (NullReferenceException)
+            {
+                HttpContext.Current.Response.Redirect("~/default.aspx");
+            }
+            catch (Exception ex)
+            {
+                objResultado.result = "error";
+                objResultado.message = ex.Message;
+                objResultado.registros = 0;
+                objResultado.body = null;
+            }
+            return JsonConvert.SerializeObject(objResultado);
+        }
+
         public static void loginCockie(string usuario, string contrasena) {
             string formatCNN = ConfigurationManager.AppSettings["formatCNN"].ToString();
             try

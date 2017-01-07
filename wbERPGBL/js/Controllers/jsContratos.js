@@ -116,7 +116,7 @@ function initializeComponents() {
 
 function cargarTrabajador() {
     $('#cbTrabajador, #cbUsuarioEncargado').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'usuario_frmMantenimientoUsuario.aspx/buscar_trabajador',
             dataType: 'json',
@@ -151,7 +151,7 @@ function cargarTrabajador() {
 
 function cargarTipoContrato() {
     $('#cbTipoContrato').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'tipoContrato_frmMantenimientoTipoContrato.aspx/buscar_estado',
             dataType: 'json',

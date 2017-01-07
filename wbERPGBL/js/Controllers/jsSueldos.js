@@ -63,7 +63,7 @@ function initializeComponents() {
 
 function cargarTrabajador() {
     $('#cbTrabajador').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'usuario_frmMantenimientoUsuario.aspx/buscar_trabajador',
             dataType: 'json',

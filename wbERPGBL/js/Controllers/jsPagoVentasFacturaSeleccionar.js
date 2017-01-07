@@ -70,7 +70,7 @@ function initializeComponents() {
 
 function cargarSerie() {
     $('#cbSerie').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'serie_frmMantenimientoSerie.aspx/buscar_estado',
             dataType: 'json',
@@ -103,7 +103,7 @@ function cargarSerie() {
 
 function cargarEstado() {
     $('#cbEstado, #cbEstadoModif').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'estado_frmMantenimientoEstado.aspx/buscar_estado',
             dataType: 'json',
@@ -148,7 +148,7 @@ function formatRepoSelection(repo) {
 
 function cargarEmpresa() {
     $('#cbEmpresa').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',
@@ -215,7 +215,7 @@ function buscar(indexPag, cantidad) {
                     bodyTable += '<td class="text-center">' + item.fecha_emision.split('T')[0] + '</td>';
                     bodyTable += '<td class="text-center" data-placement="top" data-html="true" data-toggle="popover" title="Datos adicionales" data-content="<div><b>Nombre:</b> ' + item.USUARIO_CREACION_APELLIDO + ', ' + item.USUARIO_CREACION_NOMBRE + '<br /><b>Correo:</b> ' + item.USUARIO_CREACION_CORREO + '</div>" style="cursor: pointer;">' + item.USUARIO_CREACION_USUARIO + '</td>';
                     bodyTable += '<td class="text-center" data-placement="top" data-html="true" data-toggle="popover" title="Datos adicionales" data-content="<div><b>Último cambio a las:</b> ' + item.REGISTRO_ESTADO_FECHA_CREACION.replace('T', ' a las ') + '.</div>" style="cursor: pointer;">' + item.REGISTRO_ESTADO_ESTADO_FACTURA + '</td>';
-                    bodyTable += '<td class="text-center">[' + item.MONEDA_SIMBOLO + ']-' + item.MONEDA_MONEDA + '</td>';
+                    bodyTable += '<td class="text-center">' + item.MONEDA_SIMBOLO + '</td>';
                     bodyTable += '<td class="text-right">' + item.monto_total.toFixed(2) + '</td>';
                     bodyTable += '<td class="text-right">' + item.PAGO_VENTAS_MONTO_PAGADO.toFixed(2) + '</td>';
                     bodyTable += '<td class="text-right">' + item.PAGO_VENTAS_MONTO_RESTANTE.toFixed(2) + '</td>';

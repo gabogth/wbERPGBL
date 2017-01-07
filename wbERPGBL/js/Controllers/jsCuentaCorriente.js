@@ -20,9 +20,56 @@
     buscar(1, 10);
 });
 
+function cargarCuentaContable() {
+    $('#cbCuentaContable').select2({
+        ajax: {
+            url: 'cuentaContable_frmMantenimientoCuentaContable.aspx/buscar_estado',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            data: function (params) {
+                if (params === null) {
+                    return JSON.stringify({ q: "", index: 1, cantidad: 10 });
+                } else {
+                    console.log(JSON.stringify({ q: (params.term == null ? '' : params.term), index: 1, cantidad: 10 }));
+                    return JSON.stringify({ q: (params.term == null ? '' : params.term), index: 1, cantidad: 10 });
+                }
+            },
+            initSelection: function (element, callback) {
+                console.log(element);
+            },
+            processResults: function (data, page) {
+                var datos = jQuery.parseJSON(data.d);
+                datos = datos.body;
+                for (var i = 0; i < datos.length; i++) {
+                    datos[i].id = datos[i].idcuenta_contable;
+                    datos[i].text = datos[i].CUENTA + ' - ' + datos[i].nombre_cuenta;
+                }
+                return {
+                    results: datos
+                };
+            }
+        },
+        escapeMarkup: function (markup) { return markup; },
+        templateResult: format,
+        templateSelection: formatRepoSelection
+    });
+}
+
+function format(e) {
+    if (e.loading) {
+        return "<div>Cargando resultados...</div>";
+    }
+    var markup = '<div>' + e.text + '</div>';
+    return markup;
+}
+function formatRepoSelection(repo) {
+    return repo.text || repo.text;
+}
+
 function cargarEntidadFinanciera() {
     $('#cbEntidadFinanciera').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'entidadfinanciera_frmMantenimientoEntidadFinanciera.aspx/buscar',
             dataType: 'json',
@@ -57,7 +104,7 @@ function cargarEntidadFinanciera() {
 
 function cargarMoneda() {
     $('#cbMoneda').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'moneda_frmMantenimientoMoneda.aspx/buscar',
             dataType: 'json',
@@ -91,7 +138,7 @@ function cargarMoneda() {
 }
 function cargarEmpresa() {
     $('#cbEmpresa').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',
@@ -150,6 +197,7 @@ function establecerData(data) {
     $('#cbEntidadFinanciera').empty().append('<option value="' + data.identidad_financiera + '">' + data.ENTIDAD_FINANCIERA_ALIAS + '</option>').val(data.identidad_financiera).trigger('change');
     $('#cbMoneda').empty().append('<option value="' + data.idmoneda + '">' + data.MONEDA_MONEDA + '</option>').val(data.idmoneda).trigger('change');
     $('#cbEmpresa').empty().append('<option value="' + data.idempresa + '">' + data.EMPRESA_ALIAS + '</option>').val(data.idempresa).trigger('change');
+    $('#cbCuentaContable').empty().append('<option value="' + data.idcuenta_contable + '">' + data.CUENTA + ' ' + data.nombre_cuenta_contable + '</option>').val(data.idcuenta_contable).trigger('change');
 }
 
 function paginacion() {
@@ -167,6 +215,7 @@ function paginacion() {
 
 function initializeComponents() {
     paginacion();
+    cargarCuentaContable();
     $('#txtBuscar').keyup(function (e) {
         if (e.keyCode == 13) {
             $('#paginacionFoot').pagination('selectPage', 1);
@@ -205,6 +254,7 @@ function buscar(indexPag, cantidad) {
                 bodyTable += '<td>' + item.MONEDA_MONEDA + '</td>';
                 bodyTable += '<td>' + item.ENTIDAD_FINANCIERA_ALIAS + '</td>';
                 bodyTable += '<td>' + item.EMPRESA_ALIAS + '</td>';
+                bodyTable += '<td>' + (item.nombre_cuenta_contable == null ? '<center>-</center>' : item.nombre_cuenta_contable) + '</td>';
                 bodyTable += '<td class="text-center">' + getStateIcon(item.estado, 'estado' + item.idcuenta_corriente) + '</td>';
                 bodyTable += '<td><span class="fa fa-pencil text-warning" style="cursor: pointer;" id="modificar' + item.idcuenta_corriente + '"></span></td>';
                 bodyTable += '<td><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar' + item.idcuenta_corriente + '"></span></td></tr>';
@@ -275,6 +325,7 @@ function modificar(id) {
         '&IDENTIDAD_FINANCIERA="' + encodeURIComponent($('#cbEntidadFinanciera').val()) + '"' +
         '&IDMONEDA=' + encodeURIComponent($('#cbMoneda').val()) +
         '&IDEMPRESA=' + encodeURIComponent($('#cbEmpresa').val()) +
+        '&IDCUENTA_CONTABLE=' + encodeURIComponent($('#cbCuentaContable').val()) +
         '&NUMERO_CUENTA="' + encodeURIComponent($('#txtNumeroCuenta').val()) + '"' +
         '&NOMBRE_CUENTA="' + encodeURIComponent($('#txtNombreCuenta').val()) + '"';
 
@@ -313,6 +364,7 @@ function insertar() {
             '&IDMONEDA=' + encodeURIComponent($('#cbMoneda').val()) +
             '&IDEMPRESA=' + encodeURIComponent($('#cbEmpresa').val()) +
             '&NUMERO_CUENTA="' + encodeURIComponent($('#txtNumeroCuenta').val()) + '"' +
+            '&IDCUENTA_CONTABLE=' + encodeURIComponent($('#cbCuentaContable').val()) +
             '&NOMBRE_CUENTA="' + encodeURIComponent($('#txtNombreCuenta').val()) + '"';
 
     $.ajax({

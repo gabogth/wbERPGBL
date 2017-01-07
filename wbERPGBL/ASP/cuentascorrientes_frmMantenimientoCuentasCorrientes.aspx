@@ -51,6 +51,7 @@
                                             <th class="text-center">MONEDA</th>
                                             <th class="text-center">ENTIDAD FINANCIERA</th>
                                             <th class="text-center">EMPRESA</th>
+                                            <th class="text-center">CUENTA CONTABLE</th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
@@ -82,7 +83,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="IDFooter" runat="server">
-    <div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modalInsertar" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -127,6 +128,15 @@
                                     <div class="block-area">
                                         <label for="cbEmpresa">Empresa: </label>
                                         <select id="cbEmpresa" style="width: 100%;" required="required">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="block-area">
+                                        <label for="cbCuentaContable">Cuenta: </label>
+                                        <select id="cbCuentaContable" data-placeholder="Seleccione Cuenta contable" data-allow-clear="true" style="width: 100%;">
                                         </select>
                                     </div>
                                 </div>

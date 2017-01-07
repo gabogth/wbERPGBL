@@ -34,14 +34,11 @@ namespace wbERPGBL.ASP
             string directorio = ConfigurationManager.AppSettings["BACK_LOCK"].ToString();
             clsResult objResultado = new clsResult();
             List<clsArchivo> objArchivos = new List<clsArchivo>();
-            try
-            {
+            try {
                 DirectoryInfo di = new DirectoryInfo(directorio);
                 List<FileInfo> diar1 = di.GetFiles().Where(file => file.Name.ToUpper().Contains(q.ToUpper())).ToList();
-                if (diar1 != null && diar1.Count > 0)
-                {
-                    for (int i = ((index - 1) * cantidad); i < diar1.Count; i++)
-                    {
+                if (diar1 != null && diar1.Count > 0) {
+                    for (int i = ((index - 1) * cantidad); i < diar1.Count; i++) {
                         clsArchivo objArchivo = new clsArchivo();
                         objArchivo.CreationDate = diar1[i].CreationTime;
                         objArchivo.FileName = diar1[i].Name;
@@ -53,9 +50,7 @@ namespace wbERPGBL.ASP
                     objResultado.message = "ok_server";
                     objResultado.registros = objArchivos.Count;
                     objResultado.body = objArchivos;
-                }
-                else
-                {
+                } else {
                     objResultado.result = "success";
                     objResultado.message = "No hay mas registros.";
                     objResultado.registros = 0;
@@ -63,12 +58,10 @@ namespace wbERPGBL.ASP
                 }
                 
             }
-            catch (NullReferenceException)
-            {
+            catch (NullReferenceException) {
                 HttpContext.Current.Response.Redirect("~/default.aspx");
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 objResultado.result = "error";
                 objResultado.message = ex.Message;
                 objResultado.registros = 0;
@@ -132,17 +125,15 @@ namespace wbERPGBL.ASP
             var clientId = "1046416471099-caktkkp5da5ldu0u97nprdt90iogha1k.apps.googleusercontent.com";      // From https://console.developers.google.com
             var clientSecret = "IF0AUh5m6zg_E89NAlaEVZ6x";          // From https://console.developers.google.com
                                                                     // here is where we Request the user to give us access, or use the Refresh Token that was previously stored in %AppData%
-            var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets
-            {
-                ClientId = clientId,
-                ClientSecret = clientSecret
-            },
-            scopes,
-            Environment.UserName,
-            CancellationToken.None,
-            new FileDataStore("dev.home.local")).Result;
-            DriveService _service = new DriveService(new BaseClientService.Initializer()
-            {
+            var credential = GoogleWebAuthorizationBroker.AuthorizeAsync(new ClientSecrets {
+                    ClientId = clientId,
+                    ClientSecret = clientSecret
+                },
+                scopes,
+                Environment.UserName,
+                CancellationToken.None,
+                new FileDataStore("dev.home.local")).Result;
+            DriveService _service = new DriveService(new BaseClientService.Initializer()  {
                 HttpClientInitializer = credential,
                 ApplicationName = "erpGBL",
             });

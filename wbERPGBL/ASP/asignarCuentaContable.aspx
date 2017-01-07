@@ -3,9 +3,10 @@
 <%@ Import Namespace="Modelo" %>
 <%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Data.SqlClient" %>
+<%@ Import Namespace="Newtonsoft.Json" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="IDScripts" runat="server">
-    <script src="../js/Controllers/jsAsientoVentasCuentas.js?v=1.3"></script>
+    <script src="../js/Controllers/jsAsientoVentasCuentas.js?v=1.5"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="IDCuerpo" runat="server">
     <%
@@ -52,6 +53,7 @@
                 </div>
                 <div class="row block-area">
                     <input type="hidden" value="<%= itemVentas.idmoneda %>" id="txtIDMoneda" />
+                    <input type="hidden" value=<%= JsonConvert.SerializeObject(itemVentas.fecha_emision) %> id="txtFechaEmision" />
                     <input type="hidden" value="<%= itemVentas.monto_total.ToString("#.00").Replace(",",".") %>" id="txtMontoFact" />
                     <input type="hidden" value="<%= itemVentas.base_imponible.ToString("#.00").Replace(",",".") %>" id="txtBaseImponibleFact" />
                     <input type="hidden" value="<%= itemVentas.igv.ToString("#.00").Replace(",",".") %>" id="txtIGVFact" />
@@ -123,7 +125,6 @@
                                             <th class="text-center">CUENTA</th>
                                             <th class="text-center">DEBE</th>
                                             <th class="text-center">HABER</th>
-                                            <th class="text-center">GLOSA</th>
                                             <th class="text-center"></th>
                                             <th class="text-center"></th>
                                         </tr>
@@ -138,7 +139,6 @@
                                             <td id="txtIGVCuenta"><center>-</center></td>
                                             <td id="txtIGVMontoDebe" class="text-right">-</td>
                                             <td id="txtIGVMontoHaber" class="text-right">-</td>
-                                            <td id="txtGlosaIGV"><center>-</center></td>
                                             <td id="btnIGV" class="text-center"></td>
                                             <td id="btnIGVDelete" class="text-center"></td>
                                         </tr>
@@ -148,7 +148,6 @@
                                             <td id="txtTotalCuenta"><center>-</center></td>
                                             <td id="txtTotalMontoDebe" class="text-right">-</td>
                                             <td id="txtTotalMontoHaber" class="text-right">-</td>
-                                            <td id="txtGlosaTotal"><center>-</center></td>
                                             <td id="btnTotal" class="text-center"></td>
                                             <td id="btnTotalDelete" class="text-center"></td>
                                         </tr>
@@ -156,9 +155,11 @@
                                             <td colspan="5" class="text-right"><i>TOTALES</i></td>
                                             <td id="txtDvTotalDebe" class="text-right"></td>
                                             <td id="txtDvTotalHaber" class="text-right"></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td colspan="2" class="text-center"><a href="#" id="btnImpirmir"><span class="fa fa-print fa-1x"></span> Imprimir</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i>GLOSA:</i></td>
+                                            <td colspan="17" id="txtGlosaComun"></td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -172,6 +173,22 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="IDFooter" runat="server">
+    <div class="modal fade" id="facturaPreview" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background-color: white;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:black;">&times;</button>
+                    <h4 class="modal-title" id="facturaTitulo" style="color:black;">Modal title</h4>
+                </div>
+                <div class="modal-body" style="height: 1800px;">
+                    <div id="dvLoading" class="text-center">
+                        <span class="fa fa-spinner fa-2x faa-slow faa-spin animated" style="color:black;"></span>&nbsp;Cargando...
+                    </div>
+                    <iframe src="#" id="frmControlPreview" frameborder="0" height="922px;" width="99.6%"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="modalInsertar" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

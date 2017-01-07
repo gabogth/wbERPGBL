@@ -628,12 +628,11 @@ namespace Modelo
         #endregion
         #region Cuenta Corriente
         public static bool CUENTASCORRIENTES_INSERTAR(int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, string NUMERO_CUENTA, 
-            int IDMONEDA, int IDEMPRESA, int IDUSUARIO_CREACION, SqlConnection conn)
+            int IDMONEDA, int IDEMPRESA, int IDUSUARIO_CREACION, int? IDCUENTA_CONTABLE, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.CUENTASCORRIENTES_INSERTAR(IDENTIDAD_FINANCIERA, NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, 
-                IDUSUARIO_CREACION);
+            int op = tableAdapter.CUENTASCORRIENTES_INSERTAR(IDENTIDAD_FINANCIERA, NOMBRE_CUENTA, NUMERO_CUENTA, IDMONEDA, IDEMPRESA, IDUSUARIO_CREACION, IDCUENTA_CONTABLE);
             if (op != 0)
                 return true;
             else
@@ -647,6 +646,19 @@ namespace Modelo
             tableAdapter.Connection = conn;
             int? re_registros = 0;
             dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros);
+            registros = re_registros.HasValue ? re_registros.Value : 0;
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsProcedimientos.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESADataTable CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESA(string query, ref int registros, int index, int cantidad_registros, int IDMONEDA, int IDEMPRESA, SqlConnection conn)
+        {
+            dsProcedimientos.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESADataTable dataTable = new dsProcedimientos.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESADataTable();
+            dsProcedimientosTableAdapters.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESATableAdapter tableAdapter = new dsProcedimientosTableAdapters.CUENTASCORRIENTES_BUSCAR_POR_QUERY_ESTADO_MONEDA_EMPRESATableAdapter();
+            tableAdapter.Connection = conn;
+            int? re_registros = 0;
+            dataTable = tableAdapter.GetData(query, index, cantidad_registros, ref re_registros, IDMONEDA, IDEMPRESA);
             registros = re_registros.HasValue ? re_registros.Value : 0;
             if (dataTable.Rows.Count > 0)
                 return dataTable;
@@ -669,12 +681,12 @@ namespace Modelo
         }
 
         public static bool CUENTASCORIENTES_MODIFICAR(int IDCUENTA_CORRIENTE, int IDENTIDAD_FINANCIERA, string NOMBRE_CUENTA, 
-            string NUMERO_CUENTA, int IDMONEDA, int IDEMPRESA, int IDUSUARIO_MODIFICAR, SqlConnection conn)
+            string NUMERO_CUENTA, int IDMONEDA, int IDEMPRESA, int IDUSUARIO_MODIFICAR, int? IDCUENTA_CONTABLE, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
             int op = tableAdapter.CUENTASCORIENTES_MODIFICAR(IDCUENTA_CORRIENTE, IDENTIDAD_FINANCIERA, NOMBRE_CUENTA, NUMERO_CUENTA,
-                IDMONEDA, IDEMPRESA, IDUSUARIO_MODIFICAR);
+                IDMONEDA, IDEMPRESA, IDUSUARIO_MODIFICAR, IDCUENTA_CONTABLE);
             if (op != 0)
                 return true;
             else
@@ -2407,11 +2419,11 @@ namespace Modelo
         }
         #endregion
         #region Tipo de pago
-        public static bool TIPO_PAGO_INSERTAR(string TIPO_PAGO, string CODIGO, int USUARIO_CREACION, SqlConnection conn)
+        public static bool TIPO_PAGO_INSERTAR(string TIPO_PAGO, string CODIGO, int USUARIO_CREACION, int? REQUIERE_CHEQUE, int? REQUIERE_OP, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.TIPO_PAGO_INSERTAR(TIPO_PAGO, CODIGO, USUARIO_CREACION);
+            int op = tableAdapter.TIPO_PAGO_INSERTAR(TIPO_PAGO, CODIGO, USUARIO_CREACION, REQUIERE_CHEQUE, REQUIERE_OP);
             if (op != 0)
                 return true;
             else
@@ -2445,11 +2457,11 @@ namespace Modelo
                 return null;
         }
 
-        public static bool TIPO_PAGO_MODIFICAR(int IDTIPO_PAGO, string TIPO_PAGO, string CODIGO, int USUARIO_MODIFICACION, SqlConnection conn)
+        public static bool TIPO_PAGO_MODIFICAR(int IDTIPO_PAGO, string TIPO_PAGO, string CODIGO, int USUARIO_MODIFICACION, int? REQUIERE_CHEQUE, int? REQUIERE_OP, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.TIPO_PAGO_MODIFICAR(IDTIPO_PAGO, TIPO_PAGO, CODIGO, USUARIO_MODIFICACION);
+            int op = tableAdapter.TIPO_PAGO_MODIFICAR(IDTIPO_PAGO, TIPO_PAGO, CODIGO, USUARIO_MODIFICACION, REQUIERE_CHEQUE, REQUIERE_OP);
             if (op != 0)
                 return true;
             else
@@ -2479,18 +2491,16 @@ namespace Modelo
         }
         #endregion
         #region Pago Ventas
-        public static bool PAGO_VENTAS_INSERTAR(DateTime FECHA_PAGO, double MONTO_PAGO, int IDTIPO_PAGO, string CODIGO_REFERENCIA,
-                int? IDCUENTA_CORRIENTE, int IDMONEDA, int VERIFICADA, int IDVENTAS_CABECERA, int USUARIO_CREACION, string DESCRIPCION, 
-                SqlConnection conn)
+        public static dsProcedimientos.PAGO_VENTAS_BUSCAR_ASIENTODataTable PAGO_VENTAS_BUSCAR_ASIENTO(int IDVENTAS_CABECERA, SqlConnection conn)
         {
-            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
-            GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.PAGO_VENTAS_INSERTAR(FECHA_PAGO, Convert.ToDecimal(MONTO_PAGO), IDTIPO_PAGO, CODIGO_REFERENCIA, 
-                IDCUENTA_CORRIENTE, IDMONEDA, VERIFICADA, IDVENTAS_CABECERA, USUARIO_CREACION, DESCRIPCION);
-            if (op != 0)
-                return true;
+            dsProcedimientos.PAGO_VENTAS_BUSCAR_ASIENTODataTable dataTable = new dsProcedimientos.PAGO_VENTAS_BUSCAR_ASIENTODataTable();
+            dsProcedimientosTableAdapters.PAGO_VENTAS_BUSCAR_ASIENTOTableAdapter tableAdapter = new dsProcedimientosTableAdapters.PAGO_VENTAS_BUSCAR_ASIENTOTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
             else
-                return false;
+                return null;
         }
         public static dsProcedimientos.PAGO_VENTAS_BUSCAR_POR_IDVENTASDataTable PAGO_VENTAS_BUSCAR_POR_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
         {
@@ -2503,21 +2513,33 @@ namespace Modelo
             else
                 return null;
         }
-
-        public static bool PAGO_VENTAS_MODIFICAR(int IDPAGO_VENTAS, DateTime FECHA_PAGO, double MONTO_PAGO, int IDTIPO_PAGO, string CODIGO_REFERENCIA,
-                int? IDCUENTA_CORRIENTE, int IDMONEDA, int VERIFICADA, int IDVENTAS_CABECERA, int USUARIO_MODIFICACION, string DESCRIPCION,
-                SqlConnection conn)
+        public static bool PAGO_VENTAS_INSERTAR(DateTime FECHA_PAGO, double MONTO_PAGO, 
+            int IDTIPO_PAGO, string CHEQUE, string NRO_OP, int? IDCUENTA_CORRIENTE, int IDMONEDA, 
+            int IDVENTAS_CABECERA, int USUARIO_CREACION, string DESCRIPCION, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.PAGO_VENTAS_MODIFICAR(IDPAGO_VENTAS, FECHA_PAGO, Convert.ToDecimal(MONTO_PAGO), IDTIPO_PAGO, CODIGO_REFERENCIA, 
-                IDCUENTA_CORRIENTE, IDMONEDA, VERIFICADA, IDVENTAS_CABECERA, USUARIO_MODIFICACION, DESCRIPCION);
+            int op = tableAdapter.PAGO_VENTAS_INSERTAR(FECHA_PAGO, Convert.ToDecimal(MONTO_PAGO), 
+                IDTIPO_PAGO, CHEQUE, NRO_OP, IDCUENTA_CORRIENTE, IDMONEDA, IDVENTAS_CABECERA, 
+                USUARIO_CREACION, DESCRIPCION);
             if (op != 0)
                 return true;
             else
                 return false;
         }
-
+        public static bool PAGO_VENTAS_MODIFICAR(int IDPAGO_VENTAS, DateTime FECHA_PAGO, double MONTO_PAGO,
+            int IDTIPO_PAGO, string CHEQUE, string NRO_OP, int? IDCUENTA_CORRIENTE, int USUARIO_MODIFICACION, 
+            string DESCRIPCION, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.PAGO_VENTAS_MODIFICAR(IDPAGO_VENTAS, FECHA_PAGO, Convert.ToDecimal(MONTO_PAGO),
+                IDTIPO_PAGO, CHEQUE, NRO_OP, IDCUENTA_CORRIENTE, USUARIO_MODIFICACION, DESCRIPCION);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
         public static bool PAGO_VENTAS_ELIMINAR(int IDPAGO_VENTAS, int USUARIO_BORRADO, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
@@ -2528,7 +2550,6 @@ namespace Modelo
             else
                 return false;
         }
-
         public static bool PAGO_VENTAS_MODIFICAR_ESTADO(int IDPAGO_VENTAS, int ESTADO, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
@@ -2942,6 +2963,28 @@ namespace Modelo
             else
                 return null;
         }
+        public static dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable ASIENTO_CONTABLE_BUSCAR_IDPAGOS(int IDPAGO, SqlConnection conn)
+        {
+            dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable dataTable = new dsReportes.ASIENTO_CONTABLE_BUSCAR_IDPAGOSDataTable();
+            dsReportesTableAdapters.ASIENTO_CONTABLE_BUSCAR_IDPAGOSTableAdapter tableAdapter = new dsReportesTableAdapters.ASIENTO_CONTABLE_BUSCAR_IDPAGOSTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDPAGO);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
+        public static dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable ASIENTO_CONTABLE_BUSCAR_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
+        {
+            dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable dataTable = new dsReportes.ASIENTO_CONTABLE_BUSCAR_IDVENTASDataTable();
+            dsReportesTableAdapters.ASIENTO_CONTABLE_BUSCAR_IDVENTASTableAdapter tableAdapter = new dsReportesTableAdapters.ASIENTO_CONTABLE_BUSCAR_IDVENTASTableAdapter();
+            tableAdapter.Connection = conn;
+            dataTable = tableAdapter.GetData(IDVENTAS_CABECERA);
+            if (dataTable.Rows.Count > 0)
+                return dataTable;
+            else
+                return null;
+        }
         public static dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTAS(int IDVENTAS_CABECERA, SqlConnection conn)
         {
             dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable dataTable = new dsProcedimientos.DESGLOSE_ASIENTO_VENTAS_BUSCAR_IGVTOTAL_IDVENTASDataTable();
@@ -2990,21 +3033,31 @@ namespace Modelo
             else
                 return null;
         }
-        public static bool ASIENTO_CONTABLE_INSERTAR(int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int? IDDESGLOSE_VENTAS, int USUARIO_CREACION, string METHOD, int IDVENTAS_CABECERA, SqlConnection conn)
+        public static bool ASIENTO_CONTABLE_INSERTAR(int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int? IDDESGLOSE_VENTAS, int USUARIO_CREACION, string METHOD, int IDVENTAS_CABECERA, DateTime FECHA_ASIENTO, int? IDPAGO_VENTAS, ref int? IDCABECERA, string TIPO_ASIENTO, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.ASIENTO_CONTABLE_INSERTAR(IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, IDDESGLOSE_VENTAS, USUARIO_CREACION, METHOD, IDVENTAS_CABECERA);
+            int op = tableAdapter.ASIENTO_CONTABLE_INSERTAR(IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, IDDESGLOSE_VENTAS, USUARIO_CREACION, METHOD, IDVENTAS_CABECERA, FECHA_ASIENTO, IDPAGO_VENTAS, ref IDCABECERA, TIPO_ASIENTO);
             if (op != 0)
                 return true;
             else
                 return false;
         }
-        public static bool ASIENTO_CONTABLE_MODIFICAR(int IDASIENTO_CONTABLE, int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int USUARIO_CREACION, SqlConnection conn)
+        public static bool ASIENTO_CONTABLE_INSERTAR_AJUSTE(int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string METHOD, int IDVENTAS_CABECERA, DateTime FECHA_ASIENTO, int? IDCABECERA, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.ASIENTO_CONTABLE_MODIFICAR(IDASIENTO_CONTABLE, IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, USUARIO_CREACION);
+            int op = tableAdapter.ASIENTO_CONTABLE_INSERTAR_AJUSTE(IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), METHOD, IDVENTAS_CABECERA, FECHA_ASIENTO, IDCABECERA);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIENTO_CONTABLE_MODIFICAR(int IDASIENTO_CONTABLE, int? IDCUENTA_CONTABLE_DEBE, int? IDCUENTA_CONTABLE_HABER, double? MONTO_DEBE, double? MONTO_HABER, string GLOSA, int USUARIO_CREACION, DateTime FECHA_ASIENTO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_MODIFICAR(IDASIENTO_CONTABLE, IDCUENTA_CONTABLE_DEBE, IDCUENTA_CONTABLE_HABER, Convert.ToDecimal(MONTO_DEBE), Convert.ToDecimal(MONTO_HABER), GLOSA, USUARIO_CREACION, FECHA_ASIENTO);
             if (op != 0)
                 return true;
             else
@@ -3020,11 +3073,21 @@ namespace Modelo
             else
                 return false;
         }
-        public static bool ASIENTO_CONTABLE_ELIMINAR(int IDASIENTO_CONTABLE, int USUARIO_BORRADO, SqlConnection conn)
+        public static bool ASIENTO_CONTABLE_ELIMINAR(int IDASIENTO_CONTABLE, SqlConnection conn)
         {
             dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
             GetInstanceQueriesAdapter(ref tableAdapter, conn);
-            int op = tableAdapter.ASIENTO_CONTABLE_ELIMINAR(IDASIENTO_CONTABLE, USUARIO_BORRADO);
+            int op = tableAdapter.ASIENTO_CONTABLE_ELIMINAR(IDASIENTO_CONTABLE);
+            if (op != 0)
+                return true;
+            else
+                return false;
+        }
+        public static bool ASIENTO_CONTABLE_ELIMINAR_PAGO_VENTAS(int IDASIENTO_CABECERA, int USUARIO_BORRADO, SqlConnection conn)
+        {
+            dsProcedimientosTableAdapters.QueriesTableAdapter tableAdapter = new dsProcedimientosTableAdapters.QueriesTableAdapter();
+            GetInstanceQueriesAdapter(ref tableAdapter, conn);
+            int op = tableAdapter.ASIENTO_CONTABLE_ELIMINAR_PAGO_VENTAS(IDASIENTO_CABECERA, USUARIO_BORRADO);
             if (op != 0)
                 return true;
             else

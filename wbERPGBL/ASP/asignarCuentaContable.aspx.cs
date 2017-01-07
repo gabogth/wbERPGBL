@@ -93,7 +93,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public static string insertarHaber(int? cbCuentaHaber, double? txtMontoHaber, string txtGlosa, int? ID, string METHOD, int IDVENTAS)
+        public static string insertarHaber(int? cbCuentaHaber, double? txtMontoHaber, string txtGlosa, int? ID, string METHOD, int IDVENTAS, DateTime txtFechaEmision)
         {
             clsResult objResultado = new clsResult();
             try
@@ -104,7 +104,8 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.ASIENTO_CONTABLE_INSERTAR(null, cbCuentaHaber, null, txtMontoHaber, txtGlosa, ID, sessionUS.idusuario, METHOD, IDVENTAS, Conexion);
+                int? IDCABECERA = 0;
+                bool dtResultado = DOMModel.ASIENTO_CONTABLE_INSERTAR(null, cbCuentaHaber, null, txtMontoHaber, txtGlosa, ID, sessionUS.idusuario, METHOD, IDVENTAS, txtFechaEmision, null, ref IDCABECERA, "VENTAS", Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -132,7 +133,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public static string insertarDebe(string txtGlosa, double? txtMontoDebe, int? cbCuentaDebe, int? ID, string METHOD, int IDVENTAS)
+        public static string insertarDebe(string txtGlosa, double? txtMontoDebe, int? cbCuentaDebe, int? ID, string METHOD, int IDVENTAS, DateTime txtFechaEmision)
         {
             clsResult objResultado = new clsResult();
             try
@@ -143,7 +144,8 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.ASIENTO_CONTABLE_INSERTAR(cbCuentaDebe, null, txtMontoDebe, null, txtGlosa, ID, sessionUS.idusuario, METHOD, IDVENTAS, Conexion);
+                int? IDCABECERA = 0;
+                bool dtResultado = DOMModel.ASIENTO_CONTABLE_INSERTAR(cbCuentaDebe, null, txtMontoDebe, null, txtGlosa, ID, sessionUS.idusuario, METHOD, IDVENTAS, txtFechaEmision, null, ref IDCABECERA, "VENTAS", Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -171,7 +173,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public static string modificarDebe(int ID, string txtGlosa, int? cbCuentaDebe, double? txtMontoDebe)
+        public static string modificarDebe(int ID, string txtGlosa, int? cbCuentaDebe, double? txtMontoDebe, DateTime txtFechaEmision)
         {
             clsResult objResultado = new clsResult();
             try
@@ -182,7 +184,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.ASIENTO_CONTABLE_MODIFICAR(ID, cbCuentaDebe, null, txtMontoDebe, null, txtGlosa, sessionUS.idusuario , Conexion);
+                bool dtResultado = DOMModel.ASIENTO_CONTABLE_MODIFICAR(ID, cbCuentaDebe, null, txtMontoDebe, null, txtGlosa, sessionUS.idusuario, txtFechaEmision, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -210,7 +212,7 @@ namespace wbERPGBL.ASP
 
         [WebMethod(EnableSession = true)]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json, UseHttpGet = false)]
-        public static string modificarHaber(int ID, string txtGlosa, int? cbCuentaHaber, double? txtMontoHaber)
+        public static string modificarHaber(int ID, string txtGlosa, int? cbCuentaHaber, double? txtMontoHaber, DateTime txtFechaEmision)
         {
             clsResult objResultado = new clsResult();
             try
@@ -221,7 +223,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.ASIENTO_CONTABLE_MODIFICAR(ID, null, cbCuentaHaber, null, txtMontoHaber, txtGlosa, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.ASIENTO_CONTABLE_MODIFICAR(ID, null, cbCuentaHaber, null, txtMontoHaber, txtGlosa, sessionUS.idusuario, txtFechaEmision, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";
@@ -261,7 +263,7 @@ namespace wbERPGBL.ASP
                 dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow sessionUS = (dsProcedimientos.USUARIO_BUSCAR_POR_USUARIORow)HttpContext.Current.Session["usuario"];
                 if (sessionUS == null)
                     HttpContext.Current.Response.Redirect("~/default.aspx");
-                bool dtResultado = DOMModel.ASIENTO_CONTABLE_ELIMINAR(ID, sessionUS.idusuario, Conexion);
+                bool dtResultado = DOMModel.ASIENTO_CONTABLE_ELIMINAR(ID, Conexion);
                 if (dtResultado != false)
                 {
                     objResultado.result = "success";

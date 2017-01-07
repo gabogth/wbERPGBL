@@ -74,7 +74,7 @@ function initializeComponents() {
 
 function cargarTrabajador() {
     $('#cbTrabajador').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'usuario_frmMantenimientoUsuario.aspx/buscar_trabajador',
             dataType: 'json',
@@ -107,7 +107,7 @@ function cargarTrabajador() {
 
 function cargarConfiguracionAdministradora() {
     $('#cbConfiguracion').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'configuracionespensiones_frmConfiguracionesPensiones.aspx/buscar_estado',
             dataType: 'json',

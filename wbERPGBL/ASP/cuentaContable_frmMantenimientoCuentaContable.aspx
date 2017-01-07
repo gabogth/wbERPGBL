@@ -80,7 +80,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="IDFooter" runat="server">
-    <div class="modal fade" id="modalInsertar" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="modalInsertar" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">

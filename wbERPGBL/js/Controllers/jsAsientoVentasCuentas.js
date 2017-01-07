@@ -6,6 +6,11 @@ $(function () {
     $('#txtMontoDebe, #txtMontoHaber, #txtMontoIGV, #txtMontoDebeModificar, #txtMontoHaberModificar').autoNumeric('init');
     buscar();
     buscarTOTALES();
+    $('#btnImpirmir').unbind();
+    $('#btnImpirmir').on('click', function (event) {
+        event.preventDefault();
+        showPreview(utilClass.getUrlParameter('ID'));
+    });
 });
 
 function cargarCuentas() {
@@ -69,6 +74,7 @@ function buscar() {
         }
     }).done(function (data) {
         var jsonData = jQuery.parseJSON(data.d);
+        console.log(jsonData);
         if (jsonData.result == 'error') {
             utilClass.showMessage('#dvResultado', 'danger', 'Error:|' + jsonData.message);
         } else {
@@ -106,6 +112,18 @@ function buscarTOTALES() {
     });
 }
 
+function showPreview(IDCabecera) {
+    $('#frmControlPreview').attr('src', 'Reportes/reporteAsientoVentas.aspx?ID=' + IDCabecera);
+    $('#facturaPreview').modal('show');
+    $('#dvLoading').show();
+    $('#frmControlPreview').hide();
+    $('#frmControlPreview').unbind();
+    $('#frmControlPreview').on('load', function () {
+        $('#dvLoading').hide();
+        $('#frmControlPreview').show();
+    });
+}
+
 function showTableHTML(data, IDVENTAS) {
     var bodyTable = '';
     var last_iddesglose = 0;
@@ -124,10 +142,10 @@ function showTableHTML(data, IDVENTAS) {
         bodyTable += '<td class="text-left">' + (item.idasiento_contable != null ? ((item.idcuenta_contable_debe != null ? (item.CUENTA_DEBE + ' ' + item.nombre_cuenta_debe) : (item.CUENTA_HABER + ' ' + item.nombre_cuenta_haber))) : '<center>-</center>') + '</td>';
         bodyTable += '<td class="text-right">' + (item.monto_debe != null ? item.monto_debe.format(2, 3, ',', '.') : '<center>-</center>') + '</td>';
         bodyTable += '<td class="text-right">' + (item.monto_haber != null ? item.monto_haber.format(2, 3, ',', '.') : '<center>-</center>') + '</td>';
-        bodyTable += '<td class="text-left">' + (item.glosa != null ? item.glosa : '<center>-</center>') + '</td>';
         bodyTable += '<td class="text-center"><span class="fa fa-' + (item.idasiento_contable != null ? 'pencil' : 'plus') + ' text-' + (item.idasiento_contable != null ? 'warning' : 'success') + '" style="cursor: pointer;" id="' + (item.idasiento_contable != null ? 'modificar-asiento' : 'agregar-asiento') + '-' + index + '"></span></td>';
         bodyTable += '<td class="text-center"><span class="fa fa-trash-o" style="color:white; cursor: pointer;" id="eliminar-asiento-' + index + '"></span></td>';
         bodyTable += '</tr>';
+        $('#txtGlosaComun').html(item.glosa != null ? item.glosa : '-');
         totalDebe += item.monto_debe != null ? item.monto_debe : 0;
         totalHaber += item.monto_haber != null ? item.monto_haber : 0;
         $('#txtTotalDebe').html(totalDebe.toFixed(2));
@@ -320,7 +338,6 @@ function showTableHTMLFOOTER(data, IDVENTAS) {
         $('#txtDvTotalHaber').html(totalBody.toFixed(2));
     }
     if (!focoTOTAL) {
-        console.log('ax');
         $('#btnTotalDelete').html('');
         $('#txtDvTotalDebe').html('0.00');
         $('#txtTotalCuenta').html('<center>-</center>');
@@ -402,9 +419,9 @@ function beginTrans(valor) {
 function insertar(idDesglose, IDVENTAS, webMethod, TIPO) {
     var formData = $('#frmInsertar').serializeJSON();
     formData['ID'] = idDesglose;
+    formData['txtFechaEmision'] = $('#txtFechaEmision').val();
     formData['IDVENTAS'] = IDVENTAS;
     formData['METHOD'] = TIPO;
-    console.log(formData);
     $.ajax({
         url: 'asignarCuentaContable.aspx/' + webMethod,
         type: "POST",
@@ -440,7 +457,7 @@ function insertar(idDesglose, IDVENTAS, webMethod, TIPO) {
 function modificar(ID, webMethod) {
     var formData = $('#frmInsertar').serializeJSON();
     formData["ID"] = ID;
-    console.log(formData);
+    formData["txtFechaEmision"] = $('#txtFechaEmision').val();
     $.ajax({
         url: 'asignarCuentaContable.aspx/' + webMethod,
         type: "POST",

@@ -61,7 +61,7 @@ function initializeComponents() {
 
 function cargarSistemaPensiones() {
     $('#cbSistema').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'sistema_pensiones_frmMantenimientoSistemaPensiones.aspx/buscar',
             dataType: 'json',

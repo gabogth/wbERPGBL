@@ -85,7 +85,7 @@ function initializeComponents() {
 
 function cargarPuesto() {
     $('#cbPuesto').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'puestotrabajador_frmMantenimientoPuestoTrabajador.aspx/buscar',
             dataType: 'json',
@@ -120,7 +120,7 @@ function cargarPuesto() {
 
 function cargarSede() {
     $('#cbSede').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'sede_frmMantenimientoSede.aspx/buscar_estado',
             dataType: 'json',
@@ -155,7 +155,7 @@ function cargarSede() {
 
 function cargarRoles() {
     $('#cbRol').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'roles_frmMantenimientoRoles.aspx/buscar',
             dataType: 'json',
@@ -189,7 +189,7 @@ function cargarRoles() {
 }
 function cargarEmpresa() {
     $('#cbEmpresa').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',
@@ -223,7 +223,7 @@ function cargarEmpresa() {
 }
 function cargarAreas() {
     $('#cbArea').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'areaempresa_frmMantenimientoAreaEmpresa.aspx/buscar',
             dataType: 'json',

@@ -42,7 +42,7 @@ function initializeComponents() {
 
 function cargarSerie() {
     $('#cbSerie').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'serie_frmMantenimientoSerie.aspx/buscar_estado',
             dataType: 'json',
@@ -75,7 +75,7 @@ function cargarSerie() {
 
 function cargarEstado() {
     $('#cbEstado, #cbEstadoModif').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'estado_frmMantenimientoEstado.aspx/buscar_estado',
             dataType: 'json',
@@ -120,7 +120,7 @@ function formatRepoSelection(repo) {
 
 function cargarEmpresa() {
     $('#cbEmpresa').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'empresa_frmMantenimientoEmpresa.aspx/buscar',
             dataType: 'json',

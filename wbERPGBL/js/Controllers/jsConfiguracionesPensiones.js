@@ -95,7 +95,7 @@ function initializeComponents() {
 
 function cargarAdministradora() {
     $('#cbAdministradora').select2({
-        theme: "themes-dark",
+        
         ajax: {
             url: 'administradorapensiones_frmAdministradoraPensiones.aspx/buscar',
             dataType: 'json',

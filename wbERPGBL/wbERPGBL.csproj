@@ -233,6 +233,8 @@
     </Content>
     <Content Include="ASP\administradorapensiones_frmAdministradoraPensiones.aspx" />
     <Content Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx" />
+    <Content Include="ASP\asientoPagos.aspx" />
+    <Content Include="ASP\asientoPagosSelect.aspx" />
     <Content Include="ASP\asientoVentas_frmAsientoVentas.aspx" />
     <Content Include="ASP\asignacionFamiliar_frmMantenimientoAsignacionFamiliar.aspx" />
     <Content Include="ASP\asignarCuentaContable.aspx" />
@@ -276,6 +278,8 @@
     <Content Include="ASP\Reportes\frmContratoPreview.aspx" />
     <Content Include="ASP\Reportes\frmFacturaPreview.aspx" />
     <Content Include="ASP\Reportes\frmFotocheckImpresion.aspx" />
+    <Content Include="ASP\Reportes\reporteAsientoPagos.aspx" />
+    <Content Include="ASP\Reportes\reporteAsientoVentas.aspx" />
     <Content Include="ASP\Reportes\reporte_pagoVentasPendientes.aspx" />
     <Content Include="ASP\roles_frmMantenimientoRoles.aspx" />
     <Content Include="ASP\sede_frmMantenimientoSede.aspx" />
@@ -283,6 +287,8 @@
     <Content Include="ASP\serviciosMantenimiento.aspx" />
     <Content Include="ASP\sistema_pensiones_frmMantenimientoSistemaPensiones.aspx" />
     <Content Include="ASP\sueldos_frmMantenimientoSueldos.aspx" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\select2.min.css" />
     <Content Include="error404.html" />
     <Content Include="ASP\tipocomprobante_frmMantenimientoTipoComprobante.aspx" />
     <Content Include="ASP\tipoContrato_frmMantenimientoTipoContrato.aspx" />
@@ -318,9 +324,11 @@
     <Content Include="js\autoNumeric-min.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\Controllers\jsAdministradoraPensiones.js" />
+    <Content Include="js\Controllers\jsAsientoPagos.js" />
     <Content Include="js\Controllers\jsAsientoVentasCuentas.js" />
     <Content Include="js\Controllers\jsDesgloseDetalle.js" />
     <Content Include="js\Controllers\AsientoVentasSelect.js" />
+    <Content Include="js\Controllers\jsAsientoPagosSelect.js" />
     <Content Include="js\Controllers\jsDesgloseVentas.js" />
     <Content Include="js\Controllers\jsCuentaContable.js" />
     <Content Include="js\Controllers\jsAsientosVentas.js" />
@@ -693,6 +701,8 @@
     <Content Include="js\scroll.min.js" />
     <Content Include="js\select.min.js" />
     <Content Include="js\select2.full.js" />
+    <Content Include="js\select2.full.min.js" />
+    <Content Include="js\select2.js" />
     <Content Include="js\select2.min.js" />
     <Content Include="js\simple-inheritance.min.js" />
     <Content Include="js\slider.min.js" />
@@ -807,6 +817,20 @@
     </Compile>
     <Compile Include="ASP\areaempresa_frmMantenimientoAreaEmpresa.aspx.designer.cs">
       <DependentUpon>areaempresa_frmMantenimientoAreaEmpresa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\asientoPagos.aspx.cs">
+      <DependentUpon>asientoPagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\asientoPagos.aspx.designer.cs">
+      <DependentUpon>asientoPagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\asientoPagosSelect.aspx.cs">
+      <DependentUpon>asientoPagosSelect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\asientoPagosSelect.aspx.designer.cs">
+      <DependentUpon>asientoPagosSelect.aspx</DependentUpon>
     </Compile>
     <Compile Include="ASP\asientoVentas_frmAsientoVentas.aspx.cs">
       <DependentUpon>asientoVentas_frmAsientoVentas.aspx</DependentUpon>
@@ -1116,6 +1140,20 @@
     <Compile Include="ASP\Reportes\frmFotocheckImpresion.aspx.designer.cs">
       <DependentUpon>frmFotocheckImpresion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ASP\Reportes\reporteAsientoPagos.aspx.cs">
+      <DependentUpon>reporteAsientoPagos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\Reportes\reporteAsientoPagos.aspx.designer.cs">
+      <DependentUpon>reporteAsientoPagos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ASP\Reportes\reporteAsientoVentas.aspx.cs">
+      <DependentUpon>reporteAsientoVentas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ASP\Reportes\reporteAsientoVentas.aspx.designer.cs">
+      <DependentUpon>reporteAsientoVentas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ASP\Reportes\reporte_pagoVentasPendientes.aspx.cs">
       <DependentUpon>reporte_pagoVentasPendientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1293,6 +1331,8 @@
     <Content Include="rptArchives\ventas\rptPagoVentasPendientesDetalle.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="rptArchives\asientos\rptAsientoPagos.rdlc" />
+    <EmbeddedResource Include="rptArchives\asientos\rptAsientoVentas.rdlc" />
     <EmbeddedResource Include="rptArchives\contratos\CONTRATO_INDIVIDUAL_DE_TRABAJO_PARA_OBRA_DETERMINADA_O_SERVICIO_ESPECÍFICO.rdlc" />
     <EmbeddedResource Include="rptArchives\ventas\rptAsientosVentasRegistro.rdlc" />
   </ItemGroup>
